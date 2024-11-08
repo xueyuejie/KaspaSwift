@@ -28,7 +28,12 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "KaspaSwift",
-            dependencies: ["BIP39swift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "CryptoKitC", "CryptoSwift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32"]),
+            dependencies: ["BIP39swift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "CryptoKitC", "CryptoSwift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32"],
+            resources: [
+                .process("proto/messages.proto"),
+                .process("proto/rpc.proto")
+            ]
+        ),
         .target(name: "CryptoKitC"),
         .testTarget(
             name: "KaspaSwiftTests",
