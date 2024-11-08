@@ -220,13 +220,5 @@ public struct SchnorrHelper{
         }
         return output
     }
-   
-    public enum SchnorrError: Error {
-        case liftXError
-        case privateKeyTweakError
-        case keyTweakError
-        case signError
-    }
-
 }
 

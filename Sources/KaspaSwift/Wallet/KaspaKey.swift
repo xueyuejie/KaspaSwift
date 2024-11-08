@@ -35,12 +35,20 @@ public struct KaspaKey {
        return KaspaKey(node: rootNode)
     }
     
-    public func serializePublicKey(version: HDNode.HDversion) -> String? {
+    public func serializePublicKeyString(version: HDNode.HDversion) -> String? {
         return node.serializeToString(serializePublic: true, version: version)
     }
     
-    public func serializePrivateKey(version: HDNode.HDversion) -> String? {
+    public func serializePrivateKeyString(version: HDNode.HDversion) -> String? {
         return node.serializeToString(serializePublic: false, version: version)
+    }
+    
+    public func serializePublicKey(version: HDNode.HDversion) -> Data? {
+        return node.serialize(serializePublic: true, version: version)
+    }
+    
+    public func serializePrivateKey(version: HDNode.HDversion) -> Data? {
+        return node.serialize(serializePublic: false, version: version)
     }
     
     public func derive(path: String) throws -> KaspaKey {

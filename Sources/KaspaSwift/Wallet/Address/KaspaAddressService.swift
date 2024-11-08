@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Bech32
 
 public struct KaspaAddressService {
     private let isTestnet: Bool
@@ -42,6 +43,7 @@ public struct KaspaAddressService {
 extension KaspaAddressService {
     public func makeAddress(for publicKey: Data) throws -> String {
         let addressData = try SchnorrHelper.tweakedOutputKey(publicKey: publicKey)
+//        let address = try SegwitAddrCoder().encode(hrp: "\(self.prefix):", version:0, program: addressData, encoding: .bech32m)
         let address = CashAddrBech32.encode(Data([UInt8(version.rawValue)]) + addressData, prefix: self.prefix)
         return address
     }
