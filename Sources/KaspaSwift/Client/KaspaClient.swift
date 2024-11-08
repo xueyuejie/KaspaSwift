@@ -12,12 +12,12 @@ import NIO
 
 
 // 创建一个符合 RPCClientProtocol 的客户端类
-class MyRPCClient: RPCClientProtocol {
+class MyRPCClient: Protowire_RPCClientProtocol {
     internal let channel: GRPCChannel
     internal var defaultCallOptions: CallOptions
-    internal var interceptors: RPCClientInterceptorFactoryProtocol?
+    internal var interceptors: Protowire_RPCClientInterceptorFactoryProtocol?
 
-    init(channel: GRPCChannel, defaultCallOptions: CallOptions = CallOptions(), interceptors: RPCClientInterceptorFactoryProtocol? = nil) {
+    init(channel: GRPCChannel, defaultCallOptions: CallOptions = CallOptions(), interceptors: Protowire_RPCClientInterceptorFactoryProtocol? = nil) {
         self.channel = channel
         self.defaultCallOptions = defaultCallOptions
         self.interceptors = interceptors
@@ -42,7 +42,7 @@ public struct KaspaClient : ~Copyable{
         self.init(host: host, port: Int(port) ?? 0)
     }
     
-    public func getBalancesByAddresses(addresses: [String], handle: @escaping ([RpcBalancesByAddressesEntry]) -> Void
+    public func getBalancesByAddresses(addresses: [String], handle: @escaping ([Protowire_RpcBalancesByAddressesEntry]) -> Void
     ) async throws {
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         let channel = ClientConnection.insecure(group: group).connect(host: self.host, port: self.port)
@@ -51,8 +51,8 @@ public struct KaspaClient : ~Copyable{
             // 处理每个响应
             print("Received response: \(response)")
         }
-        var request = KaspadRequest()
-        var balanceRequest = GetBalancesByAddressesRequestMessage()
+        var request = Protowire_KaspadRequest()
+        var balanceRequest = Protowire_GetBalancesByAddressesRequestMessage()
         balanceRequest.addresses = addresses
         request.getBalancesByAddressesRequest = balanceRequest
         call.sendMessage(request).whenComplete { result in
