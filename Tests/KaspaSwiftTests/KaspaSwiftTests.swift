@@ -7,7 +7,7 @@ import BIP32Swift
 final class KaspaSwiftTests: XCTestCase {
     func testAccountExample() throws {
         do {
-            let mkey = KaspaKey.fromMnemonics("hat crime liquid unhappy exhaust journey tilt tape comfort humble ahead own")!
+            let mkey = KaspaKey.fromMnemonics("")!
             var hdVer = HDNode.HDversion()
             hdVer.publicPrefix = Data([0x03, 0x8f, 0x33, 0x2e])
             hdVer.privatePrefix = Data([0x03, 0x8f, 0x2e, 0xf4])
@@ -29,7 +29,8 @@ final class KaspaSwiftTests: XCTestCase {
     }
     
     func testGrpcExample() async throws {
-        let client = try KaspaClient(url: "47.238.220.71:16110")
+        let client = KaspaClient(host: "47.238.220.71", port: 16110)
+//        try KaspaClient(url: "47.238.220.71:16110")
         try await client.getBalancesByAddresses(addresses: ["kaspa:qrmynkncs7lxe34knahjtusztek3sqwpsea8443rentqqle6vglfx8s55enju","kaspa:qzfu7dvxeat9h6z07m4k7dkjsw6y3atpue4ejgwt4dxdm9wumepmgz8qcectr"]) { entries in
             debugPrint(entries.count)
             debugPrint("ddddddddddddd")
