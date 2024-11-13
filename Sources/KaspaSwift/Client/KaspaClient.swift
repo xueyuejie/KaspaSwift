@@ -43,8 +43,22 @@ public struct KaspaClient {
         let call = client.messageStream { response in
             handle(response)
         }
-        let _ = call.sendMessage(request)
-        let _ = call.sendEnd()
+        call.sendMessage(request).whenComplete { result in
+            switch result {
+            case .success:
+                print("Successfully sent message ")
+            case .failure(let error):
+                failture(KaspaError.message(error.localizedDescription))
+            }
+        }
+        call.sendEnd().whenComplete { result in
+            switch result {
+            case .success:
+                print("Successfully closed the stream")
+            case .failure(let error):
+                failture(KaspaError.message(error.localizedDescription))
+            }
+        }
     }
 
 }

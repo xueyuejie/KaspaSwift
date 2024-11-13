@@ -34,6 +34,8 @@ final class KaspaSwiftTests: XCTestCase {
         try await client.getBalancesByAddresses(addresses: ["kaspa:qrmynkncs7lxe34knahjtusztek3sqwpsea8443rentqqle6vglfx8s55enju","kaspa:qzfu7dvxeat9h6z07m4k7dkjsw6y3atpue4ejgwt4dxdm9wumepmgz8qcectr"]) { entries in
             debugPrint(entries.count)
             debugPrint("ddddddddddddd")
+        } failture: { error in
+            debugPrint(error)
         }
     }
 }
