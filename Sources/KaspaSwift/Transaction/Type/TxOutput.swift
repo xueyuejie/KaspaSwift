@@ -1,0 +1,25 @@
+//
+//  TxOutput.swift
+//  KaspaSwift
+//
+//  Created by 薛跃杰 on 2024/11/13.
+//
+
+import Foundation
+
+public struct TxOutput {
+    let value: Int64
+    let scriptPublicKey: KaspaScriptPublicKey
+
+    init(value: Int64, scriptPublicKey: KaspaScriptPublicKey) {
+        self.value = value
+        self.scriptPublicKey = scriptPublicKey
+    }
+
+    func toRpc() -> Kaspa_RpcTransactionOutput {
+        var output = Kaspa_RpcTransactionOutput()
+        output.amount = UInt64(value)
+        output.scriptPublicKey = scriptPublicKey.toRpc()
+        return output
+    }
+}

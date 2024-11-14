@@ -6,8 +6,16 @@
 //
 
 import Foundation
+let kAddressPublicKeyScriptPublicKeyVersion = 0
+let kAddressPublicKeyECDSAScriptPublicKeyVersion = 0
+let kAddressScriptHashScriptPublicKeyVersion = 0
 
-public class KaspaAddress {
+let kOpEqual: UInt8 = 135
+let kOpBlake2b: UInt8 = 170
+let kOpCheckSigECDSA: UInt8 = 171
+let kOpCheckSig: UInt8 = 172
+
+public struct KaspaAddress: Hashable {
     static let kAddressIdPubKey: UInt8 = 0x00;
     static let kAddressIdPubKeyECDSA: UInt8 = 0x01;
     static let kAddressIdScriptHash: UInt8 = 0x08;
@@ -18,29 +26,31 @@ public class KaspaAddress {
     public let prefix: KaspaAddressPrefix
     public let payload: Data
     public let version: Int
+    public let type: AddressType
     
-    public init(prefix: KaspaAddressPrefix, payload: Data, version: Int) {
+    public init(prefix: KaspaAddressPrefix, payload: Data, version: Int, type: AddressType) {
         self.prefix = prefix
         self.payload = payload
         self.version = version
+        self.type = type
     }
     
     static func publicKey(prefix: KaspaAddressPrefix, publicKey: Data) throws -> KaspaAddress {
         guard publicKey.count == 32 else {
             throw KaspaError.message("Unknown Address Type")
         }
-        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x00)
+        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x00, type: .publicKey)
     }
 
     static func pubKeyECDSA(prefix: KaspaAddressPrefix, publicKey: Data) throws -> KaspaAddress {
         guard publicKey.count == 33 else {
             throw KaspaError.message("Unknown Address Type")
         }
-        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x01)
+        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x01, type: .pubKeyECDSA)
     }
 
     static func scriptHash(prefix: KaspaAddressPrefix, hash: Data) -> KaspaAddress {
-        return KaspaAddress(prefix: prefix, payload: hash, version: 0x08)
+        return KaspaAddress(prefix: prefix, payload: hash, version: 0x08, type: .scriptHash)
     }
     
     public func encodeAddress() -> String {
@@ -92,6 +102,55 @@ public class KaspaAddress {
     public static func isValid(_ address: String, expectedPrefix: KaspaAddressPrefix) -> Bool {
         return tryParse(address, expectedPrefix: expectedPrefix) != nil
     }
+    
+    public static func == (lhs: KaspaAddress, rhs: KaspaAddress) -> Bool {
+        return lhs.prefix == rhs.prefix && lhs.payload == rhs.payload && lhs.version == rhs.version
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(prefix)
+        hasher.combine(payload)
+        hasher.combine(version)
+    }
+}
+extension KaspaAddress {
+    func payToPubKeyScript(_ publicKey: Data) -> Data {
+        return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSig])
+    }
+
+    func payToPubKeyScriptECDSA(_ publicKey: Data) -> Data {
+        return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSigECDSA])
+    }
+
+    func payToScriptHashScript(_ hash: Data) -> Data {
+        return Data([kOpBlake2b, UInt8(hash.count)] + hash + [kOpEqual])
+    }
+
+    func payToAddressScript() -> KaspaScriptPublicKey {
+        switch self.type {
+        case .publicKey:
+            return KaspaScriptPublicKey(
+                scriptPublicKey: payToPubKeyScript(self.scriptAddress()),
+                version: UInt32(kAddressPublicKeyScriptPublicKeyVersion)
+            )
+        case .pubKeyECDSA:
+            return KaspaScriptPublicKey(
+                scriptPublicKey: payToPubKeyScriptECDSA(self.scriptAddress()),
+                version: UInt32(kAddressPublicKeyECDSAScriptPublicKeyVersion)
+            )
+        default:
+            return KaspaScriptPublicKey(
+                scriptPublicKey: payToScriptHashScript(self.scriptAddress()),
+                version: UInt32(kAddressScriptHashScriptPublicKeyVersion)
+            )
+        }
+    }
+}
+
+public enum AddressType {
+    case publicKey
+    case pubKeyECDSA
+    case scriptHash
 }
 
 public enum KaspaAddressPrefix: String {
