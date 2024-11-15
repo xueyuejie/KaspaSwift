@@ -8,6 +8,7 @@
 import Foundation
 import CryptoSwift
 import RIPEMDSwift
+import Blake2
 
 public extension Data {
     func hash160() -> Data? {
@@ -16,6 +17,10 @@ public extension Data {
     
     func hash256() -> Data {
         return self.sha256().sha256()
+    }
+    
+    func blake2bDigest(size: Int = 32, key: [UInt8]? = nil) -> Data? {
+        return try? Blake2.hash(.b2b , size: size, data: self, key: key)
     }
 }
 

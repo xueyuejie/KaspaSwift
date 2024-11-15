@@ -12,15 +12,17 @@ final class KaspaSwiftTests: XCTestCase {
             hdVer.publicPrefix = Data([0x03, 0x8f, 0x33, 0x2e])
             hdVer.privatePrefix = Data([0x03, 0x8f, 0x2e, 0xf4])
             let mMasterPubKey = mkey.serializePublicKey(version: hdVer)
-            let mroot = try mkey.derive(path: "44'/111111'")
-            let akey = try mroot.derive(path: "0'")
-            let kpub = akey.serializePublicKeyString(version: hdVer)
+            let account = try mkey.derive(path: "44'/111111'/0'")
+//            let akey = try mroot.derive(path: "0'")
+            let kpub = account.serializePublicKeyString(version: hdVer)
             // kpub 通过
             
-            let node = HDNode(kpub!)
-            let hdnode = node?.derive(path: "0/0", derivePrivateKey: false)
+            let node = try account.derive(path: "0").derive(path: "0")
+            
+//            let hdnode = node?.derive(path: "0/0", derivePrivateKey: false)
             let addressService = KaspaAddressService(isTestnet: false)
-            let address = try addressService.makeAddress(for: hdnode!.publicKey)
+            let address = try addressService.makeAddress(for: node.publicKey)
+            
             debugPrint(address)
             debugPrint(address)
         } catch let error {

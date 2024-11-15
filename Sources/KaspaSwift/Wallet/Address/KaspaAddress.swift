@@ -10,11 +10,6 @@ let kAddressPublicKeyScriptPublicKeyVersion = 0
 let kAddressPublicKeyECDSAScriptPublicKeyVersion = 0
 let kAddressScriptHashScriptPublicKeyVersion = 0
 
-let kOpEqual: UInt8 = 135
-let kOpBlake2b: UInt8 = 170
-let kOpCheckSigECDSA: UInt8 = 171
-let kOpCheckSig: UInt8 = 172
-
 public struct KaspaAddress: Hashable {
     static let kAddressIdPubKey: UInt8 = 0x00;
     static let kAddressIdPubKeyECDSA: UInt8 = 0x01;
@@ -113,40 +108,6 @@ public struct KaspaAddress: Hashable {
         hasher.combine(version)
     }
 }
-extension KaspaAddress {
-    func payToPubKeyScript(_ publicKey: Data) -> Data {
-        return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSig])
-    }
-
-    func payToPubKeyScriptECDSA(_ publicKey: Data) -> Data {
-        return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSigECDSA])
-    }
-
-    func payToScriptHashScript(_ hash: Data) -> Data {
-        return Data([kOpBlake2b, UInt8(hash.count)] + hash + [kOpEqual])
-    }
-
-    func payToAddressScript() -> KaspaScriptPublicKey {
-        switch self.type {
-        case .publicKey:
-            return KaspaScriptPublicKey(
-                scriptPublicKey: payToPubKeyScript(self.scriptAddress()),
-                version: UInt32(kAddressPublicKeyScriptPublicKeyVersion)
-            )
-        case .pubKeyECDSA:
-            return KaspaScriptPublicKey(
-                scriptPublicKey: payToPubKeyScriptECDSA(self.scriptAddress()),
-                version: UInt32(kAddressPublicKeyECDSAScriptPublicKeyVersion)
-            )
-        default:
-            return KaspaScriptPublicKey(
-                scriptPublicKey: payToScriptHashScript(self.scriptAddress()),
-                version: UInt32(kAddressScriptHashScriptPublicKeyVersion)
-            )
-        }
-    }
-}
-
 public enum AddressType {
     case publicKey
     case pubKeyECDSA

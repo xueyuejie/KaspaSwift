@@ -155,7 +155,7 @@ public class KaspaTransactionBuilder {
         }
         
         let outputs = payments.map { (address, value) in
-            let scriptPublicKey = address.payToAddressScript()
+            let scriptPublicKey = KaspaTxScript.payToAddressScript(address: address)
             return TxOutput(value: Int64(value), scriptPublicKey: scriptPublicKey)
         }
         

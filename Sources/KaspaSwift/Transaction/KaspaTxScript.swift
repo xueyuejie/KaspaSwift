@@ -1,0 +1,47 @@
+//
+//  KaspaTxScript.swift
+//  KaspaSwift
+//
+//  Created by 薛跃杰 on 2024/11/15.
+//
+
+import Foundation
+
+public struct KaspaTxScript {
+    static let kOpEqual: UInt8 = 135
+    static let kOpBlake2b: UInt8 = 170
+    static let kOpCheckSigECDSA: UInt8 = 171
+    static let kOpCheckSig: UInt8 = 172
+
+    static public func payToPubKeyScript(_ publicKey: Data) -> Data {
+        return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSig])
+    }
+
+    static public func payToPubKeyScriptECDSA(_ publicKey: Data) -> Data {
+        return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSigECDSA])
+    }
+
+    static public func payToScriptHashScript(_ hash: Data) -> Data {
+        return Data([kOpBlake2b, UInt8(hash.count)] + hash + [kOpEqual])
+    }
+
+    static public func payToAddressScript(address: KaspaAddress) -> KaspaScriptPublicKey {
+        switch address.type {
+        case .publicKey:
+            return KaspaScriptPublicKey(
+                scriptPublicKey: payToPubKeyScript(address.scriptAddress()),
+                version: UInt32(kAddressPublicKeyScriptPublicKeyVersion)
+            )
+        case .pubKeyECDSA:
+            return KaspaScriptPublicKey(
+                scriptPublicKey: payToPubKeyScriptECDSA(address.scriptAddress()),
+                version: UInt32(kAddressPublicKeyECDSAScriptPublicKeyVersion)
+            )
+        default:
+            return KaspaScriptPublicKey(
+                scriptPublicKey: payToScriptHashScript(address.scriptAddress()),
+                version: UInt32(kAddressScriptHashScriptPublicKeyVersion)
+            )
+        }
+    }
+}

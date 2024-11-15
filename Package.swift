@@ -21,14 +21,15 @@ let package = Package(
         .package(name:"BIP39swift", url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
         .package(url: "https://github.com/grpc/grpc-swift", from: "1.0.0"),
-        .package(name: "Bech32", url: "https://github.com/lishuailibertine/Bech32", from: "1.0.5")
+        .package(name: "Bech32", url: "https://github.com/lishuailibertine/Bech32", from: "1.0.5"),
+        .package(name: "Blake2", url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "KaspaSwift",
-            dependencies: ["BIP39swift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "CryptoKitC", "CryptoSwift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32"]
+            dependencies: ["BIP39swift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "CryptoKitC", "CryptoSwift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32", "Blake2"]
         ),
         .target(name: "CryptoKitC"),
         .testTarget(

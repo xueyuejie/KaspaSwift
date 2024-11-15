@@ -34,7 +34,7 @@ struct KaspaOutpoint: Equatable, Decodable {
     func toRpc() -> Kaspa_RpcOutpoint {
         var rpcOutpoint = Kaspa_RpcOutpoint()
         rpcOutpoint.transactionID = transactionId
-        rpcOutpoint.index = index
+        rpcOutpoint.index = UInt32(index)
         return rpcOutpoint
     }
     

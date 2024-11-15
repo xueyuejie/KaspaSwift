@@ -46,7 +46,7 @@ public struct KaspaUtxo: Equatable, Decodable {
         return rpcUtxosByAddressesEntry
     }
     
-    static func == (lhs: KaspaUtxo, rhs: KaspaUtxo) -> Bool {
+    public static func == (lhs: KaspaUtxo, rhs: KaspaUtxo) -> Bool {
         return lhs.address == rhs.address && lhs.outpoint == rhs.outpoint && lhs.utxoEntry == rhs.utxoEntry
     }
 }

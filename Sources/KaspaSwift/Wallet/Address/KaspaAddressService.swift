@@ -42,9 +42,7 @@ public struct KaspaAddressService {
 @available(iOS 13.0, *)
 extension KaspaAddressService {
     public func makeAddress(for publicKey: Data) throws -> String {
-        let addressData = try SchnorrHelper.tweakedOutputKey(publicKey: publicKey)
-//        let address = try SegwitAddrCoder().encode(hrp: "\(self.prefix):", version:0, program: addressData, encoding: .bech32m)
-        let address = CashAddrBech32.encode(Data([UInt8(version.rawValue)]) + addressData, prefix: self.prefix)
+        let address = CashAddrBech32.encode(Data([UInt8(version.rawValue)]) + publicKey[1..<33], prefix: self.prefix)
         return address
     }
 }
