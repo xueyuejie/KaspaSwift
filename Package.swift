@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.4.1"),
-        .package(name: "Secp256k1Swift", url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.0"),
+        .package(url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.0"),
         .package(name:"BIP39swift", url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
         .package(url: "https://github.com/grpc/grpc-swift", from: "1.0.0"),
