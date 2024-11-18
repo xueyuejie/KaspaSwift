@@ -61,7 +61,7 @@ public struct KaspaAddress: Hashable {
         }
         guard let _prefix = KaspaAddressPrefix(rawValue: prefixStr),
            expectedPrefix == KaspaAddressPrefix.unknown && expectedPrefix == _prefix else {
-            throw KaspaError.message("Invalid prefix")
+            throw KaspaError.message("Invalid address prefix")
         }
         
         let version = data.bytes.first

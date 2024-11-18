@@ -169,19 +169,7 @@ public struct KaspaTransactionUtil {
         return calculateSignatureHash(tx: tx, inputIndex: inputIndex, txInput: input, prevScriptPublicKey: prevScriptPublicKey, hashType: hashType, reusedValues: &sighashReusedValues)
     }
 
-    static func genAux(bytes: Int = 32) -> Data {
-        var aux = Data(count: bytes)
-        _ = aux.withUnsafeMutableBytes { SecRandomCopyBytes(kSecRandomDefault, bytes, $0.baseAddress!) }
-        return aux
-    }
-
-    static func signSchnorrHex(privateKey: String, hash: Data, aux: String) -> String {
-        
-        return ""
-    }
-
-    static func signSchnorr(hash: Data, privateKey: Data) -> Data {
-        let signatureHex = signSchnorrHex(privateKey: privateKey.hexEncodedString(), hash: hash, aux: genAux().hexEncodedString())
-        return Data(hex: signatureHex)
+    static func signSchnorr(hash: Data, privateKey: Data) throws -> Data {
+        return try SignHelper.sign(data: hash, privateKey: privateKey)
     }
 }

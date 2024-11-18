@@ -10,6 +10,9 @@ import BIP39swift
 import BIP32Swift
 import Secp256k1Swift
 
+let pubKeyPrefix = Data([0x03, 0x8f, 0x33, 0x2e])
+let privatePrefix = Data([0x03, 0x8f, 0x2e, 0xf4])
+
 public struct KaspaKey {
     private var node: HDNode
     
@@ -53,48 +56,16 @@ public struct KaspaKey {
     
     public func derive(path: String) throws -> KaspaKey {
         guard let childNode = node.derive(path: path) else {
-            throw Error.invalidDerivePath
+            throw KaspaError.invalidDerivePath
         }
         return KaspaKey(node: childNode)
     }
     
     public func derive(index: UInt32, hardened: Bool = false) throws -> KaspaKey {
         guard let childNode = node.derive(index: index, derivePrivateKey: true, hardened: hardened) else {
-            throw Error.invalidDerivePath
+            throw KaspaError.invalidDerivePath
         }
         return KaspaKey(node: childNode)
     }
     
-}
-
-public extension KaspaKey {
-    func signMessage(_ message: String, compressed: Bool = true) -> Data? {
-        guard let priKey = self.privateKey else { return nil }
-        
-        let prefix = "\u{18}Bitcoin Signed Message:\n"
-        guard let prefixData = prefix.data(using: .utf8) else {return nil}
-        guard let mesasgeData = message.data(using: .utf8) else { return nil }
-
-        var data = Data()
-        data.append(prefixData)
-        data.appendVarInt(UInt64(message.count))
-        data.append(mesasgeData)
-        
-        let (serializedSignature, _) = SECP256K1.signForRecovery(hash: data.hash256(), privateKey: priKey, useExtraEntropy: true, useExtraVer: false)
-        
-        guard let sig = serializedSignature else { return nil }
-        guard let unmarshalSig = SECP256K1.unmarshalSignature(signatureData: sig) else { return nil }
-        
-        var v = unmarshalSig.v
-        v +=  0x1b
-        v += compressed ? 0x04 : 0x00
-        
-        return Data([v]) + unmarshalSig.r + unmarshalSig.s
-    }
-}
-
-public extension KaspaKey {
-    enum Error: String, LocalizedError {
-        case invalidDerivePath
-    }
 }

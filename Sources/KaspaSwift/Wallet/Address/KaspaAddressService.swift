@@ -42,6 +42,9 @@ public struct KaspaAddressService {
 @available(iOS 13.0, *)
 extension KaspaAddressService {
     public func makeAddress(for publicKey: Data) throws -> String {
+        if publicKey.count != 33 {
+            throw KaspaError.invaildPublicKey
+        }
         let address = CashAddrBech32.encode(Data([UInt8(version.rawValue)]) + publicKey[1..<33], prefix: self.prefix)
         return address
     }

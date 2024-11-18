@@ -9,8 +9,8 @@ final class KaspaSwiftTests: XCTestCase {
         do {
             let mkey = KaspaKey.fromMnemonics("")!
             var hdVer = HDNode.HDversion()
-            hdVer.publicPrefix = Data([0x03, 0x8f, 0x33, 0x2e])
-            hdVer.privatePrefix = Data([0x03, 0x8f, 0x2e, 0xf4])
+            hdVer.publicPrefix = pubKeyPrefix
+            hdVer.privatePrefix = privatePrefix
             let mMasterPubKey = mkey.serializePublicKey(version: hdVer)
             let account = try mkey.derive(path: "44'/111111'/0'")
 //            let akey = try mroot.derive(path: "0'")

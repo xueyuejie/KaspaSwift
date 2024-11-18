@@ -9,10 +9,19 @@ import Foundation
 
 public enum KaspaError: LocalizedError {
     case message(String)
+    case invalidDerivePath
+    case invaildPublicKey
+    case signError
     public var errorDescription: String? {
         switch self {
         case .message(let message):
             return message
+        case .invalidDerivePath:
+            return "invalidDerivePath"
+        case .invaildPublicKey:
+            return "invaildPublicKey"
+        case .signError:
+            return "signError"
         }
     }
 }
@@ -25,11 +34,4 @@ public enum KaspaClientError: LocalizedError {
             return "invalidUrl"
         }
     }
-}
-
-public enum SchnorrError: Error {
-    case liftXError
-    case privateKeyTweakError
-    case keyTweakError
-    case signError
 }
