@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "KaspaSwift",
     platforms: [
-        .macOS(.v10_15), .iOS(.v13)
+        .macOS(.v10_12), .iOS(.v10)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
