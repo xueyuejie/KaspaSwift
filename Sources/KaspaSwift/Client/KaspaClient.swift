@@ -28,7 +28,7 @@ public struct KaspaClient {
         self.init(host: host, port: Int(port) ?? 0)
     }
     
-    public func sendRequest(request: Kaspa_KaspadRequest, handle: @escaping @Sendable(Kaspa_KaspadResponse) -> Void, failture: @escaping @Sendable (KaspaError) -> Void) async throws {
+    public func sendRequest(request: Kaspa_KaspadRequest, handle: @escaping  @Sendable(Kaspa_KaspadResponse) -> Void, failture: @escaping  @Sendable (KaspaError) -> Void) async throws {
         // 创建事件循环组
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         
@@ -63,7 +63,7 @@ public struct KaspaClient {
 }
 
 extension KaspaClient{
-    public func getBalancesByAddress(address: String, handle: @escaping(_ balance: UInt64) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
+    public func getBalancesByAddress(address: String, handle: @escaping  @Sendable(_ balance: UInt64) -> Void, failture: @escaping  @Sendable (KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetBalanceByAddressRequestMessage()
         message.address = address
@@ -81,7 +81,7 @@ extension KaspaClient{
         }
     }
     
-    public func getBalancesByAddresses(addresses: [String], handle: @escaping(_ entris: [Kaspa_RpcBalancesByAddressesEntry]) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
+    public func getBalancesByAddresses(addresses: [String], handle: @escaping  @Sendable(_ entris: [Kaspa_RpcBalancesByAddressesEntry]) -> Void, failture: @escaping  @Sendable (KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetBalancesByAddressesRequestMessage()
         message.addresses = addresses
@@ -99,7 +99,7 @@ extension KaspaClient{
         }
     }
     
-    public func getUtxosByAddresses(addresses: [String], handle: @escaping(_ entris: [Kaspa_RpcUtxosByAddressesEntry]) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
+    public func getUtxosByAddresses(addresses: [String], handle: @escaping  @Sendable(_ entris: [Kaspa_RpcUtxosByAddressesEntry]) -> Void, failture: @escaping  @Sendable (KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetUtxosByAddressesRequestMessage()
         message.addresses = addresses
@@ -117,7 +117,7 @@ extension KaspaClient{
         }
     }
     
-    public func notifyUtxosChanged(addresses: [String], handle: @escaping(_ added: [Kaspa_RpcUtxosByAddressesEntry], _ removed: [Kaspa_RpcUtxosByAddressesEntry]) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
+    public func notifyUtxosChanged(addresses: [String], handle: @escaping  @Sendable(_ added: [Kaspa_RpcUtxosByAddressesEntry], _ removed: [Kaspa_RpcUtxosByAddressesEntry]) -> Void, failture: @escaping  @Sendable (KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_NotifyUtxosChangedRequestMessage()
         message.addresses = addresses
@@ -135,7 +135,7 @@ extension KaspaClient{
         }
     }
     
-    public func stopNotifyingUtxosChanged(addresses: [String], handle: @escaping(_ isSuccess: Bool) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func stopNotifyingUtxosChanged(addresses: [String], handle: @escaping  @Sendable(_ isSuccess: Bool) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_StopNotifyingUtxosChangedRequestMessage()
         message.addresses = addresses
@@ -154,7 +154,7 @@ extension KaspaClient{
         }
     }
     
-    public func notifyBlockAdded(handle: @escaping(_ isSuccess: Bool) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func notifyBlockAdded(handle: @escaping  @Sendable(_ isSuccess: Bool) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_NotifyBlockAddedRequestMessage()
         request.notifyBlockAddedRequest = message
@@ -172,7 +172,7 @@ extension KaspaClient{
         }
     }
     
-    public func submitTransaction(transaction: Kaspa_RpcTransaction, handle: @escaping(_ transactionId: String) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func submitTransaction(transaction: Kaspa_RpcTransaction, handle: @escaping  @Sendable(_ transactionId: String) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_SubmitTransactionRequestMessage()
         message.transaction = transaction
@@ -190,7 +190,7 @@ extension KaspaClient{
         }
     }
     
-    public func submitTransaction(transaction: Kaspa_RpcTransaction, handle: @escaping(_ transactionId: String, _ replacedTransaction: Kaspa_RpcTransaction) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func submitTransaction(transaction: Kaspa_RpcTransaction, handle: @escaping  @Sendable(_ transactionId: String, _ replacedTransaction: Kaspa_RpcTransaction) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_SubmitTransactionReplacementRequestMessage()
         message.transaction = transaction
@@ -208,7 +208,7 @@ extension KaspaClient{
         }
     }
     
-    public func getFeeEstimate(handle: @escaping(_ estimate: Kaspa_RpcFeeEstimate) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getFeeEstimate(handle: @escaping  @Sendable(_ estimate: Kaspa_RpcFeeEstimate) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_GetFeeEstimateRequestMessage()
         request.getFeeEstimateRequest = message
@@ -225,7 +225,7 @@ extension KaspaClient{
         }
     }
     
-    public func getMempoolEntry(txID: String, includeOrphanPool: Bool = true, filterTransactionPool: Bool = true, handle: @escaping(_ entry: Kaspa_RpcMempoolEntry) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getMempoolEntry(txID: String, includeOrphanPool: Bool = true, filterTransactionPool: Bool = true, handle: @escaping  @Sendable(_ entry: Kaspa_RpcMempoolEntry) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetMempoolEntryRequestMessage()
         message.txID = txID
@@ -245,7 +245,7 @@ extension KaspaClient{
         }
     }
     
-    public func getMempoolEntries(includeOrphanPool: Bool = true, filterTransactionPool: Bool = true, handle: @escaping(_ entries: [Kaspa_RpcMempoolEntry]) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getMempoolEntries(includeOrphanPool: Bool = true, filterTransactionPool: Bool = true, handle: @escaping  @Sendable(_ entries: [Kaspa_RpcMempoolEntry]) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetMempoolEntriesRequestMessage()
         message.includeOrphanPool = includeOrphanPool
@@ -264,7 +264,7 @@ extension KaspaClient{
         }
     }
     
-    public func getMempoolEntriesByAddresses(addresses: [String], includeOrphanPool: Bool = true, filterTransactionPool: Bool = true, handle: @escaping(_ entries: [Kaspa_RpcMempoolEntryByAddress]) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getMempoolEntriesByAddresses(addresses: [String], includeOrphanPool: Bool = true, filterTransactionPool: Bool = true, handle: @escaping  @Sendable(_ entries: [Kaspa_RpcMempoolEntryByAddress]) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetMempoolEntriesByAddressesRequestMessage()
         message.includeOrphanPool = includeOrphanPool
@@ -283,7 +283,7 @@ extension KaspaClient{
         }
     }
     
-    public func getCurrentNetwork(handle: @escaping(_ currentNetwork: String) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getCurrentNetwork(handle: @escaping  @Sendable(_ currentNetwork: String) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_GetCurrentNetworkRequestMessage()
         request.getCurrentNetworkRequest = message
@@ -300,7 +300,7 @@ extension KaspaClient{
         }
     }
     
-    public func getInfo(handle: @escaping(_ info: Kaspa_GetInfoResponseMessage) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getInfo(handle: @escaping  @Sendable(_ info: Kaspa_GetInfoResponseMessage) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_GetInfoRequestMessage()
         request.getInfoRequest = message
@@ -317,7 +317,7 @@ extension KaspaClient{
         }
     }
     
-    public func notifyVirtualSelectedParentChainChanged(includeAcceptedTransactionIds: Bool, handle: @escaping(Kaspa_VirtualChainChangedNotificationMessage) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func notifyVirtualSelectedParentChainChanged(includeAcceptedTransactionIds: Bool, handle: @escaping  @Sendable(Kaspa_VirtualChainChangedNotificationMessage) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_NotifyVirtualChainChangedRequestMessage()
         message.includeAcceptedTransactionIds = includeAcceptedTransactionIds
@@ -334,7 +334,7 @@ extension KaspaClient{
         }
     }
     
-    public func getVirtualSelectedParentBlueScore(handle: @escaping(_ blueScore: UInt64) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getVirtualSelectedParentBlueScore(handle: @escaping  @Sendable(_ blueScore: UInt64) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_GetSinkBlueScoreRequestMessage()
         request.getSinkBlueScoreRequest = message
@@ -351,7 +351,7 @@ extension KaspaClient{
         }
     }
     
-    public func notifyVirtualSelectedParentBlueScoreChanged(handle: @escaping(_ sinkBlueScore: UInt64) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func notifyVirtualSelectedParentBlueScoreChanged(handle: @escaping  @Sendable(_ sinkBlueScore: UInt64) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_NotifySinkBlueScoreChangedRequestMessage()
         request.notifySinkBlueScoreChangedRequest = message
@@ -367,7 +367,7 @@ extension KaspaClient{
         }
     }
     
-    public func notifyVirtualDaaScoreChanged(handle: @escaping(_ virtualDaaScore: UInt64) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func notifyVirtualDaaScoreChanged(handle: @escaping  @Sendable(_ virtualDaaScore: UInt64) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_NotifyVirtualDaaScoreChangedRequestMessage()
         request.notifyVirtualDaaScoreChangedRequest = message
@@ -383,7 +383,7 @@ extension KaspaClient{
         }
     }
     
-    public func getBlockByHash(hash: String, includeTransactions: Bool = true, handle: @escaping(_ block: Kaspa_RpcBlock) -> Void, failture: @escaping(_ error: KaspaError) -> Void) async throws {
+    public func getBlockByHash(hash: String, includeTransactions: Bool = true, handle: @escaping  @Sendable(_ block: Kaspa_RpcBlock) -> Void, failture: @escaping  @Sendable(_ error: KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetBlockRequestMessage()
         message.hash = hash
