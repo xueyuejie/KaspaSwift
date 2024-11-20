@@ -1,4 +1,4 @@
-// swift-tools-version: 5.5
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -13,13 +13,13 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(name: "CryptoSwift", url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.4.1"),
-        .package(name: "Secp256k1Swift", url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.0"),
-        .package(name: "BIP39swift", url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
+        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.4.1"),
+        .package(url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.0"),
+        .package(url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
         .package(url: "https://github.com/grpc/grpc-swift", from: "1.0.0"),
-        .package(name: "Bech32", url: "https://github.com/lishuailibertine/Bech32", from: "1.0.5"),
-        .package(name: "Blake2", url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
+        .package(url: "https://github.com/lishuailibertine/Bech32", from: "1.0.5"),
+        .package(url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -34,7 +34,7 @@ let package = Package(
                 .product(name: "SwiftProtobuf", package: "swift-protobuf"),
                 .product(name: "GRPC", package: "grpc-swift"),
                 "Bech32",
-                "Blake2"
+                .product(name: "Blake2", package: "blake2.swift")
             ],
             path: "Sources/KaspaSwift"
         ),
