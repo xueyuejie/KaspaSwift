@@ -9,17 +9,17 @@ import Foundation
 import BigInt
 
 public struct ApiTransaction: Decodable {
-    let subnetworkId: String?
-    let transactionId: String
-    let blockHash: [String]
-    let blockTime: Int
-    let isAccepted: Bool
-    let acceptingBlockHash: String?
-    let acceptingBlockBlueScore: Int?
-    let inputs: [ApiTxInput]
-    let outputs: [ApiTxOutput]
+    public let subnetworkId: String?
+    public let transactionId: String
+    public let blockHash: [String]
+    public let blockTime: Int
+    public let isAccepted: Bool
+    public let acceptingBlockHash: String?
+    public let acceptingBlockBlueScore: Int?
+    public let inputs: [ApiTxInput]
+    public let outputs: [ApiTxOutput]
 
-    init(
+    public init(
         subnetworkId: String? = nil,
         transactionId: String,
         blockHash: [String] = [],
@@ -45,7 +45,7 @@ public struct ApiTransaction: Decodable {
 //        // Implement JSON parsing logic
 //    }
 
-    static func fromRpc(_ tx: Kaspa_RpcTransaction) -> ApiTransaction {
+    public static func fromRpc(_ tx: Kaspa_RpcTransaction) -> ApiTransaction {
         return ApiTransaction(
             transactionId: tx.verboseData.transactionID,
             blockTime: Int(tx.verboseData.blockTime),

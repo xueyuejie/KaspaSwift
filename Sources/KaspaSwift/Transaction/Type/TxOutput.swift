@@ -8,15 +8,15 @@
 import Foundation
 
 public struct TxOutput {
-    let value: Int64
-    let scriptPublicKey: KaspaScriptPublicKey
+    public let value: Int64
+    public let scriptPublicKey: KaspaScriptPublicKey
 
-    init(value: Int64, scriptPublicKey: KaspaScriptPublicKey) {
+    public init(value: Int64, scriptPublicKey: KaspaScriptPublicKey) {
         self.value = value
         self.scriptPublicKey = scriptPublicKey
     }
 
-    func toRpc() -> Kaspa_RpcTransactionOutput {
+    public func toRpc() -> Kaspa_RpcTransactionOutput {
         var output = Kaspa_RpcTransactionOutput()
         output.amount = UInt64(value)
         output.scriptPublicKey = scriptPublicKey.toRpc()

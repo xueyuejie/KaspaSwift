@@ -8,10 +8,10 @@
 import Foundation
 
 public struct KaspaScriptPublicKey: Equatable, Decodable {
-    let scriptPublicKey: Data
-    let version: UInt32
+    public let scriptPublicKey: Data
+    public let version: UInt32
 
-    init(scriptPublicKey: Data, version: UInt32) {
+    public init(scriptPublicKey: Data, version: UInt32) {
         self.scriptPublicKey = scriptPublicKey
         self.version = version
     }
@@ -25,14 +25,14 @@ public struct KaspaScriptPublicKey: Equatable, Decodable {
 //        return KaspaScriptPublicKey(scriptPublicKey: scriptPublicKey, version: version)
 //    }
 
-    static func fromRpc(_ rpc: Kaspa_RpcScriptPublicKey) -> KaspaScriptPublicKey {
+    public static func fromRpc(_ rpc: Kaspa_RpcScriptPublicKey) -> KaspaScriptPublicKey {
         return KaspaScriptPublicKey(
             scriptPublicKey: Data(hex: rpc.scriptPublicKey),
             version: rpc.version
         )
     }
 
-    func toRpc() -> Kaspa_RpcScriptPublicKey {
+    public func toRpc() -> Kaspa_RpcScriptPublicKey {
         var publicKey = Kaspa_RpcScriptPublicKey()
         publicKey.scriptPublicKey = scriptPublicKey.hexEncodedString()
         publicKey.version = version

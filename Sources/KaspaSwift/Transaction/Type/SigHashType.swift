@@ -13,7 +13,7 @@ public enum SigHashType {
     case sigHashSingle
     case sigHashAnyOneCanPay
 
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .sigHashAll:
             return 1

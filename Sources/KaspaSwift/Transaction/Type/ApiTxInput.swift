@@ -9,17 +9,16 @@ import Foundation
 import BigInt
 
 public struct ApiTxInput: Decodable {
-    let transactionId: String
-    let index: Int
-    let previousOutpointHash: String
-    let previousOutpointIndex: BigInt
-    let signatureScript: String
-    let sigOpCount: BigInt
-    // 新字段
-    let previousOutpointAddress: String?
-    let previousOutpointAmount: Int?
+    public let transactionId: String
+    public let index: Int
+    public let previousOutpointHash: String
+    public let previousOutpointIndex: BigInt
+    public let signatureScript: String
+    public let sigOpCount: BigInt
+    public let previousOutpointAddress: String?
+    public let previousOutpointAmount: Int?
 
-    init(
+    public init(
         transactionId: String,
         index: Int,
         previousOutpointHash: String,

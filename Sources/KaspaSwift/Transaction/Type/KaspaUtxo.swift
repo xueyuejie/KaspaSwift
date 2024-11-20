@@ -9,11 +9,11 @@ import Foundation
 
 public struct KaspaUtxo: Equatable, Decodable {
     
-    let address: String
-    let outpoint: KaspaOutpoint
-    let utxoEntry: KaspaUtxoEntry
+    public let address: String
+    public let outpoint: KaspaOutpoint
+    public let utxoEntry: KaspaUtxoEntry
 
-    init(address: String, outpoint: KaspaOutpoint, utxoEntry: KaspaUtxoEntry) {
+    public init(address: String, outpoint: KaspaOutpoint, utxoEntry: KaspaUtxoEntry) {
         self.address = address
         self.outpoint = outpoint
         self.utxoEntry = utxoEntry
@@ -30,7 +30,7 @@ public struct KaspaUtxo: Equatable, Decodable {
 //        return KaspaUtxo(address: address, outpoint: outpoint, utxoEntry: utxoEntry)
 //    }
 
-    static func fromRpc(_ rpc: Kaspa_RpcUtxosByAddressesEntry) -> KaspaUtxo {
+    public static func fromRpc(_ rpc: Kaspa_RpcUtxosByAddressesEntry) -> KaspaUtxo {
         return KaspaUtxo(
             address: rpc.address,
             outpoint: KaspaOutpoint.fromRpc(rpc.outpoint),
@@ -38,7 +38,7 @@ public struct KaspaUtxo: Equatable, Decodable {
         )
     }
 
-    func toRpc() -> Kaspa_RpcUtxosByAddressesEntry {
+    public func toRpc() -> Kaspa_RpcUtxosByAddressesEntry {
         var rpcUtxosByAddressesEntry = Kaspa_RpcUtxosByAddressesEntry()
         rpcUtxosByAddressesEntry.address = address
         rpcUtxosByAddressesEntry.outpoint = outpoint.toRpc()

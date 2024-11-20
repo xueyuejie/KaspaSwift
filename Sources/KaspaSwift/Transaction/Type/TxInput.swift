@@ -8,14 +8,14 @@
 import Foundation
 
 public struct TxInput {
-    let address: KaspaAddress
-    let previousOutpoint: KaspaOutpoint
-    let signatureScript: Data
-    let sequence: Int64
-    let sigOpCount: Int
-    let utxoEntry: KaspaUtxoEntry
+    public let address: KaspaAddress
+    public let previousOutpoint: KaspaOutpoint
+    public let signatureScript: Data
+    public let sequence: Int64
+    public let sigOpCount: Int
+    public let utxoEntry: KaspaUtxoEntry
 
-    init(address: KaspaAddress, previousOutpoint: KaspaOutpoint, signatureScript: Data, sequence: Int64, sigOpCount: Int, utxoEntry: KaspaUtxoEntry) {
+    public init(address: KaspaAddress, previousOutpoint: KaspaOutpoint, signatureScript: Data, sequence: Int64, sigOpCount: Int, utxoEntry: KaspaUtxoEntry) {
         self.address = address
         self.previousOutpoint = previousOutpoint
         self.signatureScript = signatureScript
@@ -24,7 +24,7 @@ public struct TxInput {
         self.utxoEntry = utxoEntry
     }
 
-    func toRpc() -> Kaspa_RpcTransactionInput {
+    public func toRpc() -> Kaspa_RpcTransactionInput {
         var input = Kaspa_RpcTransactionInput()
         input.previousOutpoint = previousOutpoint.toRpc()
         input.signatureScript = signatureScript.hexEncodedString()

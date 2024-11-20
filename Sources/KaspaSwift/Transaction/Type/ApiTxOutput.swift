@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct ApiTxOutput: Decodable {
-    let transactionId: String
-    let index: Int
-    let amount: Int
-    let scriptPublicKey: String
-    let scriptPublicKeyAddress: String
-    let scriptPublicKeyType: String
+public struct ApiTxOutput: Decodable {
+    public let transactionId: String
+    public let index: Int
+    public let amount: Int
+    public let scriptPublicKey: String
+    public let scriptPublicKeyAddress: String
+    public let scriptPublicKeyType: String
     
-    init(
+    public init(
         transactionId: String,
         index: Int,
         amount: Int,

@@ -9,12 +9,12 @@ import Foundation
 import BigInt
 
 public struct KaspaUtxoEntry: Equatable, Decodable{
-    let amount: BigInt
-    let scriptPublicKey: KaspaScriptPublicKey
-    let blockDaaScore: BigInt
-    let isCoinbase: Bool
+    public let amount: BigInt
+    public let scriptPublicKey: KaspaScriptPublicKey
+    public let blockDaaScore: BigInt
+    public let isCoinbase: Bool
 
-    init(amount: BigInt, scriptPublicKey: KaspaScriptPublicKey, blockDaaScore: BigInt, isCoinbase: Bool) {
+    public init(amount: BigInt, scriptPublicKey: KaspaScriptPublicKey, blockDaaScore: BigInt, isCoinbase: Bool) {
         self.amount = amount
         self.scriptPublicKey = scriptPublicKey
         self.blockDaaScore = blockDaaScore
@@ -37,7 +37,7 @@ public struct KaspaUtxoEntry: Equatable, Decodable{
 //        )
 //    }
 
-    static func fromRpc(_ rpc: Kaspa_RpcUtxoEntry) -> KaspaUtxoEntry {
+    public static func fromRpc(_ rpc: Kaspa_RpcUtxoEntry) -> KaspaUtxoEntry {
         return KaspaUtxoEntry(
             amount: BigInt(rpc.amount),
             scriptPublicKey: KaspaScriptPublicKey.fromRpc(rpc.scriptPublicKey),
@@ -46,7 +46,7 @@ public struct KaspaUtxoEntry: Equatable, Decodable{
         )
     }
 
-    func toRpc() -> Kaspa_RpcUtxoEntry {
+    public func toRpc() -> Kaspa_RpcUtxoEntry {
         var rpcUtxoEntry = Kaspa_RpcUtxoEntry()
         rpcUtxoEntry.amount = UInt64(amount.description) ?? 0
         rpcUtxoEntry.scriptPublicKey = scriptPublicKey.toRpc()
@@ -55,7 +55,7 @@ public struct KaspaUtxoEntry: Equatable, Decodable{
         return rpcUtxoEntry
     }
     
-    func copyWith(
+    public func copyWith(
         amount: BigInt? = nil,
         scriptPublicKey: KaspaScriptPublicKey? = nil,
         blockDaaScore: BigInt? = nil,
