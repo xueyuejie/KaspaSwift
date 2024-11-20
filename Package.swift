@@ -19,7 +19,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
         .package(url: "https://github.com/grpc/grpc-swift", from: "1.0.0"),
         .package(url: "https://github.com/lishuailibertine/Bech32", from: "1.0.5"),
-        .package(url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
+        .package(name: "Blake2", url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.

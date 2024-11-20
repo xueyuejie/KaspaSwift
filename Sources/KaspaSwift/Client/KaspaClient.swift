@@ -28,7 +28,7 @@ public struct KaspaClient {
         self.init(host: host, port: Int(port) ?? 0)
     }
     
-    public func sendRequest(request: Kaspa_KaspadRequest, handle: @escaping(Kaspa_KaspadResponse) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
+    public func sendRequest(request: Kaspa_KaspadRequest, handle: @escaping @Sendable(Kaspa_KaspadResponse) -> Void, failture: @escaping @Sendable (KaspaError) -> Void) async throws {
         // 创建事件循环组
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         
