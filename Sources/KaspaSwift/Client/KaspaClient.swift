@@ -63,7 +63,7 @@ public struct KaspaClient {
 }
 
 extension KaspaClient{
-    public func getBalancesByAddress(address: String, handle: @escaping @Sendable(_ balance: UInt64) -> Void, failture: @escaping @Sendable (KaspaError) -> Void) async throws {
+    public func getBalanceByAddress(address: String, handle: @escaping @Sendable(_ balance: UInt64) -> Void, failture: @escaping @Sendable (KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetBalanceByAddressRequestMessage()
         message.address = address
