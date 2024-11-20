@@ -1,10 +1,15 @@
-
 import XCTest
-import BIP32Swift
-
 @testable import KaspaSwift
 
 final class KaspaSwiftTests: XCTestCase {
+    func testExample() throws {
+        // XCTest Documentation
+        // https://developer.apple.com/documentation/xctest
+
+        // Defining Test Cases and Test Methods
+        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    }
+    
     func testAccountExample() throws {
         do {
             let mkey = KaspaKey.fromMnemonics("")!
