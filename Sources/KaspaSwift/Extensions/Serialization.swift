@@ -8,7 +8,7 @@ protocol BinaryConvertible {
 extension BinaryConvertible {
     static func +(lhs: Data, rhs: Self) -> Data {
         var value = rhs
-        let data = withUnsafeBytes(of: &value) { Data($0) }
+        let data = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
         return lhs + data
     }
 
@@ -39,14 +39,6 @@ extension String: BinaryConvertible {
         return lhs + data
     }
 }
-
-//func +(lhs: Data, rhs: OpCodeProtocol) -> Data {
-//    return lhs + rhs.value
-//}
-//
-//func += (lhs: inout Data, rhs: OpCodeProtocol) {
-//    lhs = lhs + rhs
-//}
 
 extension Data: BinaryConvertible {
     static func +(lhs: Data, rhs: Data) -> Data {

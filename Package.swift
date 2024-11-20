@@ -1,4 +1,4 @@
-// swift-tools-version: 5.4
+// swift-tools-version: 5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -26,7 +26,17 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "KaspaSwift",
-            dependencies: ["CryptoSwift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "BIP39swift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32", "Blake2"]
+            dependencies: [
+                "CryptoSwift",
+                "Secp256k1Swift",
+                .product(name: "BIP32Swift", package: "Secp256k1Swift"),
+                "BIP39swift",
+                .product(name: "SwiftProtobuf", package: "swift-protobuf"),
+                .product(name: "GRPC", package: "grpc-swift"),
+                "Bech32",
+                "Blake2"
+            ],
+            path: "Sources/KaspaSwift"
         ),
         .testTarget(
             name: "KaspaSwiftTests",
