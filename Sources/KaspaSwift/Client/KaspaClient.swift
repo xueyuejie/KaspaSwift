@@ -28,7 +28,7 @@ public struct KaspaClient {
         self.init(host: host, port: Int(port) ?? 0)
     }
     
-    public func sendRequest(request: Kaspa_KaspadRequest, handle: @escaping(Kaspa_KaspadResponse) -> Void, failture: @escaping (KaspaError) -> Void) throws {
+    public func sendRequest(request: Kaspa_KaspadRequest, handle: @escaping(Kaspa_KaspadResponse) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
         // 创建事件循环组
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         
@@ -60,18 +60,16 @@ public struct KaspaClient {
             }
         }
     }
-
 }
 
 extension KaspaClient{
-    
     public func getBalancesByAddress(address: String, handle: @escaping(_ balance: UInt64) -> Void, failture: @escaping (KaspaError) -> Void) async throws {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_GetBalanceByAddressRequestMessage()
         message.address = address
         request.getBalanceByAddressRequest = message
         request.id = 1077
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getBalanceByAddressResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -89,7 +87,7 @@ extension KaspaClient{
         message.addresses = addresses
         request.getBalancesByAddressesRequest = message
         request.id = 1079
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getBalancesByAddressesResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -107,7 +105,7 @@ extension KaspaClient{
         message.addresses = addresses
         request.getUtxosByAddressesRequest = message
         request.id = 1052
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getUtxosByAddressesResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -125,7 +123,7 @@ extension KaspaClient{
         message.addresses = addresses
         request.notifyUtxosChangedRequest = message
         request.id = 1049
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.notifyUtxosChangedResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -143,7 +141,7 @@ extension KaspaClient{
         message.addresses = addresses
         request.stopNotifyingUtxosChangedRequest = message
         request.id = 1065
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.stopNotifyingUtxosChangedResponse
             if result.hasError {
                 handle(false)
@@ -161,7 +159,7 @@ extension KaspaClient{
         let message = Kaspa_NotifyBlockAddedRequestMessage()
         request.notifyBlockAddedRequest = message
         request.id = 1007
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.notifyBlockAddedResponse
             if result.hasError {
                 handle(false)
@@ -180,7 +178,7 @@ extension KaspaClient{
         message.transaction = transaction
         request.submitTransactionRequest = message
         request.id = 1020
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.submitTransactionResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -198,7 +196,7 @@ extension KaspaClient{
         message.transaction = transaction
         request.submitTransactionReplacementRequest = message
         request.id = 1100
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.submitTransactionReplacementResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -215,7 +213,7 @@ extension KaspaClient{
         let message = Kaspa_GetFeeEstimateRequestMessage()
         request.getFeeEstimateRequest = message
         request.id = 1106
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getFeeEstimateResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -235,7 +233,7 @@ extension KaspaClient{
         message.filterTransactionPool = filterTransactionPool
         request.getMempoolEntryRequest = message
         request.id = 1014
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getMempoolEntryResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -254,7 +252,7 @@ extension KaspaClient{
         message.filterTransactionPool = filterTransactionPool
         request.getMempoolEntriesRequest = message
         request.id = 1043
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getMempoolEntriesResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -273,7 +271,7 @@ extension KaspaClient{
         message.filterTransactionPool = filterTransactionPool
         request.getMempoolEntriesByAddressesRequest = message
         request.id = 1084
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getMempoolEntriesByAddressesResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -290,7 +288,7 @@ extension KaspaClient{
         let message = Kaspa_GetCurrentNetworkRequestMessage()
         request.getCurrentNetworkRequest = message
         request.id = 1001
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getCurrentNetworkResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -307,7 +305,7 @@ extension KaspaClient{
         let message = Kaspa_GetInfoRequestMessage()
         request.getInfoRequest = message
         request.id = 1063
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getInfoResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -325,7 +323,7 @@ extension KaspaClient{
         message.includeAcceptedTransactionIds = includeAcceptedTransactionIds
         request.notifyVirtualChainChangedRequest = message
         request.id = 1022
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             if response.notifyVirtualChainChangedResponse.hasError {
                 failture(KaspaError.message(response.notifyVirtualChainChangedResponse.error.message))
             } else {
@@ -341,7 +339,7 @@ extension KaspaClient{
         let message = Kaspa_GetSinkBlueScoreRequestMessage()
         request.getSinkBlueScoreRequest = message
         request.id = 1054
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getSinkBlueScoreResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))
@@ -358,7 +356,7 @@ extension KaspaClient{
         let message = Kaspa_NotifySinkBlueScoreChangedRequestMessage()
         request.notifySinkBlueScoreChangedRequest = message
         request.id = 1056
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             if response.notifySinkBlueScoreChangedResponse.hasError {
                 failture(KaspaError.message(response.notifySinkBlueScoreChangedResponse.error.message))
             } else {
@@ -374,7 +372,7 @@ extension KaspaClient{
         let message = Kaspa_NotifyVirtualDaaScoreChangedRequestMessage()
         request.notifyVirtualDaaScoreChangedRequest = message
         request.id = 1074
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             if response.notifyVirtualDaaScoreChangedResponse.hasError {
                 failture(KaspaError.message(response.notifyVirtualDaaScoreChangedResponse.error.message))
             } else {
@@ -392,7 +390,7 @@ extension KaspaClient{
         message.includeTransactions = includeTransactions
         request.getBlockRequest = message
         request.id = 1025
-        try self.sendRequest(request: request) { response in
+        try await self.sendRequest(request: request) { response in
             let result = response.getBlockResponse
             if result.hasError {
                 failture(KaspaError.message(result.error.message))

@@ -5,7 +5,7 @@ import CryptoSwift
 
 public struct SignHelper{
     public static var magic: (UInt8, UInt8, UInt8, UInt8) { (218, 111, 179, 140) }
-    public static var context: OpaquePointer! = secp256k1_context_create(
+    public static let context: OpaquePointer! = secp256k1_context_create(
         UInt32(SECP256K1_CONTEXT_SIGN|SECP256K1_CONTEXT_VERIFY)
     )
     
