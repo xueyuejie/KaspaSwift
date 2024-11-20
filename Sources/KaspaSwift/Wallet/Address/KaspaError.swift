@@ -12,6 +12,7 @@ public enum KaspaError: LocalizedError {
     case invalidDerivePath
     case invaildPublicKey
     case signError
+    case unknow
     public var errorDescription: String? {
         switch self {
         case .message(let message):
@@ -22,6 +23,8 @@ public enum KaspaError: LocalizedError {
             return "invaildPublicKey"
         case .signError:
             return "signError"
+        case .unknow:
+            return "unknow"
         }
     }
 }
