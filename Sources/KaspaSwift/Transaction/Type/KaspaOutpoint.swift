@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct KaspaOutpoint: Equatable, Decodable {
-    let transactionId: String
-    let index: UInt32
+public struct KaspaOutpoint: Equatable, Decodable {
+    public let transactionId: String
+    public let index: UInt32
 
-    init(transactionId: String, index: UInt32) {
+    public init(transactionId: String, index: UInt32) {
         self.transactionId = transactionId
         self.index = index
     }
@@ -24,21 +24,21 @@ struct KaspaOutpoint: Equatable, Decodable {
 //        return KaspaOutpoint(transactionId: transactionId, index: index)
 //    }
 
-    static func fromRpc(_ rpc: Kaspa_RpcOutpoint) -> KaspaOutpoint {
+    public static func fromRpc(_ rpc: Kaspa_RpcOutpoint) -> KaspaOutpoint {
         return KaspaOutpoint(
             transactionId: rpc.transactionID,
             index: rpc.index
         )
     }
 
-    func toRpc() -> Kaspa_RpcOutpoint {
+    public func toRpc() -> Kaspa_RpcOutpoint {
         var rpcOutpoint = Kaspa_RpcOutpoint()
         rpcOutpoint.transactionID = transactionId
         rpcOutpoint.index = UInt32(index)
         return rpcOutpoint
     }
     
-    static func == (lhs: KaspaOutpoint, rhs: KaspaOutpoint) -> Bool {
+    public static func == (lhs: KaspaOutpoint, rhs: KaspaOutpoint) -> Bool {
         return lhs.index == rhs.index && lhs.transactionId == rhs.transactionId
     }
 }
