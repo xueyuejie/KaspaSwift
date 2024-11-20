@@ -7,13 +7,13 @@
 
 import Foundation
 public struct KaspaAddressComponents {
-    let prefix: String
-    let type: KaspaAddressType
-    let hash: Data
+    public let prefix: String
+    public let type: KaspaAddressType
+    public let hash: Data
 }
 
 extension KaspaAddressComponents {
-    enum KaspaAddressType: UInt8 {
+    public enum KaspaAddressType: UInt8 {
         case P2PK_Schnorr = 0
         case P2PK_ECDSA = 1
         case P2SH = 8
