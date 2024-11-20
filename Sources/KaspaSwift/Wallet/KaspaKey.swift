@@ -10,8 +10,8 @@ import BIP39swift
 import BIP32Swift
 import Secp256k1Swift
 
-let pubKeyPrefix = Data([0x03, 0x8f, 0x33, 0x2e])
-let privatePrefix = Data([0x03, 0x8f, 0x2e, 0xf4])
+public let pubKeyPrefix = Data([0x03, 0x8f, 0x33, 0x2e])
+public let privatePrefix = Data([0x03, 0x8f, 0x2e, 0xf4])
 
 public struct KaspaKey {
     private var node: HDNode

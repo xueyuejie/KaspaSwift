@@ -8,19 +8,19 @@
 import Foundation
 import BigInt
 
-let kSompiPerKaspa = BigInt(100000000)
-let kStorageMassParameter = kSompiPerKaspa * BigInt(10000)
+public let kSompiPerKaspa = BigInt(100000000)
+public let kStorageMassParameter = kSompiPerKaspa * BigInt(10000)
 
-let kMinChangeTarget = BigInt(20000000)
-let kFeePerInput = BigInt(10000)
-let kMaxInputsPerTransaction = 84
-let kMaximumStandardTransactionMass = BigInt(100000)
-let kDomainHashSize = 32
-let kDomainSubnetworkIDSize = 20
+public let kMinChangeTarget = BigInt(20000000)
+public let kFeePerInput = BigInt(10000)
+public let kMaxInputsPerTransaction = 84
+public let kMaximumStandardTransactionMass = BigInt(100000)
+public let kDomainHashSize = 32
+public let kDomainSubnetworkIDSize = 20
 
-let kMaxTransactionVersion = 0
+public let kMaxTransactionVersion = 0
 
-let kSubnetworkIdNative = Data(count: kDomainSubnetworkIDSize)
+public let kSubnetworkIdNative = Data(count: kDomainSubnetworkIDSize)
 public var kSubnetworkIdCoinbase: Data = {
     var data = Data(count: kDomainSubnetworkIDSize)
     data[0] = 1
@@ -33,22 +33,21 @@ public var kSubnetworkIdRegistry: Data = {
     return data
 }()
 
-let kSubnetworkIdNativeHex = kSubnetworkIdNative.hexEncodedString()
-let kSubnetworkIdCoinbaseHex = kSubnetworkIdCoinbase.hexEncodedString()
-let kSubnetworkIdRegistryHex = kSubnetworkIdRegistry.hexEncodedString()
+public let kSubnetworkIdNativeHex = kSubnetworkIdNative.hexEncodedString()
+public let kSubnetworkIdCoinbaseHex = kSubnetworkIdCoinbase.hexEncodedString()
+public let kSubnetworkIdRegistryHex = kSubnetworkIdRegistry.hexEncodedString()
 
-let kUnacceptedDAASccore = Int64(-1)
+public let kUnacceptedDAASccore = Int64(-1)
 
-let kSigHashAll = 1
-let kSigHashNone = 1 << 1
-let kSigHashSingle = 1 << 2
-let kSigHashAnyOneCanPay = 1 << 7
-
+public let kSigHashAll = 1
+public let kSigHashNone = 1 << 1
+public let kSigHashSingle = 1 << 2
+public let kSigHashAnyOneCanPay = 1 << 7
 
 public class KaspaTransactionBuilder {
-    let utxos: [KaspaUtxo]
-    let feePerInputRaw: BigInt
-    let priorityFee: BigInt
+    public let utxos: [KaspaUtxo]
+    public let feePerInputRaw: BigInt
+    public let priorityFee: BigInt
     
     private var _change: BigInt = .zero
     var change: BigInt {
@@ -66,11 +65,11 @@ public class KaspaTransactionBuilder {
     }
     
     private var _selectedUtxos: [KaspaUtxo] = []
-    var selectedUtxos: [KaspaUtxo] {
+    public var selectedUtxos: [KaspaUtxo] {
         return _selectedUtxos
     }
     
-    init(utxos: [KaspaUtxo], feePerInput: BigInt? = nil, priorityFee: BigInt? = nil) {
+    public init(utxos: [KaspaUtxo], feePerInput: BigInt? = nil, priorityFee: BigInt? = nil) {
         self.utxos = utxos
         self.feePerInputRaw = feePerInput ?? kFeePerInput
         self.priorityFee = priorityFee ?? BigInt.zero
@@ -211,7 +210,7 @@ public class KaspaTransactionBuilder {
     }
     
     
-    func _getChangeAmountRaw(selectedUtxos: [KaspaUtxo], spendAmount: BigInt) -> BigInt {
+    public func _getChangeAmountRaw(selectedUtxos: [KaspaUtxo], spendAmount: BigInt) -> BigInt {
         var totalValue = BigInt(0)
         
         for utxo in selectedUtxos {

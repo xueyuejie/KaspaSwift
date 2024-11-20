@@ -13,19 +13,19 @@ public struct KaspaTxScript {
     static let kOpCheckSigECDSA: UInt8 = 171
     static let kOpCheckSig: UInt8 = 172
 
-    static public func payToPubKeyScript(_ publicKey: Data) -> Data {
+    public static func payToPubKeyScript(_ publicKey: Data) -> Data {
         return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSig])
     }
 
-    static public func payToPubKeyScriptECDSA(_ publicKey: Data) -> Data {
+    public static func payToPubKeyScriptECDSA(_ publicKey: Data) -> Data {
         return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSigECDSA])
     }
 
-    static public func payToScriptHashScript(_ hash: Data) -> Data {
+    public static func payToScriptHashScript(_ hash: Data) -> Data {
         return Data([kOpBlake2b, UInt8(hash.count)] + hash + [kOpEqual])
     }
 
-    static public func payToAddressScript(address: KaspaAddress) -> KaspaScriptPublicKey {
+    public static func payToAddressScript(address: KaspaAddress) -> KaspaScriptPublicKey {
         switch address.type {
         case .publicKey:
             return KaspaScriptPublicKey(

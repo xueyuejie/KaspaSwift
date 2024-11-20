@@ -9,10 +9,10 @@ import Foundation
 import Blake2
 
 public struct KaspaTransactionUtil {
-    static let kTransactionHashDomain = "TransactionHash"
-    static let kTransactionIdDomain = "TransactionID"
-    static let blake2bDigestKey = "TransactionSigningHash".data(using: .utf8)?.bytes ?? []
-    static func getUint16(_ value: Int) -> Data {
+    public static let kTransactionHashDomain = "TransactionHash"
+    public static let kTransactionIdDomain = "TransactionID"
+    public static let blake2bDigestKey = "TransactionSigningHash".data(using: .utf8)?.bytes ?? []
+    public static func getUint16(_ value: Int) -> Data {
         var data = Data(count: 2)
         data.withUnsafeMutableBytes { (pointer: UnsafeMutableRawBufferPointer) in
             pointer.bindMemory(to: UInt16.self).baseAddress?.pointee = UInt16(value).littleEndian
@@ -20,7 +20,7 @@ public struct KaspaTransactionUtil {
         return data
     }
 
-    static func getUint32(_ value: Int) -> Data {
+    public static func getUint32(_ value: Int) -> Data {
         var data = Data(count: 4)
         data.withUnsafeMutableBytes { (pointer: UnsafeMutableRawBufferPointer) in
             pointer.bindMemory(to: UInt32.self).baseAddress?.pointee = UInt32(value).littleEndian
@@ -28,12 +28,12 @@ public struct KaspaTransactionUtil {
         return data
     }
 
-    static func addOutpoint(_ outpoint: KaspaOutpoint, builder: inout Data) {
+    public static func addOutpoint(_ outpoint: KaspaOutpoint, builder: inout Data) {
         builder.append(Data(hex: outpoint.transactionId))
         builder.append(getUint32(Int(outpoint.index)))
     }
 
-    static func getPreviousOutputsHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getPreviousOutputsHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         assert(hashType == .sigHashAll)
         
         if reusedValues.previousOutputsHash == nil {
@@ -49,7 +49,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.previousOutputsHash!
     }
 
-    static func getSequencesHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getSequencesHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         assert(hashType == .sigHashAll)
 
         if reusedValues.sequencesHash == nil {
@@ -64,7 +64,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.sequencesHash!
     }
 
-    static func getSigOpCountsHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getSigOpCountsHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         assert(hashType == .sigHashAll)
 
         if reusedValues.sigOpCountsHash == nil {
@@ -80,7 +80,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.sigOpCountsHash!
     }
 
-    static func getOutputsHash(tx: KaspaTransaction, inputIndex: Int, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getOutputsHash(tx: KaspaTransaction, inputIndex: Int, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         assert(hashType == .sigHashAll)
 
         if reusedValues.outputsHash == nil {
@@ -99,7 +99,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.outputsHash!
     }
 
-    static func calculateSignatureHash(tx: KaspaTransaction, inputIndex: Int, txInput: TxInput, prevScriptPublicKey: KaspaScriptPublicKey, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data? {
+    public static func calculateSignatureHash(tx: KaspaTransaction, inputIndex: Int, txInput: TxInput, prevScriptPublicKey: KaspaScriptPublicKey, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data? {
         var builder = Data()
 
         // version
@@ -160,7 +160,7 @@ public struct KaspaTransactionUtil {
         return hash
     }
 
-    static func calculateSignatureHashSchnorr(tx: KaspaTransaction, inputIndex: Int, hashType: SigHashType, sighashReusedValues: inout SighashReusedValues) -> Data? {
+    public static func calculateSignatureHashSchnorr(tx: KaspaTransaction, inputIndex: Int, hashType: SigHashType, sighashReusedValues: inout SighashReusedValues) -> Data? {
         assert(hashType == .sigHashAll)
 
         let input = tx.inputs[inputIndex]
@@ -169,7 +169,7 @@ public struct KaspaTransactionUtil {
         return calculateSignatureHash(tx: tx, inputIndex: inputIndex, txInput: input, prevScriptPublicKey: prevScriptPublicKey, hashType: hashType, reusedValues: &sighashReusedValues)
     }
 
-    static func signSchnorr(hash: Data, privateKey: Data) throws -> Data {
+    public static func signSchnorr(hash: Data, privateKey: Data) throws -> Data {
         return try SignHelper.sign(data: hash, privateKey: privateKey)
     }
 }
