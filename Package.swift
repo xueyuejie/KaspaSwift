@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "KaspaSwift",
     platforms: [
-        .macOS(.v10_12), .iOS(.v10)
+        .iOS(.v13),
+        .macOS(.v10_15),
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -29,7 +30,7 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "KaspaSwift",
-            dependencies: ["BIP39swift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "CryptoSwift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32", "Blake2"]
+            dependencies: ["CryptoSwift", "Secp256k1Swift", .product(name: "BIP32Swift", package: "Secp256k1Swift"), "BIP39swift", .product(name: "SwiftProtobuf", package: "swift-protobuf"), .product(name: "GRPC", package: "grpc-swift"), "Bech32", "Blake2"]
         ),
         .testTarget(
             name: "KaspaSwiftTests",
