@@ -172,7 +172,7 @@ extension KaspaClient{
         }
     }
     
-    public func submitTransaction(transaction: Kaspa_RpcTransaction) async throws -> (transactionId: String, replacedTransaction: Kaspa_RpcTransaction) {
+    public func submitTransactionReplacement(transaction: Kaspa_RpcTransaction) async throws -> (transactionId: String, replacedTransaction: Kaspa_RpcTransaction) {
         var request = Kaspa_KaspadRequest()
         var message = Kaspa_SubmitTransactionReplacementRequestMessage()
         message.transaction = transaction
