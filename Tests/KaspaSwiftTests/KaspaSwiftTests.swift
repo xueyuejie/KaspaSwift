@@ -36,13 +36,10 @@ final class KaspaSwiftTests: XCTestCase {
     }
     
     func testGrpcExample() async throws {
-//        let client = KaspaClient(host: "47.238.220.71", port: 16110)
-////        try KaspaClient(url: "47.238.220.71:16110")
-//        try await client.getBalancesByAddresses(addresses: ["kaspa:qrmynkncs7lxe34knahjtusztek3sqwpsea8443rentqqle6vglfx8s55enju","kaspa:qzfu7dvxeat9h6z07m4k7dkjsw6y3atpue4ejgwt4dxdm9wumepmgz8qcectr"]) { entries in
-//            debugPrint(entries.count)
-//            debugPrint("ddddddddddddd")
-//        } failture: { error in
-//            debugPrint(error)
-//        }
+        let client = KaspaClient(host: "47.238.220.71", port: 16110)
+        //        try KaspaClient(url: "47.238.220.71:16110")
+        let result =  try await client.getBalancesByAddresses(addresses: ["kaspa:qrmynkncs7lxe34knahjtusztek3sqwpsea8443rentqqle6vglfx8s55enju","kaspa:qzfu7dvxeat9h6z07m4k7dkjsw6y3atpue4ejgwt4dxdm9wumepmgz8qcectr"])
+        debugPrint(result)
+        debugPrint("1111111111")
     }
 }

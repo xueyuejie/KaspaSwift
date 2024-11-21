@@ -32,7 +32,11 @@ public struct KaspaClient {
     public func sendRequest(request: Kaspa_KaspadRequest) async throws -> Kaspa_KaspadResponse {
         // 创建事件循环组
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        
+        defer {
+            Task {
+                try? await group.shutdownGracefully()
+            }
+        }
         // 建立通道连接
         let channel = try GRPCChannelPool.with(
             target: .host(self.host, port: self.port),  // 服务器地址和端口
@@ -42,12 +46,9 @@ public struct KaspaClient {
         let client = Kaspa_RPCAsyncClient(channel: channel)
         // 调用 gRPC 服务
         do {
-            let call = client.makeMessageStreamCall() // 获取双向流调用
-            // 发送请求
+            let call = client.makeMessageStreamCall()
             try await call.requestStream.send(request)
-//
-//            // 关闭流发送
-//            try await call.requestStream.sendEnd()
+            call.requestStream.finish()
             var response: Kaspa_KaspadResponse?
             // 接收响应
             for try await _response in call.responseStream {
@@ -60,26 +61,6 @@ public struct KaspaClient {
         } catch {
             throw KaspaError.message(error.localizedDescription)
         }
-//        // 创建请求流
-//        let call = client.messageStream
-//            
-//        }
-//        call.sendMessage(request).whenComplete { result in
-//            switch result {
-//            case .success:
-//                print("Successfully sent message ")
-//            case .failure(let error):
-//                throw KaspaError.message(error.localizedDescription)
-//            }
-//        }
-//        call.sendEnd().whenComplete { result in
-//            switch result {
-//            case .success:
-//                print("Successfully closed the stream")
-//            case .failure(let error):
-//                throw KaspaError.message(error.localizedDescription)
-//            }
-//        }
     }
 }
 
@@ -155,7 +136,7 @@ extension KaspaClient{
         let result = response.stopNotifyingUtxosChangedResponse
         if result.hasError {
             return false
-//                throw KaspaError.message(result.error.message)
+            //                throw KaspaError.message(result.error.message)
         } else {
             return true
         }
@@ -170,7 +151,7 @@ extension KaspaClient{
         let result = response.notifyBlockAddedResponse
         if result.hasError {
             return false
-//                throw KaspaError.message(result.error.message)
+            //                throw KaspaError.message(result.error.message)
         } else {
             return true
         }
