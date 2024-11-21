@@ -264,6 +264,20 @@ extension KaspaClient{
         }
     }
     
+    public func getBlockCount() async throws -> Kaspa_GetBlockCountResponseMessage {
+        var request = Kaspa_KaspadRequest()
+        let message = Kaspa_GetBlockCountRequestMessage()
+        request.getBlockCountRequest = message
+        request.id = 1063
+        let response = try await self.sendRequest(request: request)
+        let result = response.getBlockCountResponse
+        if result.hasError {
+            throw KaspaError.message(result.error.message)
+        } else {
+            return result
+        }
+    }
+    
     public func getInfo() async throws -> Kaspa_GetInfoResponseMessage {
         var request = Kaspa_KaspadRequest()
         let message = Kaspa_GetInfoRequestMessage()
