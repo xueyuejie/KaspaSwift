@@ -43,9 +43,10 @@ public struct KaspaTransaction {
         rpctransaction.payload = payload?.hexEncodedString() ?? ""
         return rpctransaction
     }
-
+    
+    @MainActor
     public var isCoinbase: Bool {
-        return subnetworkId.hexEncodedString() == kSubnetworkIdCoinbaseHex
+        return subnetworkId.hexEncodedString() ==  kSubnetworkIdCoinbaseHex
     }
 }
 

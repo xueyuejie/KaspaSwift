@@ -8,34 +8,34 @@
 import Foundation
 import BigInt
 
-public let kSompiPerKaspa = BigInt(100000000)
-public let kStorageMassParameter = kSompiPerKaspa * BigInt(10000)
+@MainActor public let kSompiPerKaspa = BigInt(100000000)
+@MainActor public let kStorageMassParameter = kSompiPerKaspa * BigInt(10000)
 
-public let kMinChangeTarget = BigInt(20000000)
-public let kFeePerInput = BigInt(10000)
-public let kMaxInputsPerTransaction = 84
-public let kMaximumStandardTransactionMass = BigInt(100000)
+@MainActor public let kMinChangeTarget = BigInt(20000000)
+@MainActor public let kFeePerInput = BigInt(10000)
+@MainActor public let kMaxInputsPerTransaction = 84
+@MainActor public let kMaximumStandardTransactionMass = BigInt(100000)
 public let kDomainHashSize = 32
 public let kDomainSubnetworkIDSize = 20
 
 public let kMaxTransactionVersion = 0
 
 public let kSubnetworkIdNative = Data(count: kDomainSubnetworkIDSize)
-public var kSubnetworkIdCoinbase: Data = {
+
+@MainActor public let kSubnetworkIdCoinbase: Data = {
     var data = Data(count: kDomainSubnetworkIDSize)
     data[0] = 1
     return data
 }()
-
-public var kSubnetworkIdRegistry: Data = {
+@MainActor public let kSubnetworkIdRegistry: Data = {
     var data = Data(count: kDomainSubnetworkIDSize)
     data[0] = 2
     return data
 }()
 
 public let kSubnetworkIdNativeHex = kSubnetworkIdNative.hexEncodedString()
-public let kSubnetworkIdCoinbaseHex = kSubnetworkIdCoinbase.hexEncodedString()
-public let kSubnetworkIdRegistryHex = kSubnetworkIdRegistry.hexEncodedString()
+@MainActor public let kSubnetworkIdCoinbaseHex = kSubnetworkIdCoinbase.hexEncodedString()
+@MainActor public let kSubnetworkIdRegistryHex = kSubnetworkIdRegistry.hexEncodedString()
 
 public let kUnacceptedDAASccore = Int64(-1)
 
@@ -69,12 +69,14 @@ public class KaspaTransactionBuilder {
         return _selectedUtxos
     }
     
+    @MainActor
     public init(utxos: [KaspaUtxo], feePerInput: BigInt? = nil, priorityFee: BigInt? = nil) {
         self.utxos = utxos
         self.feePerInputRaw = feePerInput ?? kFeePerInput
         self.priorityFee = priorityFee ?? BigInt.zero
     } 
     
+    @MainActor
     public func rebuildTransaction(tx: ApiTransaction, toAddress: KaspaAddress, changeAddress: KaspaAddress) throws -> KaspaTransaction? {
         let amountRaw = BigInt(tx.outputs.first?.amount ?? 0)
         
@@ -98,24 +100,21 @@ public class KaspaTransactionBuilder {
             }
         }
         
-        var index = 0
-        while index < kMaxInputsPerTransaction {
+        for _ in 0..<kMaxInputsPerTransaction {
             do {
                 let tx = try createUnsignedTransaction(toAddress: toAddress, amountRaw: amountRaw, changeAddress: changeAddress, preselectedUtxos: txUtxos)
                 return tx
             } catch {
-                if utxos.count == txUtxos.count {
-                    throw error
-                }
+                if utxos.count == txUtxos.count { throw error }
                 if let newUtxo = utxos.first(where: { !selectedUtxos.contains($0) }) {
                     txUtxos.append(newUtxo)
                 }
             }
-            index += 1
         }
         return nil
     }
     
+    @MainActor
     public func createUnsignedTransaction(toAddress: KaspaAddress, amountRaw: BigInt, changeAddress: KaspaAddress, preselectedUtxos: [KaspaUtxo]? = nil) throws -> KaspaTransaction {
         _selectedUtxos = preselectedUtxos != nil ? try _userSelectedUtxos(userSelectedUtxos: preselectedUtxos!, spendAmountRaw: amountRaw) : try _selectUtxos(spendAmount: amountRaw)
         
@@ -170,7 +169,7 @@ public class KaspaTransactionBuilder {
     }
     
     private func _userSelectedUtxos(userSelectedUtxos: [KaspaUtxo], spendAmountRaw: BigInt) throws -> [KaspaUtxo] {
-        var selectedUtxos = userSelectedUtxos
+        let selectedUtxos = userSelectedUtxos
         let totalValue = selectedUtxos.reduce(BigInt.zero) { $0 + $1.utxoEntry.amount }
         
         let baseFeeRaw = feePerInputRaw * BigInt(selectedUtxos.count)
@@ -183,6 +182,7 @@ public class KaspaTransactionBuilder {
         return selectedUtxos
     }
     
+    @MainActor
     private func _selectUtxos(spendAmount: BigInt) throws -> [KaspaUtxo] {
         var selectedUtxos: [KaspaUtxo] = []
         var totalValue = BigInt.zero

@@ -168,7 +168,7 @@ public struct KaspaTransactionUtil {
 
         return calculateSignatureHash(tx: tx, inputIndex: inputIndex, txInput: input, prevScriptPublicKey: prevScriptPublicKey, hashType: hashType, reusedValues: &sighashReusedValues)
     }
-
+    @MainActor
     public static func signSchnorr(hash: Data, privateKey: Data) throws -> Data {
         return try SignHelper.sign(data: hash, privateKey: privateKey)
     }

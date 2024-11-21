@@ -2535,7 +2535,7 @@ extension Kaspa_KaspadResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     1111: .same(proto: "getCurrentBlockColorResponse"),
   ]
 
-  fileprivate class _StorageClass {
+  fileprivate class _StorageClass: @unchecked Sendable {
     var _id: UInt64 = 0
     var _payload: Kaspa_KaspadResponse.OneOf_Payload?
 

@@ -60,11 +60,12 @@ public enum Kaspa_RpcNotifyCommand: SwiftProtobuf.Enum {
 #if swift(>=4.2)
 
 extension Kaspa_RpcNotifyCommand: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Kaspa_RpcNotifyCommand] = [
-    .notifyStart,
-    .notifyStop,
-  ]
+    public static var allCases: [Kaspa_RpcNotifyCommand] {
+        return [
+            .notifyStart,
+            .notifyStop,
+        ]
+    }
 }
 
 #endif  // swift(>=4.2)
@@ -521,12 +522,14 @@ public struct Kaspa_SubmitBlockResponseMessage {
 #if swift(>=4.2)
 
 extension Kaspa_SubmitBlockResponseMessage.RejectReason: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Kaspa_SubmitBlockResponseMessage.RejectReason] = [
-    .none,
-    .blockInvalid,
-    .isInIbd,
-  ]
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static var allCases: [Kaspa_SubmitBlockResponseMessage.RejectReason] {
+        return [
+            .none,
+            .blockInvalid,
+            .isInIbd,
+        ]
+    }
 }
 
 #endif  // swift(>=4.2)
@@ -3229,21 +3232,21 @@ extension Kaspa_RpcBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     3: .same(proto: "verboseData"),
   ]
 
-  fileprivate class _StorageClass {
-    var _header: Kaspa_RpcBlockHeader? = nil
-    var _transactions: [Kaspa_RpcTransaction] = []
-    var _verboseData: Kaspa_RpcBlockVerboseData? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _header = source._header
-      _transactions = source._transactions
-      _verboseData = source._verboseData
+    fileprivate class _StorageClass: @unchecked Sendable {
+        var _header: Kaspa_RpcBlockHeader? = nil
+        var _transactions: [Kaspa_RpcTransaction] = []
+        var _verboseData: Kaspa_RpcBlockVerboseData? = nil
+        
+        static let defaultInstance = _StorageClass()
+        
+        private init() {}
+        
+        init(copying source: _StorageClass) {
+            _header = source._header
+            _transactions = source._transactions
+            _verboseData = source._verboseData
+        }
     }
-  }
 
   fileprivate mutating func _uniqueStorage() -> _StorageClass {
     if !isKnownUniquelyReferenced(&_storage) {
@@ -8285,7 +8288,7 @@ extension Kaspa_GetMetricsResponseMessage: SwiftProtobuf.Message, SwiftProtobuf.
     1000: .same(proto: "error"),
   ]
 
-  fileprivate class _StorageClass {
+    fileprivate class _StorageClass: @unchecked Sendable {
     var _serverTime: UInt64 = 0
     var _processMetrics: Kaspa_ProcessMetrics? = nil
     var _connectionMetrics: Kaspa_ConnectionMetrics? = nil
