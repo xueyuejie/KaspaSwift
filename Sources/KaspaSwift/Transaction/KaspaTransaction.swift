@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct KaspaTransaction {
+public class KaspaTransaction {
     public let version: Int
-    public let inputs: [TxInput]
+    public var inputs: [TxInput]
     public let outputs: [TxOutput]
     public let lockTime: Int64
     public let subnetworkId: Data
@@ -31,7 +31,18 @@ public struct KaspaTransaction {
         self.mass = mass
         self.id = id
     }
-
+    
+    @MainActor
+    public func sign(with keys:[KaspaKey]) throws {
+        for (i,input) in inputs.enumerated() {
+            let key = keys[i]
+            guard let signedInput = input.signedInput(transaction: self, inputIndex: i, key: key) else {
+                throw KaspaError.signError
+            }
+            self.inputs[i] = signedInput
+        }
+    }
+    
     public func toRpc() -> Kaspa_RpcTransaction {
         var rpctransaction = Kaspa_RpcTransaction()
         rpctransaction.version = UInt32(version)
