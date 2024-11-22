@@ -21,9 +21,9 @@ public struct KaspaAddress: Hashable {
     public let prefix: KaspaAddressPrefix
     public let payload: Data
     public let version: Int
-    public let type: AddressType
+    public let type: KaspaAddressType
     
-    public init(prefix: KaspaAddressPrefix, payload: Data, version: Int, type: AddressType) {
+    public init(prefix: KaspaAddressPrefix, payload: Data, version: Int, type: KaspaAddressType) {
         self.prefix = prefix
         self.payload = payload
         self.version = version
@@ -108,12 +108,6 @@ public struct KaspaAddress: Hashable {
         hasher.combine(version)
     }
 }
-public enum AddressType {
-    case publicKey
-    case pubKeyECDSA
-    case scriptHash
-}
-
 public enum KaspaAddressPrefix: String {
     case unknown
     case kaspa
