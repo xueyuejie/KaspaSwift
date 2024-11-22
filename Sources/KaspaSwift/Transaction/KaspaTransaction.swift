@@ -10,7 +10,7 @@ import Foundation
 public class KaspaTransaction {
     public let version: Int
     public var inputs: [TxInput]
-    public let outputs: [TxOutput]
+    public var outputs: [TxOutput]
     public let lockTime: Int64
     public let subnetworkId: Data
     public let gas: Int64
@@ -19,7 +19,16 @@ public class KaspaTransaction {
     public let mass: Int64?
     public let id: Data?
 
-    public init(version: Int, inputs: [TxInput], outputs: [TxOutput], lockTime: Int64, subnetworkId: Data, gas: Int64, payload: Data? = nil, fee: Int64? = nil, mass: Int64? = nil, id: Data? = nil) {
+    public init(version: Int = 0,
+                inputs: [TxInput] = [TxInput](),
+                outputs: [TxOutput] = [TxOutput](),
+                lockTime: Int64,
+                subnetworkId: Data,
+                gas: Int64,
+                payload: Data? = nil,
+                fee: Int64? = nil,
+                mass: Int64? = nil,
+                id: Data? = nil) {
         self.version = version
         self.inputs = inputs
         self.outputs = outputs
