@@ -7,6 +7,8 @@
 
 import Foundation
 
+public let kSubnetworkIdNativeHex  = "0000000000000000000000000000000000000000"
+public let kSubnetworkIdCoinbaseHex = "0100000000000000000000000000000000000000"
 public class KaspaTransaction {
     public let version: Int
     public var inputs: [TxInput]
@@ -23,7 +25,7 @@ public class KaspaTransaction {
                 inputs: [TxInput] = [TxInput](),
                 outputs: [TxOutput] = [TxOutput](),
                 lockTime: Int64,
-                subnetworkId: Data = kSubnetworkIdNative,
+                subnetworkId: Data = Data(count: 20),
                 gas: Int64 = 0,
                 payload: Data? = nil,
                 fee: Int64? = nil,
@@ -64,7 +66,6 @@ public class KaspaTransaction {
         return rpctransaction
     }
     
-    @MainActor
     public var isCoinbase: Bool {
         return subnetworkId.hexEncodedString() ==  kSubnetworkIdCoinbaseHex
     }

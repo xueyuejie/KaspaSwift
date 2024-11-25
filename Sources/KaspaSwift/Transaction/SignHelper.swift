@@ -22,8 +22,8 @@ public struct SignHelper{
         var signature = [UInt8](repeating: 0, count: 64)
         var extraParams = secp256k1_schnorrsig_extraparams(magic: magic, noncefp: nil, ndata: auxRandPointer)
 
-        guard secp256k1_keypair_create(SignHelper.context, &keypair, privateKey.bytes) == 1,
-              secp256k1_schnorrsig_sign_custom(SignHelper.context, &signature, &message, message.count, &keypair, &extraParams) == 1
+        guard secp256k1_keypair_create(context, &keypair, privateKey.bytes) == 1,
+              secp256k1_schnorrsig_sign_custom(context, &signature, &message, message.count, &keypair, &extraParams) == 1
         else {
             throw KaspaError.signError
         }
