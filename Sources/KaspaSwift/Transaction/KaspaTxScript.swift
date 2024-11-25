@@ -27,12 +27,12 @@ public struct KaspaTxScript {
 
     public static func payToAddressScript(address: KaspaAddress) -> KaspaScriptPublicKey {
         switch address.type {
-        case .publicKey:
+        case .P2PK_Schnorr:
             return KaspaScriptPublicKey(
                 scriptPublicKey: payToPubKeyScript(address.scriptAddress()),
                 version: UInt32(kAddressPublicKeyScriptPublicKeyVersion)
             )
-        case .pubKeyECDSA:
+        case .P2PK_ECDSA:
             return KaspaScriptPublicKey(
                 scriptPublicKey: payToPubKeyScriptECDSA(address.scriptAddress()),
                 version: UInt32(kAddressPublicKeyECDSAScriptPublicKeyVersion)

@@ -21,9 +21,9 @@ public struct KaspaAddress: Hashable {
     public let prefix: KaspaAddressPrefix
     public let payload: Data
     public let version: Int
-    public let type: KaspaAddressType
+    public let type: KaspaAddressComponents.KaspaAddressType
     
-    public init(prefix: KaspaAddressPrefix, payload: Data, version: Int, type: KaspaAddressType) {
+    public init(prefix: KaspaAddressPrefix, payload: Data, version: Int, type: KaspaAddressComponents.KaspaAddressType) {
         self.prefix = prefix
         self.payload = payload
         self.version = version
@@ -34,18 +34,18 @@ public struct KaspaAddress: Hashable {
         guard publicKey.count == 32 else {
             throw KaspaError.message("Unknown Address Type")
         }
-        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x00, type: .publicKey)
+        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x00, type: .P2PK_Schnorr)
     }
 
     static func pubKeyECDSA(prefix: KaspaAddressPrefix, publicKey: Data) throws -> KaspaAddress {
         guard publicKey.count == 33 else {
             throw KaspaError.message("Unknown Address Type")
         }
-        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x01, type: .pubKeyECDSA)
+        return KaspaAddress(prefix: prefix, payload: publicKey, version: 0x01, type: .P2PK_ECDSA)
     }
 
     static func scriptHash(prefix: KaspaAddressPrefix, hash: Data) -> KaspaAddress {
-        return KaspaAddress(prefix: prefix, payload: hash, version: 0x08, type: .scriptHash)
+        return KaspaAddress(prefix: prefix, payload: hash, version: 0x08, type: .P2SH)
     }
     
     public func encodeAddress() -> String {
