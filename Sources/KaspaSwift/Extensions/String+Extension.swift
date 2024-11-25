@@ -2,7 +2,7 @@
 //  File.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/11/7.
+//  Created by xgblin on 2024/11/7.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  KaspaAddressService.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/10/28.
+//  Created by xgblin on 2024/10/28.
 //
 
 import Foundation

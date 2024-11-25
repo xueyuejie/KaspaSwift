@@ -2,7 +2,7 @@
 //  KaspaKey.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/10/31.
+//  Created by xgblin on 2024/10/31.
 //
 
 import Foundation

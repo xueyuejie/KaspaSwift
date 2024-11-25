@@ -2,7 +2,7 @@
 //  KaspaOutpoint.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/11/14.
+//  Created by xgblin on 2024/11/14.
 //
 
 import Foundation

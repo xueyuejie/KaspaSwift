@@ -2,7 +2,7 @@
 //  KaspaTxScript.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/11/15.
+//  Created by xgblin on 2024/11/15.
 //
 
 import Foundation
