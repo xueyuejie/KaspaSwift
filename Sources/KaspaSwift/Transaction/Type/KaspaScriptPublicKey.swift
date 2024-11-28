@@ -25,15 +25,15 @@ public struct KaspaScriptPublicKey: Equatable, Decodable {
 //        return KaspaScriptPublicKey(scriptPublicKey: scriptPublicKey, version: version)
 //    }
 
-    public static func fromRpc(_ rpc: Kaspa_RpcScriptPublicKey) -> KaspaScriptPublicKey {
+    public static func fromRpc(_ rpc: Protowire_RpcScriptPublicKey) -> KaspaScriptPublicKey {
         return KaspaScriptPublicKey(
             scriptPublicKey: Data(hex: rpc.scriptPublicKey),
             version: rpc.version
         )
     }
 
-    public func toRpc() -> Kaspa_RpcScriptPublicKey {
-        var publicKey = Kaspa_RpcScriptPublicKey()
+    public func toRpc() -> Protowire_RpcScriptPublicKey {
+        var publicKey = Protowire_RpcScriptPublicKey()
         publicKey.scriptPublicKey = scriptPublicKey.hexEncodedString()
         publicKey.version = version
         return publicKey

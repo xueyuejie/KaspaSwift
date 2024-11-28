@@ -11,20 +11,20 @@ import NIOConcurrencyHelpers
 import SwiftProtobuf
 
 
-/// Usage: instantiate `Kaspa_RPCClient`, then call methods of this protocol to make API calls.
-internal protocol Kaspa_RPCClientProtocol: GRPCClient {
+/// Usage: instantiate `Protowire_RPCClient`, then call methods of this protocol to make API calls.
+internal protocol Protowire_RPCClientProtocol: GRPCClient {
   var serviceName: String { get }
-  var interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? { get }
+  var interceptors: Protowire_RPCClientInterceptorFactoryProtocol? { get }
 
   func messageStream(
     callOptions: CallOptions?,
-    handler: @escaping (Kaspa_KaspadResponse) -> Void
-  ) -> BidirectionalStreamingCall<Kaspa_KaspadRequest, Kaspa_KaspadResponse>
+    handler: @escaping (Protowire_KaspadResponse) -> Void
+  ) -> BidirectionalStreamingCall<Protowire_KaspadRequest, Protowire_KaspadResponse>
 }
 
-extension Kaspa_RPCClientProtocol {
+extension Protowire_RPCClientProtocol {
   internal var serviceName: String {
-    return "kaspa.RPC"
+    return "protowire.RPC"
   }
 
   /// Bidirectional streaming call to MessageStream
@@ -38,10 +38,10 @@ extension Kaspa_RPCClientProtocol {
   /// - Returns: A `ClientStreamingCall` with futures for the metadata and status.
   internal func messageStream(
     callOptions: CallOptions? = nil,
-    handler: @escaping (Kaspa_KaspadResponse) -> Void
-  ) -> BidirectionalStreamingCall<Kaspa_KaspadRequest, Kaspa_KaspadResponse> {
+    handler: @escaping (Protowire_KaspadResponse) -> Void
+  ) -> BidirectionalStreamingCall<Protowire_KaspadRequest, Protowire_KaspadResponse> {
     return self.makeBidirectionalStreamingCall(
-      path: Kaspa_RPCClientMetadata.Methods.messageStream.path,
+      path: Protowire_RPCClientMetadata.Methods.messageStream.path,
       callOptions: callOptions ?? self.defaultCallOptions,
       interceptors: self.interceptors?.makeMessageStreamInterceptors() ?? [],
       handler: handler
@@ -50,24 +50,24 @@ extension Kaspa_RPCClientProtocol {
 }
 
 @available(*, deprecated)
-extension Kaspa_RPCClient: @unchecked Sendable {}
+extension Protowire_RPCClient: @unchecked Sendable {}
 
-@available(*, deprecated, renamed: "Kaspa_RPCNIOClient")
-internal final class Kaspa_RPCClient: Kaspa_RPCClientProtocol {
+@available(*, deprecated, renamed: "Protowire_RPCNIOClient")
+internal final class Protowire_RPCClient: Protowire_RPCClientProtocol {
   private let lock = Lock()
   private var _defaultCallOptions: CallOptions
-  private var _interceptors: Kaspa_RPCClientInterceptorFactoryProtocol?
+  private var _interceptors: Protowire_RPCClientInterceptorFactoryProtocol?
   internal let channel: GRPCChannel
   internal var defaultCallOptions: CallOptions {
     get { self.lock.withLock { return self._defaultCallOptions } }
     set { self.lock.withLockVoid { self._defaultCallOptions = newValue } }
   }
-  internal var interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? {
+  internal var interceptors: Protowire_RPCClientInterceptorFactoryProtocol? {
     get { self.lock.withLock { return self._interceptors } }
     set { self.lock.withLockVoid { self._interceptors = newValue } }
   }
 
-  /// Creates a client for the kaspa.RPC service.
+  /// Creates a client for the protowire.RPC service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
@@ -76,7 +76,7 @@ internal final class Kaspa_RPCClient: Kaspa_RPCClientProtocol {
   internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
-    interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? = nil
+    interceptors: Protowire_RPCClientInterceptorFactoryProtocol? = nil
   ) {
     self.channel = channel
     self._defaultCallOptions = defaultCallOptions
@@ -84,12 +84,12 @@ internal final class Kaspa_RPCClient: Kaspa_RPCClientProtocol {
   }
 }
 
-internal struct Kaspa_RPCNIOClient: Kaspa_RPCClientProtocol {
+internal struct Protowire_RPCNIOClient: Protowire_RPCClientProtocol {
   internal var channel: GRPCChannel
   internal var defaultCallOptions: CallOptions
-  internal var interceptors: Kaspa_RPCClientInterceptorFactoryProtocol?
+  internal var interceptors: Protowire_RPCClientInterceptorFactoryProtocol?
 
-  /// Creates a client for the kaspa.RPC service.
+  /// Creates a client for the protowire.RPC service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
@@ -98,7 +98,7 @@ internal struct Kaspa_RPCNIOClient: Kaspa_RPCClientProtocol {
   internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
-    interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? = nil
+    interceptors: Protowire_RPCClientInterceptorFactoryProtocol? = nil
   ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
@@ -107,30 +107,30 @@ internal struct Kaspa_RPCNIOClient: Kaspa_RPCClientProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-internal protocol Kaspa_RPCAsyncClientProtocol: GRPCClient {
+internal protocol Protowire_RPCAsyncClientProtocol: GRPCClient {
   static var serviceDescriptor: GRPCServiceDescriptor { get }
-  var interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? { get }
+  var interceptors: Protowire_RPCClientInterceptorFactoryProtocol? { get }
 
   func makeMessageStreamCall(
     callOptions: CallOptions?
-  ) -> GRPCAsyncBidirectionalStreamingCall<Kaspa_KaspadRequest, Kaspa_KaspadResponse>
+  ) -> GRPCAsyncBidirectionalStreamingCall<Protowire_KaspadRequest, Protowire_KaspadResponse>
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Kaspa_RPCAsyncClientProtocol {
+extension Protowire_RPCAsyncClientProtocol {
   internal static var serviceDescriptor: GRPCServiceDescriptor {
-    return Kaspa_RPCClientMetadata.serviceDescriptor
+    return Protowire_RPCClientMetadata.serviceDescriptor
   }
 
-  internal var interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? {
+  internal var interceptors: Protowire_RPCClientInterceptorFactoryProtocol? {
     return nil
   }
 
   internal func makeMessageStreamCall(
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncBidirectionalStreamingCall<Kaspa_KaspadRequest, Kaspa_KaspadResponse> {
+  ) -> GRPCAsyncBidirectionalStreamingCall<Protowire_KaspadRequest, Protowire_KaspadResponse> {
     return self.makeAsyncBidirectionalStreamingCall(
-      path: Kaspa_RPCClientMetadata.Methods.messageStream.path,
+      path: Protowire_RPCClientMetadata.Methods.messageStream.path,
       callOptions: callOptions ?? self.defaultCallOptions,
       interceptors: self.interceptors?.makeMessageStreamInterceptors() ?? []
     )
@@ -138,13 +138,13 @@ extension Kaspa_RPCAsyncClientProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Kaspa_RPCAsyncClientProtocol {
+extension Protowire_RPCAsyncClientProtocol {
   internal func messageStream<RequestStream>(
     _ requests: RequestStream,
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncResponseStream<Kaspa_KaspadResponse> where RequestStream: Sequence, RequestStream.Element == Kaspa_KaspadRequest {
+  ) -> GRPCAsyncResponseStream<Protowire_KaspadResponse> where RequestStream: Sequence, RequestStream.Element == Protowire_KaspadRequest {
     return self.performAsyncBidirectionalStreamingCall(
-      path: Kaspa_RPCClientMetadata.Methods.messageStream.path,
+      path: Protowire_RPCClientMetadata.Methods.messageStream.path,
       requests: requests,
       callOptions: callOptions ?? self.defaultCallOptions,
       interceptors: self.interceptors?.makeMessageStreamInterceptors() ?? []
@@ -154,9 +154,9 @@ extension Kaspa_RPCAsyncClientProtocol {
   internal func messageStream<RequestStream>(
     _ requests: RequestStream,
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncResponseStream<Kaspa_KaspadResponse> where RequestStream: AsyncSequence & Sendable, RequestStream.Element == Kaspa_KaspadRequest {
+  ) -> GRPCAsyncResponseStream<Protowire_KaspadResponse> where RequestStream: AsyncSequence & Sendable, RequestStream.Element == Protowire_KaspadRequest {
     return self.performAsyncBidirectionalStreamingCall(
-      path: Kaspa_RPCClientMetadata.Methods.messageStream.path,
+      path: Protowire_RPCClientMetadata.Methods.messageStream.path,
       requests: requests,
       callOptions: callOptions ?? self.defaultCallOptions,
       interceptors: self.interceptors?.makeMessageStreamInterceptors() ?? []
@@ -165,15 +165,15 @@ extension Kaspa_RPCAsyncClientProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-internal struct Kaspa_RPCAsyncClient: Kaspa_RPCAsyncClientProtocol {
+internal struct Protowire_RPCAsyncClient: Protowire_RPCAsyncClientProtocol {
   internal var channel: GRPCChannel
   internal var defaultCallOptions: CallOptions
-  internal var interceptors: Kaspa_RPCClientInterceptorFactoryProtocol?
+  internal var interceptors: Protowire_RPCClientInterceptorFactoryProtocol?
 
   internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
-    interceptors: Kaspa_RPCClientInterceptorFactoryProtocol? = nil
+    interceptors: Protowire_RPCClientInterceptorFactoryProtocol? = nil
   ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
@@ -181,40 +181,40 @@ internal struct Kaspa_RPCAsyncClient: Kaspa_RPCAsyncClientProtocol {
   }
 }
 
-internal protocol Kaspa_RPCClientInterceptorFactoryProtocol: Sendable {
+internal protocol Protowire_RPCClientInterceptorFactoryProtocol: Sendable {
 
   /// - Returns: Interceptors to use when invoking 'messageStream'.
-  func makeMessageStreamInterceptors() -> [ClientInterceptor<Kaspa_KaspadRequest, Kaspa_KaspadResponse>]
+  func makeMessageStreamInterceptors() -> [ClientInterceptor<Protowire_KaspadRequest, Protowire_KaspadResponse>]
 }
 
-internal enum Kaspa_RPCClientMetadata {
+internal enum Protowire_RPCClientMetadata {
   internal static let serviceDescriptor = GRPCServiceDescriptor(
     name: "RPC",
-    fullName: "kaspa.RPC",
+    fullName: "protowire.RPC",
     methods: [
-      Kaspa_RPCClientMetadata.Methods.messageStream,
+      Protowire_RPCClientMetadata.Methods.messageStream,
     ]
   )
 
   internal enum Methods {
     internal static let messageStream = GRPCMethodDescriptor(
       name: "MessageStream",
-      path: "/kaspa.RPC/MessageStream",
+      path: "/protowire.RPC/MessageStream",
       type: GRPCCallType.bidirectionalStreaming
     )
   }
 }
 
 /// To build a server, implement a class that conforms to this protocol.
-internal protocol Kaspa_RPCProvider: CallHandlerProvider {
-  var interceptors: Kaspa_RPCServerInterceptorFactoryProtocol? { get }
+internal protocol Protowire_RPCProvider: CallHandlerProvider {
+  var interceptors: Protowire_RPCServerInterceptorFactoryProtocol? { get }
 
-  func messageStream(context: StreamingResponseCallContext<Kaspa_KaspadResponse>) -> EventLoopFuture<(StreamEvent<Kaspa_KaspadRequest>) -> Void>
+  func messageStream(context: StreamingResponseCallContext<Protowire_KaspadResponse>) -> EventLoopFuture<(StreamEvent<Protowire_KaspadRequest>) -> Void>
 }
 
-extension Kaspa_RPCProvider {
+extension Protowire_RPCProvider {
   internal var serviceName: Substring {
-    return Kaspa_RPCServerMetadata.serviceDescriptor.fullName[...]
+    return Protowire_RPCServerMetadata.serviceDescriptor.fullName[...]
   }
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
@@ -227,8 +227,8 @@ extension Kaspa_RPCProvider {
     case "MessageStream":
       return BidirectionalStreamingServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Kaspa_KaspadRequest>(),
-        responseSerializer: ProtobufSerializer<Kaspa_KaspadResponse>(),
+        requestDeserializer: ProtobufDeserializer<Protowire_KaspadRequest>(),
+        responseSerializer: ProtobufSerializer<Protowire_KaspadResponse>(),
         interceptors: self.interceptors?.makeMessageStreamInterceptors() ?? [],
         observerFactory: self.messageStream(context:)
       )
@@ -241,28 +241,28 @@ extension Kaspa_RPCProvider {
 
 /// To implement a server, implement an object which conforms to this protocol.
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-internal protocol Kaspa_RPCAsyncProvider: CallHandlerProvider, Sendable {
+internal protocol Protowire_RPCAsyncProvider: CallHandlerProvider, Sendable {
   static var serviceDescriptor: GRPCServiceDescriptor { get }
-  var interceptors: Kaspa_RPCServerInterceptorFactoryProtocol? { get }
+  var interceptors: Protowire_RPCServerInterceptorFactoryProtocol? { get }
 
   func messageStream(
-    requestStream: GRPCAsyncRequestStream<Kaspa_KaspadRequest>,
-    responseStream: GRPCAsyncResponseStreamWriter<Kaspa_KaspadResponse>,
+    requestStream: GRPCAsyncRequestStream<Protowire_KaspadRequest>,
+    responseStream: GRPCAsyncResponseStreamWriter<Protowire_KaspadResponse>,
     context: GRPCAsyncServerCallContext
   ) async throws
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Kaspa_RPCAsyncProvider {
+extension Protowire_RPCAsyncProvider {
   internal static var serviceDescriptor: GRPCServiceDescriptor {
-    return Kaspa_RPCServerMetadata.serviceDescriptor
+    return Protowire_RPCServerMetadata.serviceDescriptor
   }
 
   internal var serviceName: Substring {
-    return Kaspa_RPCServerMetadata.serviceDescriptor.fullName[...]
+    return Protowire_RPCServerMetadata.serviceDescriptor.fullName[...]
   }
 
-  internal var interceptors: Kaspa_RPCServerInterceptorFactoryProtocol? {
+  internal var interceptors: Protowire_RPCServerInterceptorFactoryProtocol? {
     return nil
   }
 
@@ -274,8 +274,8 @@ extension Kaspa_RPCAsyncProvider {
     case "MessageStream":
       return GRPCAsyncServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Kaspa_KaspadRequest>(),
-        responseSerializer: ProtobufSerializer<Kaspa_KaspadResponse>(),
+        requestDeserializer: ProtobufDeserializer<Protowire_KaspadRequest>(),
+        responseSerializer: ProtobufSerializer<Protowire_KaspadResponse>(),
         interceptors: self.interceptors?.makeMessageStreamInterceptors() ?? [],
         wrapping: { try await self.messageStream(requestStream: $0, responseStream: $1, context: $2) }
       )
@@ -286,26 +286,26 @@ extension Kaspa_RPCAsyncProvider {
   }
 }
 
-internal protocol Kaspa_RPCServerInterceptorFactoryProtocol: Sendable {
+internal protocol Protowire_RPCServerInterceptorFactoryProtocol: Sendable {
 
   /// - Returns: Interceptors to use when handling 'messageStream'.
   ///   Defaults to calling `self.makeInterceptors()`.
-  func makeMessageStreamInterceptors() -> [ServerInterceptor<Kaspa_KaspadRequest, Kaspa_KaspadResponse>]
+  func makeMessageStreamInterceptors() -> [ServerInterceptor<Protowire_KaspadRequest, Protowire_KaspadResponse>]
 }
 
-internal enum Kaspa_RPCServerMetadata {
+internal enum Protowire_RPCServerMetadata {
   internal static let serviceDescriptor = GRPCServiceDescriptor(
     name: "RPC",
-    fullName: "kaspa.RPC",
+    fullName: "protowire.RPC",
     methods: [
-      Kaspa_RPCServerMetadata.Methods.messageStream,
+      Protowire_RPCServerMetadata.Methods.messageStream,
     ]
   )
 
   internal enum Methods {
     internal static let messageStream = GRPCMethodDescriptor(
       name: "MessageStream",
-      path: "/kaspa.RPC/MessageStream",
+      path: "/protowire.RPC/MessageStream",
       type: GRPCCallType.bidirectionalStreaming
     )
   }

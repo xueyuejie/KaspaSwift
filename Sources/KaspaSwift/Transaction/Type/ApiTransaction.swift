@@ -45,7 +45,7 @@ public struct ApiTransaction: Decodable {
 //        // Implement JSON parsing logic
 //    }
 
-    public static func fromRpc(_ tx: Kaspa_RpcTransaction) -> ApiTransaction {
+    public static func fromRpc(_ tx: Protowire_RpcTransaction) -> ApiTransaction {
         return ApiTransaction(
             transactionId: tx.verboseData.transactionID,
             blockTime: Int(tx.verboseData.blockTime),

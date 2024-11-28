@@ -16,8 +16,8 @@ public struct TxOutput {
         self.scriptPublicKey = scriptPublicKey
     }
 
-    public func toRpc() -> Kaspa_RpcTransactionOutput {
-        var output = Kaspa_RpcTransactionOutput()
+    public func toRpc() -> Protowire_RpcTransactionOutput {
+        var output = Protowire_RpcTransactionOutput()
         output.amount = UInt64(value)
         output.scriptPublicKey = scriptPublicKey.toRpc()
         return output

@@ -54,8 +54,8 @@ public class KaspaTransaction {
         }
     }
     
-    public func toRpc() -> Kaspa_RpcTransaction {
-        var rpctransaction = Kaspa_RpcTransaction()
+    public func toRpc() -> Protowire_RpcTransaction {
+        var rpctransaction = Protowire_RpcTransaction()
         rpctransaction.version = UInt32(version)
         rpctransaction.inputs = inputs.map { $0.toRpc() }
         rpctransaction.outputs = outputs.map { $0.toRpc() }

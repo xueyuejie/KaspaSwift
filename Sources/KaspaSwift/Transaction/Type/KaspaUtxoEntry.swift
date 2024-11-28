@@ -37,7 +37,7 @@ public struct KaspaUtxoEntry: Equatable, Decodable{
 //        )
 //    }
 
-    public static func fromRpc(_ rpc: Kaspa_RpcUtxoEntry) -> KaspaUtxoEntry {
+    public static func fromRpc(_ rpc: Protowire_RpcUtxoEntry) -> KaspaUtxoEntry {
         return KaspaUtxoEntry(
             amount: BigInt(rpc.amount),
             scriptPublicKey: KaspaScriptPublicKey.fromRpc(rpc.scriptPublicKey),
@@ -46,8 +46,8 @@ public struct KaspaUtxoEntry: Equatable, Decodable{
         )
     }
 
-    public func toRpc() -> Kaspa_RpcUtxoEntry {
-        var rpcUtxoEntry = Kaspa_RpcUtxoEntry()
+    public func toRpc() -> Protowire_RpcUtxoEntry {
+        var rpcUtxoEntry = Protowire_RpcUtxoEntry()
         rpcUtxoEntry.amount = UInt64(amount.description) ?? 0
         rpcUtxoEntry.scriptPublicKey = scriptPublicKey.toRpc()
         rpcUtxoEntry.blockDaaScore = UInt64(blockDaaScore.description) ?? 0

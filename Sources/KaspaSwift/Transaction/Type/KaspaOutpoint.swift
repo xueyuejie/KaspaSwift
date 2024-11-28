@@ -24,15 +24,15 @@ public struct KaspaOutpoint: Equatable, Decodable {
 //        return KaspaOutpoint(transactionId: transactionId, index: index)
 //    }
 
-    public static func fromRpc(_ rpc: Kaspa_RpcOutpoint) -> KaspaOutpoint {
+    public static func fromRpc(_ rpc: Protowire_RpcOutpoint) -> KaspaOutpoint {
         return KaspaOutpoint(
             transactionId: rpc.transactionID,
             index: rpc.index
         )
     }
 
-    public func toRpc() -> Kaspa_RpcOutpoint {
-        var rpcOutpoint = Kaspa_RpcOutpoint()
+    public func toRpc() -> Protowire_RpcOutpoint {
+        var rpcOutpoint = Protowire_RpcOutpoint()
         rpcOutpoint.transactionID = transactionId
         rpcOutpoint.index = UInt32(index)
         return rpcOutpoint

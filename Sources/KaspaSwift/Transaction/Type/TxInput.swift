@@ -41,8 +41,8 @@ public class TxInput {
         return self
     }
 
-    public func toRpc() -> Kaspa_RpcTransactionInput {
-        var input = Kaspa_RpcTransactionInput()
+    public func toRpc() -> Protowire_RpcTransactionInput {
+        var input = Protowire_RpcTransactionInput()
         input.previousOutpoint = previousOutpoint.toRpc()
         input.signatureScript = signatureScript.hexEncodedString()
         input.sequence = UInt64(sequence)

@@ -15,7 +15,7 @@ public struct KaspaClient {
     public let host: String
     public let port: Int
     
-    public init(host: String = "localhost", port: Int = 50051) {
+    public init(host: String = "kaspa.mathwallet.net", port: Int = 80) {
         self.host = host
         self.port = port
     }
@@ -29,7 +29,7 @@ public struct KaspaClient {
         self.init(host: host, port: Int(port) ?? 0)
     }
     
-    public func sendRequest(request: Kaspa_KaspadRequest) async throws -> Kaspa_KaspadResponse {
+    public func sendRequest(request: Protowire_KaspadRequest) async throws -> Protowire_KaspadResponse {
         // 创建事件循环组
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         defer {
@@ -41,15 +41,19 @@ public struct KaspaClient {
         let channel = try GRPCChannelPool.with(
             target: .host(self.host, port: self.port),  // 服务器地址和端口
             transportSecurity: .plaintext,            // 使用不加密连接
-            eventLoopGroup: group           // 使用的 EventLoopGroup
-        )
-        let client = Kaspa_RPCAsyncClient(channel: channel)
+            eventLoopGroup: group
+        ) {  configuration in
+            // 设置连接回退策略
+            configuration.connectionBackoff = ConnectionBackoff()
+            configuration.keepalive = ClientConnectionKeepalive()
+        }
+        let client = Protowire_RPCAsyncClient(channel: channel)
         // 调用 gRPC 服务
         do {
             let call = client.makeMessageStreamCall()
             try await call.requestStream.send(request)
             call.requestStream.finish()
-            var response: Kaspa_KaspadResponse?
+            var response: Protowire_KaspadResponse?
             // 接收响应
             for try await _response in call.responseStream {
                 response = _response
@@ -58,6 +62,10 @@ public struct KaspaClient {
                 throw KaspaError.unknow
             }
             return _response
+        } catch let grpcStatus as GRPCStatus {
+            throw KaspaError.message(grpcStatus.localizedDescription)
+        } catch let connectionError as GRPCConnectionPoolError {
+            throw KaspaError.message(connectionError.localizedDescription)
         } catch {
             throw KaspaError.message(error.localizedDescription)
         }
@@ -67,8 +75,8 @@ public struct KaspaClient {
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension KaspaClient{
     public func getBalanceByAddress(address: String) async throws -> UInt64 {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetBalanceByAddressRequestMessage()
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetBalanceByAddressRequestMessage()
         message.address = address
         request.getBalanceByAddressRequest = message
         request.id = 1077
@@ -81,9 +89,9 @@ extension KaspaClient{
         }
     }
     
-    public func getBalancesByAddresses(addresses: [String]) async throws -> [Kaspa_RpcBalancesByAddressesEntry] {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetBalancesByAddressesRequestMessage()
+    public func getBalancesByAddresses(addresses: [String]) async throws -> [Protowire_RpcBalancesByAddressesEntry] {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetBalancesByAddressesRequestMessage()
         message.addresses = addresses
         request.getBalancesByAddressesRequest = message
         request.id = 1079
@@ -96,9 +104,9 @@ extension KaspaClient{
         }
     }
     
-    public func getUtxosByAddresses(addresses: [String]) async throws -> [Kaspa_RpcUtxosByAddressesEntry] {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetUtxosByAddressesRequestMessage()
+    public func getUtxosByAddresses(addresses: [String]) async throws -> [Protowire_RpcUtxosByAddressesEntry] {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetUtxosByAddressesRequestMessage()
         message.addresses = addresses
         request.getUtxosByAddressesRequest = message
         request.id = 1052
@@ -111,9 +119,9 @@ extension KaspaClient{
         }
     }
     
-    public func notifyUtxosChanged(addresses: [String]) async throws -> (added: [Kaspa_RpcUtxosByAddressesEntry], removed: [Kaspa_RpcUtxosByAddressesEntry]) {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_NotifyUtxosChangedRequestMessage()
+    public func notifyUtxosChanged(addresses: [String]) async throws -> (added: [Protowire_RpcUtxosByAddressesEntry], removed: [Protowire_RpcUtxosByAddressesEntry]) {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_NotifyUtxosChangedRequestMessage()
         message.addresses = addresses
         request.notifyUtxosChangedRequest = message
         request.id = 1049
@@ -127,8 +135,8 @@ extension KaspaClient{
     }
     
     public func stopNotifyingUtxosChanged(addresses: [String]) async throws -> Bool {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_StopNotifyingUtxosChangedRequestMessage()
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_StopNotifyingUtxosChangedRequestMessage()
         message.addresses = addresses
         request.stopNotifyingUtxosChangedRequest = message
         request.id = 1065
@@ -143,8 +151,8 @@ extension KaspaClient{
     }
     
     public func notifyBlockAdded() async throws -> Bool {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_NotifyBlockAddedRequestMessage()
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_NotifyBlockAddedRequestMessage()
         request.notifyBlockAddedRequest = message
         request.id = 1007
         let response = try await self.sendRequest(request: request)
@@ -157,9 +165,9 @@ extension KaspaClient{
         }
     }
     
-    public func submitTransaction(transaction: Kaspa_RpcTransaction) async throws -> String {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_SubmitTransactionRequestMessage()
+    public func submitTransaction(transaction: Protowire_RpcTransaction) async throws -> String {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_SubmitTransactionRequestMessage()
         message.transaction = transaction
         request.submitTransactionRequest = message
         request.id = 1020
@@ -172,9 +180,9 @@ extension KaspaClient{
         }
     }
     
-    public func submitTransactionReplacement(transaction: Kaspa_RpcTransaction) async throws -> (transactionId: String, replacedTransaction: Kaspa_RpcTransaction) {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_SubmitTransactionReplacementRequestMessage()
+    public func submitTransactionReplacement(transaction: Protowire_RpcTransaction) async throws -> (transactionId: String, replacedTransaction: Protowire_RpcTransaction) {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_SubmitTransactionReplacementRequestMessage()
         message.transaction = transaction
         request.submitTransactionReplacementRequest = message
         request.id = 1100
@@ -187,9 +195,9 @@ extension KaspaClient{
         }
     }
     
-    public func getFeeEstimate() async throws -> Kaspa_RpcFeeEstimate {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_GetFeeEstimateRequestMessage()
+    public func getFeeEstimate() async throws -> Protowire_RpcFeeEstimate {
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_GetFeeEstimateRequestMessage()
         request.getFeeEstimateRequest = message
         request.id = 1106
         let response = try await self.sendRequest(request: request)
@@ -201,9 +209,9 @@ extension KaspaClient{
         }
     }
     
-    public func getMempoolEntry(txID: String, includeOrphanPool: Bool = true, filterTransactionPool: Bool = true) async throws -> Kaspa_RpcMempoolEntry {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetMempoolEntryRequestMessage()
+    public func getMempoolEntry(txID: String, includeOrphanPool: Bool = true, filterTransactionPool: Bool = true) async throws -> Protowire_RpcMempoolEntry {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetMempoolEntryRequestMessage()
         message.txID = txID
         message.includeOrphanPool = includeOrphanPool
         message.filterTransactionPool = filterTransactionPool
@@ -218,9 +226,9 @@ extension KaspaClient{
         }
     }
     
-    public func getMempoolEntries(includeOrphanPool: Bool = true, filterTransactionPool: Bool = true) async throws -> [Kaspa_RpcMempoolEntry] {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetMempoolEntriesRequestMessage()
+    public func getMempoolEntries(includeOrphanPool: Bool = true, filterTransactionPool: Bool = true) async throws -> [Protowire_RpcMempoolEntry] {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetMempoolEntriesRequestMessage()
         message.includeOrphanPool = includeOrphanPool
         message.filterTransactionPool = filterTransactionPool
         request.getMempoolEntriesRequest = message
@@ -234,9 +242,9 @@ extension KaspaClient{
         }
     }
     
-    public func getMempoolEntriesByAddresses(addresses: [String], includeOrphanPool: Bool = true, filterTransactionPool: Bool = true) async throws -> [Kaspa_RpcMempoolEntryByAddress] {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetMempoolEntriesByAddressesRequestMessage()
+    public func getMempoolEntriesByAddresses(addresses: [String], includeOrphanPool: Bool = true, filterTransactionPool: Bool = true) async throws -> [Protowire_RpcMempoolEntryByAddress] {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetMempoolEntriesByAddressesRequestMessage()
         message.includeOrphanPool = includeOrphanPool
         message.filterTransactionPool = filterTransactionPool
         request.getMempoolEntriesByAddressesRequest = message
@@ -251,8 +259,8 @@ extension KaspaClient{
     }
     
     public func getCurrentNetwork() async throws -> String {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_GetCurrentNetworkRequestMessage()
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_GetCurrentNetworkRequestMessage()
         request.getCurrentNetworkRequest = message
         request.id = 1001
         let response = try await self.sendRequest(request: request)
@@ -264,9 +272,9 @@ extension KaspaClient{
         }
     }
     
-    public func getBlockCount() async throws -> Kaspa_GetBlockCountResponseMessage {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_GetBlockCountRequestMessage()
+    public func getBlockCount() async throws -> Protowire_GetBlockCountResponseMessage {
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_GetBlockCountRequestMessage()
         request.getBlockCountRequest = message
         request.id = 1063
         let response = try await self.sendRequest(request: request)
@@ -278,9 +286,9 @@ extension KaspaClient{
         }
     }
     
-    public func getInfo() async throws -> Kaspa_GetInfoResponseMessage {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_GetInfoRequestMessage()
+    public func getInfo() async throws -> Protowire_GetInfoResponseMessage {
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_GetInfoRequestMessage()
         request.getInfoRequest = message
         request.id = 1063
         let response = try await self.sendRequest(request: request)
@@ -292,9 +300,9 @@ extension KaspaClient{
         }
     }
     
-    public func notifyVirtualSelectedParentChainChanged(includeAcceptedTransactionIds: Bool) async throws -> Kaspa_VirtualChainChangedNotificationMessage {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_NotifyVirtualChainChangedRequestMessage()
+    public func notifyVirtualSelectedParentChainChanged(includeAcceptedTransactionIds: Bool) async throws -> Protowire_VirtualChainChangedNotificationMessage {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_NotifyVirtualChainChangedRequestMessage()
         message.includeAcceptedTransactionIds = includeAcceptedTransactionIds
         request.notifyVirtualChainChangedRequest = message
         request.id = 1022
@@ -307,8 +315,8 @@ extension KaspaClient{
     }
     
     public func getVirtualSelectedParentBlueScore() async throws -> UInt64 {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_GetSinkBlueScoreRequestMessage()
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_GetSinkBlueScoreRequestMessage()
         request.getSinkBlueScoreRequest = message
         request.id = 1054
         let response = try await self.sendRequest(request: request)
@@ -321,8 +329,8 @@ extension KaspaClient{
     }
     
     public func notifyVirtualSelectedParentBlueScoreChanged() async throws -> UInt64 {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_NotifySinkBlueScoreChangedRequestMessage()
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_NotifySinkBlueScoreChangedRequestMessage()
         request.notifySinkBlueScoreChangedRequest = message
         request.id = 1056
         let response = try await self.sendRequest(request: request)
@@ -334,8 +342,8 @@ extension KaspaClient{
     }
     
     public func notifyVirtualDaaScoreChanged() async throws -> UInt64 {
-        var request = Kaspa_KaspadRequest()
-        let message = Kaspa_NotifyVirtualDaaScoreChangedRequestMessage()
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_NotifyVirtualDaaScoreChangedRequestMessage()
         request.notifyVirtualDaaScoreChangedRequest = message
         request.id = 1074
         let response = try await self.sendRequest(request: request)
@@ -346,9 +354,9 @@ extension KaspaClient{
         }
     }
     
-    public func getBlockByHash(hash: String, includeTransactions: Bool = true) async throws -> Kaspa_RpcBlock {
-        var request = Kaspa_KaspadRequest()
-        var message = Kaspa_GetBlockRequestMessage()
+    public func getBlockByHash(hash: String, includeTransactions: Bool = true) async throws -> Protowire_RpcBlock {
+        var request = Protowire_KaspadRequest()
+        var message = Protowire_GetBlockRequestMessage()
         message.hash = hash
         message.includeTransactions = includeTransactions
         request.getBlockRequest = message

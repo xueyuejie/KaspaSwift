@@ -8,7 +8,7 @@
 // **IMPORTANT:** This API is a work in progress and is subject to break between versions.
 //
 syntax = "proto3";
-package kaspa;
+package protowire;
 
 // RPCError represents a generic non-internal error.
 //

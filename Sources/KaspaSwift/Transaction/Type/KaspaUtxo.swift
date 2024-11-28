@@ -30,7 +30,7 @@ public struct KaspaUtxo: Equatable, Decodable {
 //        return KaspaUtxo(address: address, outpoint: outpoint, utxoEntry: utxoEntry)
 //    }
 
-    public static func fromRpc(_ rpc: Kaspa_RpcUtxosByAddressesEntry) -> KaspaUtxo {
+    public static func fromRpc(_ rpc: Protowire_RpcUtxosByAddressesEntry) -> KaspaUtxo {
         return KaspaUtxo(
             address: rpc.address,
             outpoint: KaspaOutpoint.fromRpc(rpc.outpoint),
@@ -38,8 +38,8 @@ public struct KaspaUtxo: Equatable, Decodable {
         )
     }
 
-    public func toRpc() -> Kaspa_RpcUtxosByAddressesEntry {
-        var rpcUtxosByAddressesEntry = Kaspa_RpcUtxosByAddressesEntry()
+    public func toRpc() -> Protowire_RpcUtxosByAddressesEntry {
+        var rpcUtxosByAddressesEntry = Protowire_RpcUtxosByAddressesEntry()
         rpcUtxosByAddressesEntry.address = address
         rpcUtxosByAddressesEntry.outpoint = outpoint.toRpc()
         rpcUtxosByAddressesEntry.utxoEntry = utxoEntry.toRpc()
