@@ -36,10 +36,14 @@ final class KaspaSwiftTests: XCTestCase {
     }
     
     func testGrpcExample() async throws {
-        let client = KaspaClient(host: "kaspa.mathwallet.net", port: 80)
-        //        try KaspaClient(url: "47.238.220.71:16110")
-        let result =  try await client.getBalancesByAddresses(addresses: ["kaspa:qrmynkncs7lxe34knahjtusztek3sqwpsea8443rentqqle6vglfx8s55enju","kaspa:qzfu7dvxeat9h6z07m4k7dkjsw6y3atpue4ejgwt4dxdm9wumepmgz8qcectr"])
-        debugPrint(result)
-        debugPrint("1111111111")
+        let client = try KaspaClient(url: "kaspa.maiziqianbao.net:80")
+        do {
+//            let result =  try await client.getBalancesByAddresses(addresses: ["kaspa:qrmynkncs7lxe34knahjtusztek3sqwpsea8443rentqqle6vglfx8s55enju","kaspa:qzfu7dvxeat9h6z07m4k7dkjsw6y3atpue4ejgwt4dxdm9wumepmgz8qcectr"])
+            let result = try await client.getBlockDagInfo()
+            debugPrint(result)
+            debugPrint("1111111111")
+        } catch let error as KaspaError{
+            debugPrint(error.errorDescription ?? "")
+        }
     }
 }

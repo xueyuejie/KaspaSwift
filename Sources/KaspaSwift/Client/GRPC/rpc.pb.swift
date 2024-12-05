@@ -1335,17 +1335,17 @@ public struct Protowire_GetBlockCountResponseMessage: Sendable {
 
 /// GetBlockDagInfoRequestMessage requests general information about the current state
 /// of this kaspad's DAG.
-struct Protowire_GetBlockDagInfoRequestMessage: Sendable {
+public struct Protowire_GetBlockDagInfoRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetBlockDagInfoResponseMessage: Sendable {
+public struct Protowire_GetBlockDagInfoResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1379,9 +1379,9 @@ struct Protowire_GetBlockDagInfoResponseMessage: Sendable {
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
     mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -5470,27 +5470,27 @@ extension Protowire_GetBlockCountResponseMessage: SwiftProtobuf.Message, SwiftPr
 }
 
 extension Protowire_GetBlockDagInfoRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockDagInfoRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockDagInfoRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockDagInfoRequestMessage, rhs: Protowire_GetBlockDagInfoRequestMessage) -> Bool {
+    public static func ==(lhs: Protowire_GetBlockDagInfoRequestMessage, rhs: Protowire_GetBlockDagInfoRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetBlockDagInfoResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockDagInfoResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockDagInfoResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "networkName"),
         2: .same(proto: "blockCount"),
         3: .same(proto: "headerCount"),
@@ -5504,7 +5504,7 @@ extension Protowire_GetBlockDagInfoResponseMessage: SwiftProtobuf.Message, Swift
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5526,7 +5526,7 @@ extension Protowire_GetBlockDagInfoResponseMessage: SwiftProtobuf.Message, Swift
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5567,7 +5567,7 @@ extension Protowire_GetBlockDagInfoResponseMessage: SwiftProtobuf.Message, Swift
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockDagInfoResponseMessage, rhs: Protowire_GetBlockDagInfoResponseMessage) -> Bool {
+    public static func ==(lhs: Protowire_GetBlockDagInfoResponseMessage, rhs: Protowire_GetBlockDagInfoResponseMessage) -> Bool {
         if lhs.networkName != rhs.networkName {return false}
         if lhs.blockCount != rhs.blockCount {return false}
         if lhs.headerCount != rhs.headerCount {return false}

@@ -9,13 +9,14 @@ import Foundation
 import GRPC
 import SwiftProtobuf
 import NIO
+import Logging
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public struct KaspaClient {
     public let host: String
     public let port: Int
     
-    public init(host: String = "kaspa.mathwallet.net", port: Int = 80) {
+    public init(host: String = "kaspa.maiziqianbao.net", port: Int = 80) {
         self.host = host
         self.port = port
     }
@@ -32,42 +33,31 @@ public struct KaspaClient {
     public func sendRequest(request: Protowire_KaspadRequest) async throws -> Protowire_KaspadResponse {
         // 创建事件循环组
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        defer {
-            Task {
-                try? await group.shutdownGracefully()
-            }
-        }
         // 建立通道连接
-        let channel = try GRPCChannelPool.with(
-            target: .host(self.host, port: self.port),  // 服务器地址和端口
-            transportSecurity: .plaintext,            // 使用不加密连接
-            eventLoopGroup: group
-        ) {  configuration in
-            // 设置连接回退策略
-            configuration.connectionBackoff = ConnectionBackoff()
-            configuration.keepalive = ClientConnectionKeepalive()
-        }
-        let client = Protowire_RPCAsyncClient(channel: channel)
+        let channel = ClientConnection.insecure(group: group).connect(host: host, port: port)
+        // 创建拦截器工厂
+        let interceptorFactory = CustomInterceptorFactory()
+        let asyncClient = Protowire_RPCAsyncClient(channel: channel, interceptors: interceptorFactory)
         // 调用 gRPC 服务
         do {
-            let call = client.makeMessageStreamCall()
+            let call = asyncClient.makeMessageStreamCall()
             try await call.requestStream.send(request)
             call.requestStream.finish()
             var response: Protowire_KaspadResponse?
             // 接收响应
             for try await _response in call.responseStream {
                 response = _response
+                Task {
+                    try? await group.shutdownGracefully()
+                }
             }
             guard let _response = response else {
+                Task {
+                    try? await group.shutdownGracefully()
+                }
                 throw KaspaError.unknow
             }
             return _response
-        } catch let grpcStatus as GRPCStatus {
-            throw KaspaError.message(grpcStatus.localizedDescription)
-        } catch let connectionError as GRPCConnectionPoolError {
-            throw KaspaError.message(connectionError.localizedDescription)
-        } catch {
-            throw KaspaError.message(error.localizedDescription)
         }
     }
 }
@@ -276,9 +266,23 @@ extension KaspaClient{
         var request = Protowire_KaspadRequest()
         let message = Protowire_GetBlockCountRequestMessage()
         request.getBlockCountRequest = message
-        request.id = 1063
+        request.id = 1034
         let response = try await self.sendRequest(request: request)
         let result = response.getBlockCountResponse
+        if result.hasError {
+            throw KaspaError.message(result.error.message)
+        } else {
+            return result
+        }
+    }
+    
+    public func getBlockDagInfo() async throws -> Protowire_GetBlockDagInfoResponseMessage {
+        var request = Protowire_KaspadRequest()
+        let message = Protowire_GetBlockDagInfoRequestMessage()
+        request.getBlockDagInfoRequest = message
+        request.id = 1036
+        let response = try await self.sendRequest(request: request)
+        let result = response.getBlockDagInfoResponse
         if result.hasError {
             throw KaspaError.message(result.error.message)
         } else {
