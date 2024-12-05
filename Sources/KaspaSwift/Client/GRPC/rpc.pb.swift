@@ -2818,7 +2818,7 @@ public struct Protowire_GetDaaScoreTimestampEstimateResponseMessage: Sendable {
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_RpcFeerateBucket: Sendable {
+public struct Protowire_RpcFeerateBucket: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2828,9 +2828,9 @@ struct Protowire_RpcFeerateBucket: Sendable {
     
     var estimatedSeconds: Double = 0
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// Data required for making fee estimates.
@@ -2844,7 +2844,7 @@ public struct Protowire_RpcFeeEstimate: Sendable {
     // methods supported on all messages.
     
     /// Top-priority feerate bucket. Provides an estimation of the feerate required for sub-second DAG inclusion.
-    var priorityBucket: Protowire_RpcFeerateBucket {
+    public var priorityBucket: Protowire_RpcFeerateBucket {
         get {return _priorityBucket ?? Protowire_RpcFeerateBucket()}
         set {_priorityBucket = newValue}
     }
@@ -8482,13 +8482,13 @@ extension Protowire_GetDaaScoreTimestampEstimateResponseMessage: SwiftProtobuf.M
 }
 
 extension Protowire_RpcFeerateBucket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcFeerateBucket"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcFeerateBucket"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "feerate"),
         2: .standard(proto: "estimated_seconds"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8501,7 +8501,7 @@ extension Protowire_RpcFeerateBucket: SwiftProtobuf.Message, SwiftProtobuf._Mess
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.feerate.bitPattern != 0 {
             try visitor.visitSingularDoubleField(value: self.feerate, fieldNumber: 1)
         }
@@ -8511,7 +8511,7 @@ extension Protowire_RpcFeerateBucket: SwiftProtobuf.Message, SwiftProtobuf._Mess
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcFeerateBucket, rhs: Protowire_RpcFeerateBucket) -> Bool {
+    public static func ==(lhs: Protowire_RpcFeerateBucket, rhs: Protowire_RpcFeerateBucket) -> Bool {
         if lhs.feerate != rhs.feerate {return false}
         if lhs.estimatedSeconds != rhs.estimatedSeconds {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
