@@ -25,21 +25,21 @@ import SwiftProtobuf
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
 fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
-    struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
+    public struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
     typealias Version = _2
 }
 
-enum Protowire_RpcNotifyCommand: SwiftProtobuf.Enum, Swift.CaseIterable {
-    typealias RawValue = Int
+public enum Protowire_RpcNotifyCommand: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
     case notifyStart // = 0
     case notifyStop // = 1
     case UNRECOGNIZED(Int)
     
-    init() {
+    public init() {
         self = .notifyStart
     }
     
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
         switch rawValue {
         case 0: self = .notifyStart
         case 1: self = .notifyStop
@@ -47,7 +47,7 @@ enum Protowire_RpcNotifyCommand: SwiftProtobuf.Enum, Swift.CaseIterable {
         }
     }
     
-    var rawValue: Int {
+    public var rawValue: Int {
         switch self {
         case .notifyStart: return 0
         case .notifyStop: return 1
@@ -56,7 +56,7 @@ enum Protowire_RpcNotifyCommand: SwiftProtobuf.Enum, Swift.CaseIterable {
     }
     
     // The compiler won't synthesize support with the UNRECOGNIZED case.
-    static let allCases: [Protowire_RpcNotifyCommand] = [
+    public static let allCases: [Protowire_RpcNotifyCommand] = [
         .notifyStart,
         .notifyStop,
     ]
@@ -66,16 +66,16 @@ enum Protowire_RpcNotifyCommand: SwiftProtobuf.Enum, Swift.CaseIterable {
 /// RPCError represents a generic non-internal error.
 ///
 /// Receivers of any ResponseMessage are expected to check whether its error field is not null.
-struct Protowire_RPCError: Sendable {
+public struct Protowire_RPCError: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var message: String = String()
+    public var message: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 public struct Protowire_RpcBlock: @unchecked Sendable {
@@ -83,28 +83,28 @@ public struct Protowire_RpcBlock: @unchecked Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var header: Protowire_RpcBlockHeader {
+    public var header: Protowire_RpcBlockHeader {
         get {return _storage._header ?? Protowire_RpcBlockHeader()}
         set {_uniqueStorage()._header = newValue}
     }
     /// Returns true if `header` has been explicitly set.
-    var hasHeader: Bool {return _storage._header != nil}
+    public var hasHeader: Bool {return _storage._header != nil}
     /// Clears the value of `header`. Subsequent reads from it will return its default value.
-    mutating func clearHeader() {_uniqueStorage()._header = nil}
+    public mutating func clearHeader() {_uniqueStorage()._header = nil}
     
-    var transactions: [Protowire_RpcTransaction] {
+    public var transactions: [Protowire_RpcTransaction] {
         get {return _storage._transactions}
         set {_uniqueStorage()._transactions = newValue}
     }
     
-    var verboseData: Protowire_RpcBlockVerboseData {
+    public var verboseData: Protowire_RpcBlockVerboseData {
         get {return _storage._verboseData ?? Protowire_RpcBlockVerboseData()}
         set {_uniqueStorage()._verboseData = newValue}
     }
     /// Returns true if `verboseData` has been explicitly set.
-    var hasVerboseData: Bool {return _storage._verboseData != nil}
+    public var hasVerboseData: Bool {return _storage._verboseData != nil}
     /// Clears the value of `verboseData`. Subsequent reads from it will return its default value.
-    mutating func clearVerboseData() {_uniqueStorage()._verboseData = nil}
+    public mutating func clearVerboseData() {_uniqueStorage()._verboseData = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -113,80 +113,80 @@ public struct Protowire_RpcBlock: @unchecked Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct Protowire_RpcBlockHeader: Sendable {
+public struct Protowire_RpcBlockHeader: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var version: UInt32 = 0
+    public var version: UInt32 = 0
     
-    var parents: [Protowire_RpcBlockLevelParents] = []
+    public var parents: [Protowire_RpcBlockLevelParents] = []
     
-    var hashMerkleRoot: String = String()
+    public var hashMerkleRoot: String = String()
     
-    var acceptedIDMerkleRoot: String = String()
+    public var acceptedIDMerkleRoot: String = String()
     
-    var utxoCommitment: String = String()
+    public var utxoCommitment: String = String()
     
-    var timestamp: Int64 = 0
+    public var timestamp: Int64 = 0
     
-    var bits: UInt32 = 0
+    public var bits: UInt32 = 0
     
-    var nonce: UInt64 = 0
+    public var nonce: UInt64 = 0
     
-    var daaScore: UInt64 = 0
+    public var daaScore: UInt64 = 0
     
-    var blueWork: String = String()
+    public var blueWork: String = String()
     
-    var pruningPoint: String = String()
+    public var pruningPoint: String = String()
     
-    var blueScore: UInt64 = 0
+    public var blueScore: UInt64 = 0
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_RpcBlockLevelParents: Sendable {
+public struct Protowire_RpcBlockLevelParents: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var parentHashes: [String] = []
+    public var parentHashes: [String] = []
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_RpcBlockVerboseData: Sendable {
+public struct Protowire_RpcBlockVerboseData: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var hash: String = String()
+    public var hash: String = String()
     
-    var difficulty: Double = 0
+    public var difficulty: Double = 0
     
-    var selectedParentHash: String = String()
+    public var selectedParentHash: String = String()
     
-    var transactionIds: [String] = []
+    public var transactionIds: [String] = []
     
-    var isHeaderOnly: Bool = false
+    public var isHeaderOnly: Bool = false
     
-    var blueScore: UInt64 = 0
+    public var blueScore: UInt64 = 0
     
-    var childrenHashes: [String] = []
+    public var childrenHashes: [String] = []
     
-    var mergeSetBluesHashes: [String] = []
+    public var mergeSetBluesHashes: [String] = []
     
-    var mergeSetRedsHashes: [String] = []
+    public var mergeSetRedsHashes: [String] = []
     
-    var isChainBlock: Bool = false
+    public var isChainBlock: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 public struct Protowire_RpcTransaction: Sendable {
@@ -194,30 +194,30 @@ public struct Protowire_RpcTransaction: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var version: UInt32 = 0
+    public var version: UInt32 = 0
     
-    var inputs: [Protowire_RpcTransactionInput] = []
+    public var inputs: [Protowire_RpcTransactionInput] = []
     
-    var outputs: [Protowire_RpcTransactionOutput] = []
+    public var outputs: [Protowire_RpcTransactionOutput] = []
     
-    var lockTime: UInt64 = 0
+    public var lockTime: UInt64 = 0
     
-    var subnetworkID: String = String()
+    public var subnetworkID: String = String()
     
-    var gas: UInt64 = 0
+    public var gas: UInt64 = 0
     
-    var payload: String = String()
+    public var payload: String = String()
     
-    var verboseData: Protowire_RpcTransactionVerboseData {
+    public var verboseData: Protowire_RpcTransactionVerboseData {
         get {return _verboseData ?? Protowire_RpcTransactionVerboseData()}
         set {_verboseData = newValue}
     }
     /// Returns true if `verboseData` has been explicitly set.
-    var hasVerboseData: Bool {return self._verboseData != nil}
+    public var hasVerboseData: Bool {return self._verboseData != nil}
     /// Clears the value of `verboseData`. Subsequent reads from it will return its default value.
-    mutating func clearVerboseData() {self._verboseData = nil}
+    public mutating func clearVerboseData() {self._verboseData = nil}
     
-    var mass: UInt64 = 0
+    public var mass: UInt64 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -231,29 +231,29 @@ public struct Protowire_RpcTransactionInput: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var previousOutpoint: Protowire_RpcOutpoint {
+    public var previousOutpoint: Protowire_RpcOutpoint {
         get {return _previousOutpoint ?? Protowire_RpcOutpoint()}
         set {_previousOutpoint = newValue}
     }
     /// Returns true if `previousOutpoint` has been explicitly set.
-    var hasPreviousOutpoint: Bool {return self._previousOutpoint != nil}
+    public var hasPreviousOutpoint: Bool {return self._previousOutpoint != nil}
     /// Clears the value of `previousOutpoint`. Subsequent reads from it will return its default value.
-    mutating func clearPreviousOutpoint() {self._previousOutpoint = nil}
+    public mutating func clearPreviousOutpoint() {self._previousOutpoint = nil}
     
-    var signatureScript: String = String()
+    public var signatureScript: String = String()
     
-    var sequence: UInt64 = 0
+    public var sequence: UInt64 = 0
     
-    var sigOpCount: UInt32 = 0
+    public var sigOpCount: UInt32 = 0
     
-    var verboseData: Protowire_RpcTransactionInputVerboseData {
+    public var verboseData: Protowire_RpcTransactionInputVerboseData {
         get {return _verboseData ?? Protowire_RpcTransactionInputVerboseData()}
         set {_verboseData = newValue}
     }
     /// Returns true if `verboseData` has been explicitly set.
-    var hasVerboseData: Bool {return self._verboseData != nil}
+    public var hasVerboseData: Bool {return self._verboseData != nil}
     /// Clears the value of `verboseData`. Subsequent reads from it will return its default value.
-    mutating func clearVerboseData() {self._verboseData = nil}
+    public mutating func clearVerboseData() {self._verboseData = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -268,9 +268,9 @@ public struct Protowire_RpcScriptPublicKey: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var version: UInt32 = 0
+    public var version: UInt32 = 0
     
-    var scriptPublicKey: String = String()
+    public var scriptPublicKey: String = String()
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -282,25 +282,25 @@ public struct Protowire_RpcTransactionOutput: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var amount: UInt64 = 0
+    public var amount: UInt64 = 0
     
-    var scriptPublicKey: Protowire_RpcScriptPublicKey {
+    public var scriptPublicKey: Protowire_RpcScriptPublicKey {
         get {return _scriptPublicKey ?? Protowire_RpcScriptPublicKey()}
         set {_scriptPublicKey = newValue}
     }
     /// Returns true if `scriptPublicKey` has been explicitly set.
-    var hasScriptPublicKey: Bool {return self._scriptPublicKey != nil}
+    public var hasScriptPublicKey: Bool {return self._scriptPublicKey != nil}
     /// Clears the value of `scriptPublicKey`. Subsequent reads from it will return its default value.
-    mutating func clearScriptPublicKey() {self._scriptPublicKey = nil}
+    public mutating func clearScriptPublicKey() {self._scriptPublicKey = nil}
     
-    var verboseData: Protowire_RpcTransactionOutputVerboseData {
+    public var verboseData: Protowire_RpcTransactionOutputVerboseData {
         get {return _verboseData ?? Protowire_RpcTransactionOutputVerboseData()}
         set {_verboseData = newValue}
     }
     /// Returns true if `verboseData` has been explicitly set.
-    var hasVerboseData: Bool {return self._verboseData != nil}
+    public var hasVerboseData: Bool {return self._verboseData != nil}
     /// Clears the value of `verboseData`. Subsequent reads from it will return its default value.
-    mutating func clearVerboseData() {self._verboseData = nil}
+    public mutating func clearVerboseData() {self._verboseData = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -315,9 +315,9 @@ public struct Protowire_RpcOutpoint: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var transactionID: String = String()
+    public var transactionID: String = String()
     
-    var index: UInt32 = 0
+    public var index: UInt32 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -329,20 +329,20 @@ public struct Protowire_RpcUtxoEntry: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var amount: UInt64 = 0
+    public var amount: UInt64 = 0
     
-    var scriptPublicKey: Protowire_RpcScriptPublicKey {
+    public var scriptPublicKey: Protowire_RpcScriptPublicKey {
         get {return _scriptPublicKey ?? Protowire_RpcScriptPublicKey()}
         set {_scriptPublicKey = newValue}
     }
     /// Returns true if `scriptPublicKey` has been explicitly set.
-    var hasScriptPublicKey: Bool {return self._scriptPublicKey != nil}
+    public var hasScriptPublicKey: Bool {return self._scriptPublicKey != nil}
     /// Clears the value of `scriptPublicKey`. Subsequent reads from it will return its default value.
-    mutating func clearScriptPublicKey() {self._scriptPublicKey = nil}
+    public mutating func clearScriptPublicKey() {self._scriptPublicKey = nil}
     
-    var blockDaaScore: UInt64 = 0
+    public var blockDaaScore: UInt64 = 0
     
-    var isCoinbase: Bool = false
+    public var isCoinbase: Bool = false
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -356,77 +356,77 @@ public struct Protowire_RpcTransactionVerboseData: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var transactionID: String = String()
+    public var transactionID: String = String()
     
-    var hash: String = String()
+    public var hash: String = String()
     
-    var mass: UInt64 = 0
+    public var mass: UInt64 = 0
     
-    var blockHash: String = String()
+    public var blockHash: String = String()
     
-    var blockTime: UInt64 = 0
+    public var blockTime: UInt64 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
     public init() {}
 }
 
-struct Protowire_RpcTransactionInputVerboseData: Sendable {
+public struct Protowire_RpcTransactionInputVerboseData: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_RpcTransactionOutputVerboseData: Sendable {
+public struct Protowire_RpcTransactionOutputVerboseData: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var scriptPublicKeyType: String = String()
+    public var scriptPublicKeyType: String = String()
     
-    var scriptPublicKeyAddress: String = String()
+    public var scriptPublicKeyAddress: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// GetCurrentNetworkRequestMessage requests the network kaspad is currently running against.
 ///
 /// Possible networks are: Mainnet, Testnet, Simnet, Devnet
-struct Protowire_GetCurrentNetworkRequestMessage: Sendable {
+public struct Protowire_GetCurrentNetworkRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetCurrentNetworkResponseMessage: Sendable {
+public struct Protowire_GetCurrentNetworkResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var currentNetwork: String = String()
+    public var currentNetwork: String = String()
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -435,59 +435,59 @@ struct Protowire_GetCurrentNetworkResponseMessage: Sendable {
 /// Blocks are generally expected to have been generated using the getBlockTemplate call.
 ///
 /// See: GetBlockTemplateRequestMessage
-struct Protowire_SubmitBlockRequestMessage: Sendable {
+public struct Protowire_SubmitBlockRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var block: Protowire_RpcBlock {
+    public var block: Protowire_RpcBlock {
         get {return _block ?? Protowire_RpcBlock()}
         set {_block = newValue}
     }
     /// Returns true if `block` has been explicitly set.
-    var hasBlock: Bool {return self._block != nil}
+    public var hasBlock: Bool {return self._block != nil}
     /// Clears the value of `block`. Subsequent reads from it will return its default value.
-    mutating func clearBlock() {self._block = nil}
+    public mutating func clearBlock() {self._block = nil}
     
-    var allowNonDaablocks: Bool = false
+    public var allowNonDaablocks: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _block: Protowire_RpcBlock? = nil
 }
 
-struct Protowire_SubmitBlockResponseMessage: Sendable {
+public struct Protowire_SubmitBlockResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var rejectReason: Protowire_SubmitBlockResponseMessage.RejectReason = .none
+    public var rejectReason: Protowire_SubmitBlockResponseMessage.RejectReason = .none
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    enum RejectReason: SwiftProtobuf.Enum, Swift.CaseIterable {
-        typealias RawValue = Int
+    public enum RejectReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
         case none // = 0
         case blockInvalid // = 1
         case isInIbd // = 2
         case UNRECOGNIZED(Int)
         
-        init() {
+        public init() {
             self = .none
         }
         
-        init?(rawValue: Int) {
+        public init?(rawValue: Int) {
             switch rawValue {
             case 0: self = .none
             case 1: self = .blockInvalid
@@ -496,7 +496,7 @@ struct Protowire_SubmitBlockResponseMessage: Sendable {
             }
         }
         
-        var rawValue: Int {
+        public var rawValue: Int {
             switch self {
             case .none: return 0
             case .blockInvalid: return 1
@@ -506,7 +506,7 @@ struct Protowire_SubmitBlockResponseMessage: Sendable {
         }
         
         // The compiler won't synthesize support with the UNRECOGNIZED case.
-        static let allCases: [Protowire_SubmitBlockResponseMessage.RejectReason] = [
+        public static let allCases: [Protowire_SubmitBlockResponseMessage.RejectReason] = [
             .none,
             .blockInvalid,
             .isInIbd,
@@ -514,7 +514,7 @@ struct Protowire_SubmitBlockResponseMessage: Sendable {
         
     }
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -523,53 +523,53 @@ struct Protowire_SubmitBlockResponseMessage: Sendable {
 /// Callers are expected to solve the block template and submit it using the submitBlock call
 ///
 /// See: SubmitBlockRequestMessage
-struct Protowire_GetBlockTemplateRequestMessage: Sendable {
+public struct Protowire_GetBlockTemplateRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// Which kaspa address should the coinbase block reward transaction pay into
-    var payAddress: String = String()
+    public var payAddress: String = String()
     
-    var extraData: String = String()
+    public var extraData: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetBlockTemplateResponseMessage: Sendable {
+public struct Protowire_GetBlockTemplateResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var block: Protowire_RpcBlock {
+    public var block: Protowire_RpcBlock {
         get {return _block ?? Protowire_RpcBlock()}
         set {_block = newValue}
     }
     /// Returns true if `block` has been explicitly set.
-    var hasBlock: Bool {return self._block != nil}
+    public var hasBlock: Bool {return self._block != nil}
     /// Clears the value of `block`. Subsequent reads from it will return its default value.
-    mutating func clearBlock() {self._block = nil}
+    public mutating func clearBlock() {self._block = nil}
     
     /// Whether kaspad thinks that it's synced.
     /// Callers are discouraged (but not forbidden) from solving blocks when kaspad is not synced.
     /// That is because when kaspad isn't in sync with the rest of the network there's a high
     /// chance the block will never be accepted, thus the solving effort would have been wasted.
-    var isSynced: Bool = false
+    public var isSynced: Bool = false
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _block: Protowire_RpcBlock? = nil
     fileprivate var _error: Protowire_RPCError? = nil
@@ -578,35 +578,35 @@ struct Protowire_GetBlockTemplateResponseMessage: Sendable {
 /// NotifyBlockAddedRequestMessage registers this connection for blockAdded notifications.
 ///
 /// See: BlockAddedNotificationMessage
-struct Protowire_NotifyBlockAddedRequestMessage: Sendable {
+public struct Protowire_NotifyBlockAddedRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyBlockAddedResponseMessage: Sendable {
+public struct Protowire_NotifyBlockAddedResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -615,156 +615,156 @@ struct Protowire_NotifyBlockAddedResponseMessage: Sendable {
 /// into the DAG.
 ///
 /// See: NotifyBlockAddedRequestMessage
-struct Protowire_BlockAddedNotificationMessage: Sendable {
+public struct Protowire_BlockAddedNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var block: Protowire_RpcBlock {
+    public var block: Protowire_RpcBlock {
         get {return _block ?? Protowire_RpcBlock()}
         set {_block = newValue}
     }
     /// Returns true if `block` has been explicitly set.
-    var hasBlock: Bool {return self._block != nil}
+    public var hasBlock: Bool {return self._block != nil}
     /// Clears the value of `block`. Subsequent reads from it will return its default value.
-    mutating func clearBlock() {self._block = nil}
+    public mutating func clearBlock() {self._block = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _block: Protowire_RpcBlock? = nil
 }
 
 /// GetPeerAddressesRequestMessage requests the list of known kaspad addresses in the
 /// current network. (mainnet, testnet, etc.)
-struct Protowire_GetPeerAddressesRequestMessage: Sendable {
+public struct Protowire_GetPeerAddressesRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetPeerAddressesResponseMessage: Sendable {
+public struct Protowire_GetPeerAddressesResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var addresses: [Protowire_GetPeerAddressesKnownAddressMessage] = []
+    public var addresses: [Protowire_GetPeerAddressesKnownAddressMessage] = []
     
-    var bannedAddresses: [Protowire_GetPeerAddressesKnownAddressMessage] = []
+    public var bannedAddresses: [Protowire_GetPeerAddressesKnownAddressMessage] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_GetPeerAddressesKnownAddressMessage: Sendable {
+public struct Protowire_GetPeerAddressesKnownAddressMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var addr: String = String()
+    public var addr: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// GetSinkRequestMessage requests the hash of the current virtual's
 /// selected parent.
-struct Protowire_GetSinkRequestMessage: Sendable {
+public struct Protowire_GetSinkRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetSinkResponseMessage: Sendable {
+public struct Protowire_GetSinkResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var sink: String = String()
+    public var sink: String = String()
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// GetMempoolEntryRequestMessage requests information about a specific transaction
 /// in the mempool.
-struct Protowire_GetMempoolEntryRequestMessage: Sendable {
+public struct Protowire_GetMempoolEntryRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// The transaction's TransactionID.
-    var txID: String = String()
+    public var txID: String = String()
     
-    var includeOrphanPool: Bool = false
+    public var includeOrphanPool: Bool = false
     
-    var filterTransactionPool: Bool = false
+    public var filterTransactionPool: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetMempoolEntryResponseMessage: Sendable {
+public struct Protowire_GetMempoolEntryResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var entry: Protowire_RpcMempoolEntry {
+    public var entry: Protowire_RpcMempoolEntry {
         get {return _entry ?? Protowire_RpcMempoolEntry()}
         set {_entry = newValue}
     }
     /// Returns true if `entry` has been explicitly set.
-    var hasEntry: Bool {return self._entry != nil}
+    public var hasEntry: Bool {return self._entry != nil}
     /// Clears the value of `entry`. Subsequent reads from it will return its default value.
-    mutating func clearEntry() {self._entry = nil}
+    public mutating func clearEntry() {self._entry = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _entry: Protowire_RpcMempoolEntry? = nil
     fileprivate var _error: Protowire_RPCError? = nil
@@ -772,39 +772,39 @@ struct Protowire_GetMempoolEntryResponseMessage: Sendable {
 
 /// GetMempoolEntriesRequestMessage requests information about all the transactions
 /// currently in the mempool.
-struct Protowire_GetMempoolEntriesRequestMessage: Sendable {
+public struct Protowire_GetMempoolEntriesRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var includeOrphanPool: Bool = false
+    public var includeOrphanPool: Bool = false
     
-    var filterTransactionPool: Bool = false
+    public var filterTransactionPool: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetMempoolEntriesResponseMessage: Sendable {
+public struct Protowire_GetMempoolEntriesResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var entries: [Protowire_RpcMempoolEntry] = []
+    public var entries: [Protowire_RpcMempoolEntry] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -814,18 +814,18 @@ public struct Protowire_RpcMempoolEntry: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var fee: UInt64 = 0
+    public var fee: UInt64 = 0
     
-    var transaction: Protowire_RpcTransaction {
+    public var transaction: Protowire_RpcTransaction {
         get {return _transaction ?? Protowire_RpcTransaction()}
         set {_transaction = newValue}
     }
     /// Returns true if `transaction` has been explicitly set.
-    var hasTransaction: Bool {return self._transaction != nil}
+    public var hasTransaction: Bool {return self._transaction != nil}
     /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-    mutating func clearTransaction() {self._transaction = nil}
+    public mutating func clearTransaction() {self._transaction = nil}
     
-    var isOrphan: Bool = false
+    public var isOrphan: Bool = false
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -836,210 +836,210 @@ public struct Protowire_RpcMempoolEntry: Sendable {
 
 /// GetConnectedPeerInfoRequestMessage requests information about all the p2p peers
 /// currently connected to this kaspad.
-struct Protowire_GetConnectedPeerInfoRequestMessage: Sendable {
+public struct Protowire_GetConnectedPeerInfoRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetConnectedPeerInfoResponseMessage: Sendable {
+public struct Protowire_GetConnectedPeerInfoResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var infos: [Protowire_GetConnectedPeerInfoMessage] = []
+    public var infos: [Protowire_GetConnectedPeerInfoMessage] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_GetConnectedPeerInfoMessage: Sendable {
+public struct Protowire_GetConnectedPeerInfoMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var id: String = String()
+    public var id: String = String()
     
-    var address: String = String()
+    public var address: String = String()
     
     /// How long did the last ping/pong exchange take
-    var lastPingDuration: Int64 = 0
+    public var lastPingDuration: Int64 = 0
     
     /// Whether this kaspad initiated the connection
-    var isOutbound: Bool = false
+    public var isOutbound: Bool = false
     
-    var timeOffset: Int64 = 0
+    public var timeOffset: Int64 = 0
     
-    var userAgent: String = String()
+    public var userAgent: String = String()
     
     /// The protocol version that this peer claims to support
-    var advertisedProtocolVersion: UInt32 = 0
+    public var advertisedProtocolVersion: UInt32 = 0
     
     /// The timestamp of when this peer connected to this kaspad
-    var timeConnected: Int64 = 0
+    public var timeConnected: Int64 = 0
     
     /// Whether this peer is the IBD peer (if IBD is running)
-    var isIbdPeer: Bool = false
+    public var isIbdPeer: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// AddPeerRequestMessage adds a peer to kaspad's outgoing connection list.
 /// This will, in most cases, result in kaspad connecting to said peer.
-struct Protowire_AddPeerRequestMessage: Sendable {
+public struct Protowire_AddPeerRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var address: String = String()
+    public var address: String = String()
     
     /// Whether to keep attempting to connect to this peer after disconnection
-    var isPermanent: Bool = false
+    public var isPermanent: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_AddPeerResponseMessage: Sendable {
+public struct Protowire_AddPeerResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// SubmitTransactionRequestMessage submits a transaction to the mempool
-struct Protowire_SubmitTransactionRequestMessage: Sendable {
+public struct Protowire_SubmitTransactionRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var transaction: Protowire_RpcTransaction {
+    public var transaction: Protowire_RpcTransaction {
         get {return _transaction ?? Protowire_RpcTransaction()}
         set {_transaction = newValue}
     }
     /// Returns true if `transaction` has been explicitly set.
-    var hasTransaction: Bool {return self._transaction != nil}
+    public var hasTransaction: Bool {return self._transaction != nil}
     /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-    mutating func clearTransaction() {self._transaction = nil}
+    public mutating func clearTransaction() {self._transaction = nil}
     
-    var allowOrphan: Bool = false
+    public var allowOrphan: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _transaction: Protowire_RpcTransaction? = nil
 }
 
-struct Protowire_SubmitTransactionResponseMessage: Sendable {
+public struct Protowire_SubmitTransactionResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// The transaction ID of the submitted transaction
-    var transactionID: String = String()
+    public var transactionID: String = String()
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// SubmitTransactionReplacementRequestMessage submits a transaction to the mempool, applying a mandatory Replace by Fee policy
-struct Protowire_SubmitTransactionReplacementRequestMessage: Sendable {
+public struct Protowire_SubmitTransactionReplacementRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var transaction: Protowire_RpcTransaction {
+    public var transaction: Protowire_RpcTransaction {
         get {return _transaction ?? Protowire_RpcTransaction()}
         set {_transaction = newValue}
     }
     /// Returns true if `transaction` has been explicitly set.
-    var hasTransaction: Bool {return self._transaction != nil}
+    public var hasTransaction: Bool {return self._transaction != nil}
     /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-    mutating func clearTransaction() {self._transaction = nil}
+    public mutating func clearTransaction() {self._transaction = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _transaction: Protowire_RpcTransaction? = nil
 }
 
-struct Protowire_SubmitTransactionReplacementResponseMessage: Sendable {
+public struct Protowire_SubmitTransactionReplacementResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// The transaction ID of the submitted transaction
-    var transactionID: String = String()
+    public var transactionID: String = String()
     
     /// The previous transaction replaced in the mempool by the newly submitted one
-    var replacedTransaction: Protowire_RpcTransaction {
+    public var replacedTransaction: Protowire_RpcTransaction {
         get {return _replacedTransaction ?? Protowire_RpcTransaction()}
         set {_replacedTransaction = newValue}
     }
     /// Returns true if `replacedTransaction` has been explicitly set.
-    var hasReplacedTransaction: Bool {return self._replacedTransaction != nil}
+    public var hasReplacedTransaction: Bool {return self._replacedTransaction != nil}
     /// Clears the value of `replacedTransaction`. Subsequent reads from it will return its default value.
-    mutating func clearReplacedTransaction() {self._replacedTransaction = nil}
+    public mutating func clearReplacedTransaction() {self._replacedTransaction = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _replacedTransaction: Protowire_RpcTransaction? = nil
     fileprivate var _error: Protowire_RPCError? = nil
@@ -1048,37 +1048,37 @@ struct Protowire_SubmitTransactionReplacementResponseMessage: Sendable {
 /// NotifyVirtualChainChangedRequestMessage registers this connection for virtualChainChanged notifications.
 ///
 /// See: VirtualChainChangedNotificationMessage
-struct Protowire_NotifyVirtualChainChangedRequestMessage: Sendable {
+public struct Protowire_NotifyVirtualChainChangedRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var includeAcceptedTransactionIds: Bool = false
+    public var includeAcceptedTransactionIds: Bool = false
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyVirtualChainChangedResponseMessage: Sendable {
+public struct Protowire_NotifyVirtualChainChangedResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -1093,13 +1093,13 @@ public struct Protowire_VirtualChainChangedNotificationMessage: Sendable {
     // methods supported on all messages.
     
     /// The chain blocks that were removed, in high-to-low order
-    var removedChainBlockHashes: [String] = []
+    public var removedChainBlockHashes: [String] = []
     
     /// The chain blocks that were added, in low-to-high order
-    var addedChainBlockHashes: [String] = []
+    public var addedChainBlockHashes: [String] = []
     
     /// Will be filled only if `includeAcceptedTransactionIds = true` in the notify request.
-    var acceptedTransactionIds: [Protowire_RpcAcceptedTransactionIds] = []
+    public var acceptedTransactionIds: [Protowire_RpcAcceptedTransactionIds] = []
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -1107,48 +1107,48 @@ public struct Protowire_VirtualChainChangedNotificationMessage: Sendable {
 }
 
 /// GetBlockRequestMessage requests information about a specific block
-struct Protowire_GetBlockRequestMessage: Sendable {
+public struct Protowire_GetBlockRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// The hash of the requested block
-    var hash: String = String()
+    public var hash: String = String()
     
     /// Whether to include transaction data in the response
-    var includeTransactions: Bool = false
+    public var includeTransactions: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetBlockResponseMessage: Sendable {
+public struct Protowire_GetBlockResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var block: Protowire_RpcBlock {
+    public var block: Protowire_RpcBlock {
         get {return _block ?? Protowire_RpcBlock()}
         set {_block = newValue}
     }
     /// Returns true if `block` has been explicitly set.
-    var hasBlock: Bool {return self._block != nil}
+    public var hasBlock: Bool {return self._block != nil}
     /// Clears the value of `block`. Subsequent reads from it will return its default value.
-    mutating func clearBlock() {self._block = nil}
+    public mutating func clearBlock() {self._block = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _block: Protowire_RpcBlock? = nil
     fileprivate var _error: Protowire_RPCError? = nil
@@ -1157,155 +1157,155 @@ struct Protowire_GetBlockResponseMessage: Sendable {
 /// GetSubnetworkRequestMessage requests information about a specific subnetwork
 ///
 /// Currently unimplemented
-struct Protowire_GetSubnetworkRequestMessage: Sendable {
+public struct Protowire_GetSubnetworkRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var subnetworkID: String = String()
+    public var subnetworkID: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetSubnetworkResponseMessage: Sendable {
+public struct Protowire_GetSubnetworkResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var gasLimit: UInt64 = 0
+    public var gasLimit: UInt64 = 0
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// GetVirtualChainFromBlockRequestMessage requests the virtual selected
 /// parent chain from some startHash to this kaspad's current virtual
-struct Protowire_GetVirtualChainFromBlockRequestMessage: Sendable {
+public struct Protowire_GetVirtualChainFromBlockRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var startHash: String = String()
+    public var startHash: String = String()
     
-    var includeAcceptedTransactionIds: Bool = false
+    public var includeAcceptedTransactionIds: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_RpcAcceptedTransactionIds: Sendable {
+public struct Protowire_RpcAcceptedTransactionIds: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var acceptingBlockHash: String = String()
+    public var acceptingBlockHash: String = String()
     
-    var acceptedTransactionIds: [String] = []
+    public var acceptedTransactionIds: [String] = []
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetVirtualChainFromBlockResponseMessage: Sendable {
+public struct Protowire_GetVirtualChainFromBlockResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// The chain blocks that were removed, in high-to-low order
-    var removedChainBlockHashes: [String] = []
+    public var removedChainBlockHashes: [String] = []
     
     /// The chain blocks that were added, in low-to-high order
-    var addedChainBlockHashes: [String] = []
+    public var addedChainBlockHashes: [String] = []
     
     /// The transactions accepted by each block in addedChainBlockHashes.
     /// Will be filled only if `includeAcceptedTransactionIds = true` in the request.
-    var acceptedTransactionIds: [Protowire_RpcAcceptedTransactionIds] = []
+    public var acceptedTransactionIds: [Protowire_RpcAcceptedTransactionIds] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// GetBlocksRequestMessage requests blocks between a certain block lowHash up to this
 /// kaspad's current virtual.
-struct Protowire_GetBlocksRequestMessage: Sendable {
+public struct Protowire_GetBlocksRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var lowHash: String = String()
+    public var lowHash: String = String()
     
-    var includeBlocks: Bool = false
+    public var includeBlocks: Bool = false
     
-    var includeTransactions: Bool = false
+    public var includeTransactions: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetBlocksResponseMessage: Sendable {
+public struct Protowire_GetBlocksResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var blockHashes: [String] = []
+    public var blockHashes: [String] = []
     
-    var blocks: [Protowire_RpcBlock] = []
+    public var blocks: [Protowire_RpcBlock] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// GetBlockCountRequestMessage requests the current number of blocks in this kaspad.
 /// Note that this number may decrease as pruning occurs.
-struct Protowire_GetBlockCountRequestMessage: Sendable {
+public struct Protowire_GetBlockCountRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 public struct Protowire_GetBlockCountResponseMessage: Sendable {
@@ -1313,18 +1313,18 @@ public struct Protowire_GetBlockCountResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var blockCount: UInt64 = 0
+    public var blockCount: UInt64 = 0
     
-    var headerCount: UInt64 = 0
+    public var headerCount: UInt64 = 0
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -1350,34 +1350,34 @@ public struct Protowire_GetBlockDagInfoResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var networkName: String = String()
+    public var networkName: String = String()
     
-    var blockCount: UInt64 = 0
+    public var blockCount: UInt64 = 0
     
-    var headerCount: UInt64 = 0
+    public var headerCount: UInt64 = 0
     
-    var tipHashes: [String] = []
+    public var tipHashes: [String] = []
     
-    var difficulty: Double = 0
+    public var difficulty: Double = 0
     
-    var pastMedianTime: Int64 = 0
+    public var pastMedianTime: Int64 = 0
     
-    var virtualParentHashes: [String] = []
+    public var virtualParentHashes: [String] = []
     
-    var pruningPointHash: String = String()
+    public var pruningPointHash: String = String()
     
-    var virtualDaaScore: UInt64 = 0
+    public var virtualDaaScore: UInt64 = 0
     
-    var sink: String = String()
+    public var sink: String = String()
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -1386,165 +1386,165 @@ public struct Protowire_GetBlockDagInfoResponseMessage: Sendable {
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_ResolveFinalityConflictRequestMessage: Sendable {
+public struct Protowire_ResolveFinalityConflictRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var finalityBlockHash: String = String()
+    public var finalityBlockHash: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_ResolveFinalityConflictResponseMessage: Sendable {
+public struct Protowire_ResolveFinalityConflictResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_NotifyFinalityConflictRequestMessage: Sendable {
+public struct Protowire_NotifyFinalityConflictRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyFinalityConflictResponseMessage: Sendable {
+public struct Protowire_NotifyFinalityConflictResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_FinalityConflictNotificationMessage: Sendable {
+public struct Protowire_FinalityConflictNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var violatingBlockHash: String = String()
+    public var violatingBlockHash: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_FinalityConflictResolvedNotificationMessage: Sendable {
+public struct Protowire_FinalityConflictResolvedNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var finalityBlockHash: String = String()
+    public var finalityBlockHash: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// ShutdownRequestMessage shuts down this kaspad.
-struct Protowire_ShutdownRequestMessage: Sendable {
+public struct Protowire_ShutdownRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_ShutdownResponseMessage: Sendable {
+public struct Protowire_ShutdownResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// GetHeadersRequestMessage requests headers between the given startHash and the
 /// current virtual, up to the given limit.
-struct Protowire_GetHeadersRequestMessage: Sendable {
+public struct Protowire_GetHeadersRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var startHash: String = String()
+    public var startHash: String = String()
     
-    var limit: UInt64 = 0
+    public var limit: UInt64 = 0
     
-    var isAscending: Bool = false
+    public var isAscending: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetHeadersResponseMessage: Sendable {
+public struct Protowire_GetHeadersResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var headers: [String] = []
+    public var headers: [String] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -1555,39 +1555,39 @@ struct Protowire_GetHeadersResponseMessage: Sendable {
 /// This call is only available when this kaspad was started with `--utxoindex`
 ///
 /// See: UtxosChangedNotificationMessage
-struct Protowire_NotifyUtxosChangedRequestMessage: Sendable {
+public struct Protowire_NotifyUtxosChangedRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
     /// UTXOs addresses to start/stop getting notified about
     /// Leave empty to start/stop all updates
-    var addresses: [String] = []
+    public var addresses: [String] = []
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyUtxosChangedResponseMessage: Sendable {
+public struct Protowire_NotifyUtxosChangedResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -1595,18 +1595,18 @@ struct Protowire_NotifyUtxosChangedResponseMessage: Sendable {
 /// UtxosChangedNotificationMessage is sent whenever the UTXO index had been updated.
 ///
 /// See: NotifyUtxosChangedRequestMessage
-struct Protowire_UtxosChangedNotificationMessage: Sendable {
+public struct Protowire_UtxosChangedNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var added: [Protowire_RpcUtxosByAddressesEntry] = []
+    public var added: [Protowire_RpcUtxosByAddressesEntry] = []
     
-    var removed: [Protowire_RpcUtxosByAddressesEntry] = []
+    public var removed: [Protowire_RpcUtxosByAddressesEntry] = []
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 public struct Protowire_RpcUtxosByAddressesEntry: Sendable {
@@ -1614,25 +1614,25 @@ public struct Protowire_RpcUtxosByAddressesEntry: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var address: String = String()
+    public var address: String = String()
     
-    var outpoint: Protowire_RpcOutpoint {
+    public var outpoint: Protowire_RpcOutpoint {
         get {return _outpoint ?? Protowire_RpcOutpoint()}
         set {_outpoint = newValue}
     }
     /// Returns true if `outpoint` has been explicitly set.
-    var hasOutpoint: Bool {return self._outpoint != nil}
+    public var hasOutpoint: Bool {return self._outpoint != nil}
     /// Clears the value of `outpoint`. Subsequent reads from it will return its default value.
-    mutating func clearOutpoint() {self._outpoint = nil}
+    public mutating func clearOutpoint() {self._outpoint = nil}
     
-    var utxoEntry: Protowire_RpcUtxoEntry {
+    public var utxoEntry: Protowire_RpcUtxoEntry {
         get {return _utxoEntry ?? Protowire_RpcUtxoEntry()}
         set {_utxoEntry = newValue}
     }
     /// Returns true if `utxoEntry` has been explicitly set.
-    var hasUtxoEntry: Bool {return self._utxoEntry != nil}
+    public var hasUtxoEntry: Bool {return self._utxoEntry != nil}
     /// Clears the value of `utxoEntry`. Subsequent reads from it will return its default value.
-    mutating func clearUtxoEntry() {self._utxoEntry = nil}
+    public mutating func clearUtxoEntry() {self._utxoEntry = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -1651,144 +1651,31 @@ public struct Protowire_RpcUtxosByAddressesEntry: Sendable {
 ///
 /// This message only exists for backward compatibility reason with kaspad and is deprecated.
 /// Use instead UtxosChangedNotificationMessage with command = NOTIFY_STOP.
-struct Protowire_StopNotifyingUtxosChangedRequestMessage: Sendable {
+public struct Protowire_StopNotifyingUtxosChangedRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var addresses: [String] = []
+    public var addresses: [String] = []
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_StopNotifyingUtxosChangedResponseMessage: Sendable {
+public struct Protowire_StopNotifyingUtxosChangedResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-    
-    fileprivate var _error: Protowire_RPCError? = nil
-}
-
-/// GetUtxosByAddressesRequestMessage requests all current UTXOs for the given kaspad addresses
-///
-/// This call is only available when this kaspad was started with `--utxoindex`
-struct Protowire_GetUtxosByAddressesRequestMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var addresses: [String] = []
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-}
-
-struct Protowire_GetUtxosByAddressesResponseMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var entries: [Protowire_RpcUtxosByAddressesEntry] = []
-    
-    var error: Protowire_RPCError {
-        get {return _error ?? Protowire_RPCError()}
-        set {_error = newValue}
-    }
-    /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
-    /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-    
-    fileprivate var _error: Protowire_RPCError? = nil
-}
-
-/// GetBalanceByAddressRequest returns the total balance in unspent transactions towards a given address
-///
-/// This call is only available when this kaspad was started with `--utxoindex`
-struct Protowire_GetBalanceByAddressRequestMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var address: String = String()
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-}
-
-struct Protowire_GetBalanceByAddressResponseMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var balance: UInt64 = 0
-    
-    var error: Protowire_RPCError {
-        get {return _error ?? Protowire_RPCError()}
-        set {_error = newValue}
-    }
-    /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
-    /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-    
-    fileprivate var _error: Protowire_RPCError? = nil
-}
-
-struct Protowire_GetBalancesByAddressesRequestMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var addresses: [String] = []
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-}
-
-public struct Protowire_RpcBalancesByAddressesEntry: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var address: String = String()
-    
-    var balance: UInt64 = 0
-    
-    var error: Protowire_RPCError {
-        get {return _error ?? Protowire_RPCError()}
-        set {_error = newValue}
-    }
-    /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
-    /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -1797,60 +1684,173 @@ public struct Protowire_RpcBalancesByAddressesEntry: Sendable {
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_GetBalancesByAddressesResponseMessage: Sendable {
+/// GetUtxosByAddressesRequestMessage requests all current UTXOs for the given kaspad addresses
+///
+/// This call is only available when this kaspad was started with `--utxoindex`
+public struct Protowire_GetUtxosByAddressesRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var entries: [Protowire_RpcBalancesByAddressesEntry] = []
+    public var addresses: [String] = []
     
-    var error: Protowire_RPCError {
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+}
+
+public struct Protowire_GetUtxosByAddressesResponseMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var entries: [Protowire_RpcUtxosByAddressesEntry] = []
+    
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
+    
+    fileprivate var _error: Protowire_RPCError? = nil
+}
+
+/// GetBalanceByAddressRequest returns the total balance in unspent transactions towards a given address
+///
+/// This call is only available when this kaspad was started with `--utxoindex`
+public struct Protowire_GetBalanceByAddressRequestMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var address: String = String()
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+}
+
+public struct Protowire_GetBalanceByAddressResponseMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var balance: UInt64 = 0
+    
+    public var error: Protowire_RPCError {
+        get {return _error ?? Protowire_RPCError()}
+        set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {return self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+    
+    fileprivate var _error: Protowire_RPCError? = nil
+}
+
+public struct Protowire_GetBalancesByAddressesRequestMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var addresses: [String] = []
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+}
+
+public struct Protowire_RpcBalancesByAddressesEntry: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var address: String = String()
+    
+    public var balance: UInt64 = 0
+    
+    public var error: Protowire_RPCError {
+        get {return _error ?? Protowire_RPCError()}
+        set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {return self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+    
+    fileprivate var _error: Protowire_RPCError? = nil
+}
+
+public struct Protowire_GetBalancesByAddressesResponseMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var entries: [Protowire_RpcBalancesByAddressesEntry] = []
+    
+    public var error: Protowire_RPCError {
+        get {return _error ?? Protowire_RPCError()}
+        set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {return self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
 /// GetSinkBlueScoreRequestMessage requests the blue score of the current selected parent
 /// of the virtual block.
-struct Protowire_GetSinkBlueScoreRequestMessage: Sendable {
+public struct Protowire_GetSinkBlueScoreRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetSinkBlueScoreResponseMessage: Sendable {
+public struct Protowire_GetSinkBlueScoreResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var blueScore: UInt64 = 0
+    public var blueScore: UInt64 = 0
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -1859,35 +1859,35 @@ struct Protowire_GetSinkBlueScoreResponseMessage: Sendable {
 /// sinkBlueScoreChanged notifications.
 ///
 /// See: SinkBlueScoreChangedNotificationMessage
-struct Protowire_NotifySinkBlueScoreChangedRequestMessage: Sendable {
+public struct Protowire_NotifySinkBlueScoreChangedRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifySinkBlueScoreChangedResponseMessage: Sendable {
+public struct Protowire_NotifySinkBlueScoreChangedResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -1896,51 +1896,51 @@ struct Protowire_NotifySinkBlueScoreChangedResponseMessage: Sendable {
 /// of the virtual's selected parent changes.
 ///
 /// See NotifySinkBlueScoreChangedRequestMessage
-struct Protowire_SinkBlueScoreChangedNotificationMessage: Sendable {
+public struct Protowire_SinkBlueScoreChangedNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var sinkBlueScore: UInt64 = 0
+    public var sinkBlueScore: UInt64 = 0
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// NotifyVirtualDaaScoreChangedRequestMessage registers this connection for
 /// virtualDaaScoreChanged notifications.
 ///
 /// See: VirtualDaaScoreChangedNotificationMessage
-struct Protowire_NotifyVirtualDaaScoreChangedRequestMessage: Sendable {
+public struct Protowire_NotifyVirtualDaaScoreChangedRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyVirtualDaaScoreChangedResponseMessage: Sendable {
+public struct Protowire_NotifyVirtualDaaScoreChangedResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -1949,16 +1949,16 @@ struct Protowire_NotifyVirtualDaaScoreChangedResponseMessage: Sendable {
 /// of the virtual changes.
 ///
 /// See NotifyVirtualDaaScoreChangedRequestMessage
-struct Protowire_VirtualDaaScoreChangedNotificationMessage: Sendable {
+public struct Protowire_VirtualDaaScoreChangedNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var virtualDaaScore: UInt64 = 0
+    public var virtualDaaScore: UInt64 = 0
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// NotifyPruningPointUtxoSetOverrideRequestMessage registers this connection for
@@ -1967,35 +1967,35 @@ struct Protowire_VirtualDaaScoreChangedNotificationMessage: Sendable {
 /// This call is only available when this kaspad was started with `--utxoindex`
 ///
 /// See: NotifyPruningPointUtxoSetOverrideResponseMessage
-struct Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage: Sendable {
+public struct Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: Sendable {
+public struct Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -2004,14 +2004,14 @@ struct Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: Sendable {
 /// resets due to pruning point change via IBD.
 ///
 /// See NotifyPruningPointUtxoSetOverrideRequestMessage
-struct Protowire_PruningPointUtxoSetOverrideNotificationMessage: Sendable {
+public struct Protowire_PruningPointUtxoSetOverrideNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 /// StopNotifyingPruningPointUtxoSetOverrideRequestMessage unregisters this connection for
@@ -2023,143 +2023,29 @@ struct Protowire_PruningPointUtxoSetOverrideNotificationMessage: Sendable {
 ///
 /// This message only exists for backward compatibility reason with kaspad and is deprecated.
 /// Use instead NotifyPruningPointUtxoSetOverrideRequestMessage with command = NOTIFY_STOP.
-struct Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage: Sendable {
+public struct Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage: Sendable {
+public struct Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-    
-    fileprivate var _error: Protowire_RPCError? = nil
-}
-
-/// BanRequestMessage bans the given ip.
-struct Protowire_BanRequestMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var ip: String = String()
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-}
-
-struct Protowire_BanResponseMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var error: Protowire_RPCError {
-        get {return _error ?? Protowire_RPCError()}
-        set {_error = newValue}
-    }
-    /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
-    /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-    
-    fileprivate var _error: Protowire_RPCError? = nil
-}
-
-/// UnbanRequestMessage unbans the given ip.
-struct Protowire_UnbanRequestMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var ip: String = String()
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-}
-
-struct Protowire_UnbanResponseMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var error: Protowire_RPCError {
-        get {return _error ?? Protowire_RPCError()}
-        set {_error = newValue}
-    }
-    /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
-    /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-    
-    fileprivate var _error: Protowire_RPCError? = nil
-}
-
-/// GetInfoRequestMessage returns info about the node.
-struct Protowire_GetInfoRequestMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
-}
-
-public struct Protowire_GetInfoResponseMessage: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-    
-    var p2PID: String = String()
-    
-    var mempoolSize: UInt64 = 0
-    
-    var serverVersion: String = String()
-    
-    var isUtxoIndexed: Bool = false
-    
-    var isSynced: Bool = false
-    
-    var hasNotifyCommand_p: Bool = false
-    
-    var hasMessageID_p: Bool = false
-    
-    var error: Protowire_RPCError {
-        get {return _error ?? Protowire_RPCError()}
-        set {_error = newValue}
-    }
-    /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
-    /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2168,39 +2054,153 @@ public struct Protowire_GetInfoResponseMessage: Sendable {
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_EstimateNetworkHashesPerSecondRequestMessage: Sendable {
+/// BanRequestMessage bans the given ip.
+public struct Protowire_BanRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var windowSize: UInt32 = 0
+    public var ip: String = String()
     
-    var startHash: String = String()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    init() {}
+    public init() {}
 }
 
-struct Protowire_EstimateNetworkHashesPerSecondResponseMessage: Sendable {
+public struct Protowire_BanResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var networkHashesPerSecond: UInt64 = 0
-    
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
+    
+    fileprivate var _error: Protowire_RPCError? = nil
+}
+
+/// UnbanRequestMessage unbans the given ip.
+public struct Protowire_UnbanRequestMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var ip: String = String()
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+}
+
+public struct Protowire_UnbanResponseMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var error: Protowire_RPCError {
+        get {return _error ?? Protowire_RPCError()}
+        set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {return self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+    
+    fileprivate var _error: Protowire_RPCError? = nil
+}
+
+/// GetInfoRequestMessage returns info about the node.
+public struct Protowire_GetInfoRequestMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+}
+
+public struct Protowire_GetInfoResponseMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var p2PID: String = String()
+    
+    public var mempoolSize: UInt64 = 0
+    
+    public var serverVersion: String = String()
+    
+    public var isUtxoIndexed: Bool = false
+    
+    public var isSynced: Bool = false
+    
+    public var hasNotifyCommand_p: Bool = false
+    
+    public var hasMessageID_p: Bool = false
+    
+    public var error: Protowire_RPCError {
+        get {return _error ?? Protowire_RPCError()}
+        set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {return self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+    
+    fileprivate var _error: Protowire_RPCError? = nil
+}
+
+public struct Protowire_EstimateNetworkHashesPerSecondRequestMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var windowSize: UInt32 = 0
+    
+    public var startHash: String = String()
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
+}
+
+public struct Protowire_EstimateNetworkHashesPerSecondResponseMessage: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+    
+    public var networkHashesPerSecond: UInt64 = 0
+    
+    public var error: Protowire_RPCError {
+        get {return _error ?? Protowire_RPCError()}
+        set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {return self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+    
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -2209,35 +2209,35 @@ struct Protowire_EstimateNetworkHashesPerSecondResponseMessage: Sendable {
 /// NewBlockTemplate notifications.
 ///
 /// See: NewBlockTemplateNotificationMessage
-struct Protowire_NotifyNewBlockTemplateRequestMessage: Sendable {
+public struct Protowire_NotifyNewBlockTemplateRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var command: Protowire_RpcNotifyCommand = .notifyStart
+    public var command: Protowire_RpcNotifyCommand = .notifyStart
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_NotifyNewBlockTemplateResponseMessage: Sendable {
+public struct Protowire_NotifyNewBlockTemplateResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -2246,14 +2246,14 @@ struct Protowire_NotifyNewBlockTemplateResponseMessage: Sendable {
 /// available for miners.
 ///
 /// See NotifyNewBlockTemplateRequestMessage
-struct Protowire_NewBlockTemplateNotificationMessage: Sendable {
+public struct Protowire_NewBlockTemplateNotificationMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
 public struct Protowire_RpcMempoolEntryByAddress: Sendable {
@@ -2261,11 +2261,11 @@ public struct Protowire_RpcMempoolEntryByAddress: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var address: String = String()
+    public var address: String = String()
     
-    var sending: [Protowire_RpcMempoolEntry] = []
+    public var sending: [Protowire_RpcMempoolEntry] = []
     
-    var receiving: [Protowire_RpcMempoolEntry] = []
+    public var receiving: [Protowire_RpcMempoolEntry] = []
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2277,11 +2277,11 @@ public struct Protowire_GetMempoolEntriesByAddressesRequestMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var addresses: [String] = []
+    public var addresses: [String] = []
     
-    var includeOrphanPool: Bool = false
+    public var includeOrphanPool: Bool = false
     
-    var filterTransactionPool: Bool = false
+    public var filterTransactionPool: Bool = false
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2293,16 +2293,16 @@ public struct Protowire_GetMempoolEntriesByAddressesResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var entries: [Protowire_RpcMempoolEntryByAddress] = []
+    public var entries: [Protowire_RpcMempoolEntryByAddress] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2327,18 +2327,18 @@ public struct Protowire_GetCoinSupplyResponseMessage: Sendable {
     // methods supported on all messages.
     
     /// note: this is a hard coded maxSupply, actual maxSupply is expected to deviate by upto -5%, but cannot be measured exactly.
-    var maxSompi: UInt64 = 0
+    public var maxSompi: UInt64 = 0
     
-    var circulatingSompi: UInt64 = 0
+    public var circulatingSompi: UInt64 = 0
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2362,14 +2362,14 @@ public struct Protowire_PingResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2383,23 +2383,23 @@ public struct Protowire_ProcessMetrics: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var residentSetSize: UInt64 = 0
+    public var residentSetSize: UInt64 = 0
     
-    var virtualMemorySize: UInt64 = 0
+    public var virtualMemorySize: UInt64 = 0
     
-    var coreNum: UInt32 = 0
+    public var coreNum: UInt32 = 0
     
-    var cpuUsage: Float = 0
+    public var cpuUsage: Float = 0
     
-    var fdNum: UInt32 = 0
+    public var fdNum: UInt32 = 0
     
-    var diskIoReadBytes: UInt64 = 0
+    public var diskIoReadBytes: UInt64 = 0
     
-    var diskIoWriteBytes: UInt64 = 0
+    public var diskIoWriteBytes: UInt64 = 0
     
-    var diskIoReadPerSec: Float = 0
+    public var diskIoReadPerSec: Float = 0
     
-    var diskIoWritePerSec: Float = 0
+    public var diskIoWritePerSec: Float = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2411,19 +2411,19 @@ public struct Protowire_ConnectionMetrics: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var borshLiveConnections: UInt32 = 0
+    public var borshLiveConnections: UInt32 = 0
     
-    var borshConnectionAttempts: UInt64 = 0
+    public var borshConnectionAttempts: UInt64 = 0
     
-    var borshHandshakeFailures: UInt64 = 0
+    public var borshHandshakeFailures: UInt64 = 0
     
-    var jsonLiveConnections: UInt32 = 0
+    public var jsonLiveConnections: UInt32 = 0
     
-    var jsonConnectionAttempts: UInt64 = 0
+    public var jsonConnectionAttempts: UInt64 = 0
     
-    var jsonHandshakeFailures: UInt64 = 0
+    public var jsonHandshakeFailures: UInt64 = 0
     
-    var activePeers: UInt32 = 0
+    public var activePeers: UInt32 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2435,21 +2435,21 @@ public struct Protowire_BandwidthMetrics: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var borshBytesTx: UInt64 = 0
+    public var borshBytesTx: UInt64 = 0
     
-    var borshBytesRx: UInt64 = 0
+    public var borshBytesRx: UInt64 = 0
     
-    var jsonBytesTx: UInt64 = 0
+    public var jsonBytesTx: UInt64 = 0
     
-    var jsonBytesRx: UInt64 = 0
+    public var jsonBytesRx: UInt64 = 0
     
-    var grpcP2PBytesTx: UInt64 = 0
+    public var grpcP2PBytesTx: UInt64 = 0
     
-    var grpcP2PBytesRx: UInt64 = 0
+    public var grpcP2PBytesRx: UInt64 = 0
     
-    var grpcUserBytesTx: UInt64 = 0
+    public var grpcUserBytesTx: UInt64 = 0
     
-    var grpcUserBytesRx: UInt64 = 0
+    public var grpcUserBytesRx: UInt64 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2461,35 +2461,35 @@ public struct Protowire_ConsensusMetrics: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var blocksSubmitted: UInt64 = 0
+    public var blocksSubmitted: UInt64 = 0
     
-    var headerCounts: UInt64 = 0
+    public var headerCounts: UInt64 = 0
     
-    var depCounts: UInt64 = 0
+    public var depCounts: UInt64 = 0
     
-    var bodyCounts: UInt64 = 0
+    public var bodyCounts: UInt64 = 0
     
-    var txsCounts: UInt64 = 0
+    public var txsCounts: UInt64 = 0
     
-    var chainBlockCounts: UInt64 = 0
+    public var chainBlockCounts: UInt64 = 0
     
-    var massCounts: UInt64 = 0
+    public var massCounts: UInt64 = 0
     
-    var blockCount: UInt64 = 0
+    public var blockCount: UInt64 = 0
     
-    var headerCount: UInt64 = 0
+    public var headerCount: UInt64 = 0
     
-    var mempoolSize: UInt64 = 0
+    public var mempoolSize: UInt64 = 0
     
-    var tipHashesCount: UInt32 = 0
+    public var tipHashesCount: UInt32 = 0
     
-    var difficulty: Double = 0
+    public var difficulty: Double = 0
     
-    var pastMedianTime: UInt64 = 0
+    public var pastMedianTime: UInt64 = 0
     
-    var virtualParentHashesCount: UInt32 = 0
+    public var virtualParentHashesCount: UInt32 = 0
     
-    var virtualDaaScore: UInt64 = 0
+    public var virtualDaaScore: UInt64 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2501,7 +2501,7 @@ public struct Protowire_StorageMetrics: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var storageSizeBytes: UInt64 = 0
+    public var storageSizeBytes: UInt64 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2513,7 +2513,7 @@ public struct Protowire_GetConnectionsRequestMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var includeProfileData: Bool = false
+    public var includeProfileData: Bool = false
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2525,9 +2525,9 @@ public struct Protowire_ConnectionsProfileData: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var cpuUsage: Double = 0
+    public var cpuUsage: Double = 0
     
-    var memoryUsage: UInt64 = 0
+    public var memoryUsage: UInt64 = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2539,27 +2539,27 @@ public struct Protowire_GetConnectionsResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var clients: UInt32 = 0
+    public var clients: UInt32 = 0
     
-    var peers: UInt32 = 0
+    public var peers: UInt32 = 0
     
-    var profileData: Protowire_ConnectionsProfileData {
+    public var profileData: Protowire_ConnectionsProfileData {
         get {return _profileData ?? Protowire_ConnectionsProfileData()}
         set {_profileData = newValue}
     }
     /// Returns true if `profileData` has been explicitly set.
-    var hasProfileData: Bool {return self._profileData != nil}
+    public var hasProfileData: Bool {return self._profileData != nil}
     /// Clears the value of `profileData`. Subsequent reads from it will return its default value.
-    mutating func clearProfileData() {self._profileData = nil}
+    public mutating func clearProfileData() {self._profileData = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2584,26 +2584,26 @@ public struct Protowire_GetSystemInfoResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var version: String = String()
+    public var version: String = String()
     
-    var systemID: String = String()
+    public var systemID: String = String()
     
-    var gitHash: String = String()
+    public var gitHash: String = String()
     
-    var coreNum: UInt32 = 0
+    public var coreNum: UInt32 = 0
     
-    var totalMemory: UInt64 = 0
+    public var totalMemory: UInt64 = 0
     
-    var fdLimit: UInt32 = 0
+    public var fdLimit: UInt32 = 0
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2617,17 +2617,17 @@ public struct Protowire_GetMetricsRequestMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var processMetrics: Bool = false
+    public var processMetrics: Bool = false
     
-    var connectionMetrics: Bool = false
+    public var connectionMetrics: Bool = false
     
-    var bandwidthMetrics: Bool = false
+    public var bandwidthMetrics: Bool = false
     
-    var consensusMetrics: Bool = false
+    public var consensusMetrics: Bool = false
     
-    var storageMetrics: Bool = false
+    public var storageMetrics: Bool = false
     
-    var customMetrics: Bool = false
+    public var customMetrics: Bool = false
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2639,64 +2639,64 @@ public struct Protowire_GetMetricsResponseMessage: @unchecked Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var serverTime: UInt64 {
+    public var serverTime: UInt64 {
         get {return _storage._serverTime}
         set {_uniqueStorage()._serverTime = newValue}
     }
     
-    var processMetrics: Protowire_ProcessMetrics {
+    public var processMetrics: Protowire_ProcessMetrics {
         get {return _storage._processMetrics ?? Protowire_ProcessMetrics()}
         set {_uniqueStorage()._processMetrics = newValue}
     }
     /// Returns true if `processMetrics` has been explicitly set.
-    var hasProcessMetrics: Bool {return _storage._processMetrics != nil}
+    public var hasProcessMetrics: Bool {return _storage._processMetrics != nil}
     /// Clears the value of `processMetrics`. Subsequent reads from it will return its default value.
-    mutating func clearProcessMetrics() {_uniqueStorage()._processMetrics = nil}
+    public mutating func clearProcessMetrics() {_uniqueStorage()._processMetrics = nil}
     
-    var connectionMetrics: Protowire_ConnectionMetrics {
+    public var connectionMetrics: Protowire_ConnectionMetrics {
         get {return _storage._connectionMetrics ?? Protowire_ConnectionMetrics()}
         set {_uniqueStorage()._connectionMetrics = newValue}
     }
     /// Returns true if `connectionMetrics` has been explicitly set.
-    var hasConnectionMetrics: Bool {return _storage._connectionMetrics != nil}
+    public var hasConnectionMetrics: Bool {return _storage._connectionMetrics != nil}
     /// Clears the value of `connectionMetrics`. Subsequent reads from it will return its default value.
-    mutating func clearConnectionMetrics() {_uniqueStorage()._connectionMetrics = nil}
+    public mutating func clearConnectionMetrics() {_uniqueStorage()._connectionMetrics = nil}
     
-    var bandwidthMetrics: Protowire_BandwidthMetrics {
+    public var bandwidthMetrics: Protowire_BandwidthMetrics {
         get {return _storage._bandwidthMetrics ?? Protowire_BandwidthMetrics()}
         set {_uniqueStorage()._bandwidthMetrics = newValue}
     }
     /// Returns true if `bandwidthMetrics` has been explicitly set.
-    var hasBandwidthMetrics: Bool {return _storage._bandwidthMetrics != nil}
+    public var hasBandwidthMetrics: Bool {return _storage._bandwidthMetrics != nil}
     /// Clears the value of `bandwidthMetrics`. Subsequent reads from it will return its default value.
-    mutating func clearBandwidthMetrics() {_uniqueStorage()._bandwidthMetrics = nil}
+    public mutating func clearBandwidthMetrics() {_uniqueStorage()._bandwidthMetrics = nil}
     
-    var consensusMetrics: Protowire_ConsensusMetrics {
+    public var consensusMetrics: Protowire_ConsensusMetrics {
         get {return _storage._consensusMetrics ?? Protowire_ConsensusMetrics()}
         set {_uniqueStorage()._consensusMetrics = newValue}
     }
     /// Returns true if `consensusMetrics` has been explicitly set.
-    var hasConsensusMetrics: Bool {return _storage._consensusMetrics != nil}
+    public var hasConsensusMetrics: Bool {return _storage._consensusMetrics != nil}
     /// Clears the value of `consensusMetrics`. Subsequent reads from it will return its default value.
-    mutating func clearConsensusMetrics() {_uniqueStorage()._consensusMetrics = nil}
+    public mutating func clearConsensusMetrics() {_uniqueStorage()._consensusMetrics = nil}
     
-    var storageMetrics: Protowire_StorageMetrics {
+    public var storageMetrics: Protowire_StorageMetrics {
         get {return _storage._storageMetrics ?? Protowire_StorageMetrics()}
         set {_uniqueStorage()._storageMetrics = newValue}
     }
     /// Returns true if `storageMetrics` has been explicitly set.
-    var hasStorageMetrics: Bool {return _storage._storageMetrics != nil}
+    public var hasStorageMetrics: Bool {return _storage._storageMetrics != nil}
     /// Clears the value of `storageMetrics`. Subsequent reads from it will return its default value.
-    mutating func clearStorageMetrics() {_uniqueStorage()._storageMetrics = nil}
+    public mutating func clearStorageMetrics() {_uniqueStorage()._storageMetrics = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _storage._error ?? Protowire_RPCError()}
         set {_uniqueStorage()._error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return _storage._error != nil}
+    public var hasError: Bool {return _storage._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {_uniqueStorage()._error = nil}
+    public mutating func clearError() {_uniqueStorage()._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2720,28 +2720,28 @@ public struct Protowire_GetServerInfoResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var rpcApiVersion: UInt32 = 0
+    public var rpcApiVersion: UInt32 = 0
     
-    var rpcApiRevision: UInt32 = 0
+    public var rpcApiRevision: UInt32 = 0
     
-    var serverVersion: String = String()
+    public var serverVersion: String = String()
     
-    var networkID: String = String()
+    public var networkID: String = String()
     
-    var hasUtxoIndex_p: Bool = false
+    public var hasUtxoIndex_p: Bool = false
     
-    var isSynced: Bool = false
+    public var isSynced: Bool = false
     
-    var virtualDaaScore: UInt64 = 0
+    public var virtualDaaScore: UInt64 = 0
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2765,16 +2765,16 @@ public struct Protowire_GetSyncStatusResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var isSynced: Bool = false
+    public var isSynced: Bool = false
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2788,7 +2788,7 @@ public struct Protowire_GetDaaScoreTimestampEstimateRequestMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var daaScores: [UInt64] = []
+    public var daaScores: [UInt64] = []
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2800,16 +2800,16 @@ public struct Protowire_GetDaaScoreTimestampEstimateResponseMessage: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var timestamps: [UInt64] = []
+    public var timestamps: [UInt64] = []
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2824,9 +2824,9 @@ public struct Protowire_RpcFeerateBucket: Sendable {
     // methods supported on all messages.
     
     /// Fee/mass of a transaction in `sompi/gram` units
-    var feerate: Double = 0
+    public var feerate: Double = 0
     
-    var estimatedSeconds: Double = 0
+    public var estimatedSeconds: Double = 0
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2849,20 +2849,20 @@ public struct Protowire_RpcFeeEstimate: Sendable {
         set {_priorityBucket = newValue}
     }
     /// Returns true if `priorityBucket` has been explicitly set.
-    var hasPriorityBucket: Bool {return self._priorityBucket != nil}
+    public var hasPriorityBucket: Bool {return self._priorityBucket != nil}
     /// Clears the value of `priorityBucket`. Subsequent reads from it will return its default value.
-    mutating func clearPriorityBucket() {self._priorityBucket = nil}
+    public mutating func clearPriorityBucket() {self._priorityBucket = nil}
     
     /// A vector of *normal* priority feerate values. The first value of this vector is guaranteed to exist and
     /// provide an estimation for sub-*minute* DAG inclusion. All other values will have shorter estimation
     /// times than all `low_bucket` values. Therefor by chaining `[priority] | normal | low` and interpolating
-    /// between them, one can compose a complete feerate function on the client side. The API makes an effort
+    /// between them, one can compose a complete feerate public function on the client side. The API makes an effort
     /// to sample enough "interesting" points on the feerate-to-time curve, so that the interpolation is meaningful.
-    var normalBuckets: [Protowire_RpcFeerateBucket] = []
+    public var normalBuckets: [Protowire_RpcFeerateBucket] = []
     
     /// A vector of *low* priority feerate values. The first value of this vector is guaranteed to
     /// exist and provide an estimation for sub-*hour* DAG inclusion.
-    var lowBuckets: [Protowire_RpcFeerateBucket] = []
+    public var lowBuckets: [Protowire_RpcFeerateBucket] = []
     
     public var unknownFields = SwiftProtobuf.UnknownStorage()
     
@@ -2871,153 +2871,153 @@ public struct Protowire_RpcFeeEstimate: Sendable {
     fileprivate var _priorityBucket: Protowire_RpcFeerateBucket? = nil
 }
 
-struct Protowire_RpcFeeEstimateVerboseExperimentalData: Sendable {
+public struct Protowire_RpcFeeEstimateVerboseExperimentalData: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var mempoolReadyTransactionsCount: UInt64 = 0
+    public var mempoolReadyTransactionsCount: UInt64 = 0
     
-    var mempoolReadyTransactionsTotalMass: UInt64 = 0
+    public var mempoolReadyTransactionsTotalMass: UInt64 = 0
     
-    var networkMassPerSecond: UInt64 = 0
+    public var networkMassPerSecond: UInt64 = 0
     
-    var nextBlockTemplateFeerateMin: Double = 0
+    public var nextBlockTemplateFeerateMin: Double = 0
     
-    var nextBlockTemplateFeerateMedian: Double = 0
+    public var nextBlockTemplateFeerateMedian: Double = 0
     
-    var nextBlockTemplateFeerateMax: Double = 0
+    public var nextBlockTemplateFeerateMax: Double = 0
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetFeeEstimateRequestMessage: Sendable {
+public struct Protowire_GetFeeEstimateRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetFeeEstimateResponseMessage: Sendable {
+public struct Protowire_GetFeeEstimateResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var estimate: Protowire_RpcFeeEstimate {
+    public var estimate: Protowire_RpcFeeEstimate {
         get {return _estimate ?? Protowire_RpcFeeEstimate()}
         set {_estimate = newValue}
     }
     /// Returns true if `estimate` has been explicitly set.
-    var hasEstimate: Bool {return self._estimate != nil}
+    public var hasEstimate: Bool {return self._estimate != nil}
     /// Clears the value of `estimate`. Subsequent reads from it will return its default value.
-    mutating func clearEstimate() {self._estimate = nil}
+    public mutating func clearEstimate() {self._estimate = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _estimate: Protowire_RpcFeeEstimate? = nil
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_GetFeeEstimateExperimentalRequestMessage: Sendable {
+public struct Protowire_GetFeeEstimateExperimentalRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var verbose: Bool = false
+    public var verbose: Bool = false
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetFeeEstimateExperimentalResponseMessage: Sendable {
+public struct Protowire_GetFeeEstimateExperimentalResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var estimate: Protowire_RpcFeeEstimate {
+    public var estimate: Protowire_RpcFeeEstimate {
         get {return _estimate ?? Protowire_RpcFeeEstimate()}
         set {_estimate = newValue}
     }
     /// Returns true if `estimate` has been explicitly set.
-    var hasEstimate: Bool {return self._estimate != nil}
+    public var hasEstimate: Bool {return self._estimate != nil}
     /// Clears the value of `estimate`. Subsequent reads from it will return its default value.
-    mutating func clearEstimate() {self._estimate = nil}
+    public mutating func clearEstimate() {self._estimate = nil}
     
-    var verbose: Protowire_RpcFeeEstimateVerboseExperimentalData {
+    public var verbose: Protowire_RpcFeeEstimateVerboseExperimentalData {
         get {return _verbose ?? Protowire_RpcFeeEstimateVerboseExperimentalData()}
         set {_verbose = newValue}
     }
     /// Returns true if `verbose` has been explicitly set.
-    var hasVerbose: Bool {return self._verbose != nil}
+    public var hasVerbose: Bool {return self._verbose != nil}
     /// Clears the value of `verbose`. Subsequent reads from it will return its default value.
-    mutating func clearVerbose() {self._verbose = nil}
+    public mutating func clearVerbose() {self._verbose = nil}
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _estimate: Protowire_RpcFeeEstimate? = nil
     fileprivate var _verbose: Protowire_RpcFeeEstimateVerboseExperimentalData? = nil
     fileprivate var _error: Protowire_RPCError? = nil
 }
 
-struct Protowire_GetCurrentBlockColorRequestMessage: Sendable {
+public struct Protowire_GetCurrentBlockColorRequestMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var hash: String = String()
+    public var hash: String = String()
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
 }
 
-struct Protowire_GetCurrentBlockColorResponseMessage: Sendable {
+public struct Protowire_GetCurrentBlockColorResponseMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
     
-    var blue: Bool = false
+    public var blue: Bool = false
     
-    var error: Protowire_RPCError {
+    public var error: Protowire_RPCError {
         get {return _error ?? Protowire_RPCError()}
         set {_error = newValue}
     }
     /// Returns true if `error` has been explicitly set.
-    var hasError: Bool {return self._error != nil}
+    public var hasError: Bool {return self._error != nil}
     /// Clears the value of `error`. Subsequent reads from it will return its default value.
-    mutating func clearError() {self._error = nil}
+    public mutating func clearError() {self._error = nil}
     
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
     
-    init() {}
+    public init() {}
     
     fileprivate var _error: Protowire_RPCError? = nil
 }
@@ -3027,19 +3027,19 @@ struct Protowire_GetCurrentBlockColorResponseMessage: Sendable {
 fileprivate let _protobuf_package = "protowire"
 
 extension Protowire_RpcNotifyCommand: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         0: .same(proto: "NOTIFY_START"),
         1: .same(proto: "NOTIFY_STOP"),
     ]
 }
 
 extension Protowire_RPCError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RPCError"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RPCError"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "message"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3051,14 +3051,14 @@ extension Protowire_RPCError: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.message.isEmpty {
             try visitor.visitSingularStringField(value: self.message, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RPCError, rhs: Protowire_RPCError) -> Bool {
+    public static func ==(lhs: Protowire_RPCError, rhs: Protowire_RPCError) -> Bool {
         if lhs.message != rhs.message {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -3073,10 +3073,10 @@ extension Protowire_RpcBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
         3: .same(proto: "verboseData"),
     ]
     
-    fileprivate class _StorageClass {
-        var _header: Protowire_RpcBlockHeader? = nil
-        var _transactions: [Protowire_RpcTransaction] = []
-        var _verboseData: Protowire_RpcBlockVerboseData? = nil
+    public class _StorageClass {
+        public var _header: Protowire_RpcBlockHeader? = nil
+        public var _transactions: [Protowire_RpcTransaction] = []
+        public var _verboseData: Protowire_RpcBlockVerboseData? = nil
         
 #if swift(>=5.10)
         // This property is used as the initial default value for new instances of the type.
@@ -3085,10 +3085,10 @@ extension Protowire_RpcBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
         // hence, it is safe to mark this as `nonisolated(unsafe)`.
         static nonisolated(unsafe) let defaultInstance = _StorageClass()
 #else
-        static let defaultInstance = _StorageClass()
+        public static let defaultInstance = _StorageClass()
 #endif
         
-        private init() {}
+        public init() {}
         
         init(copying source: _StorageClass) {
             _header = source._header
@@ -3097,14 +3097,14 @@ extension Protowire_RpcBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
         }
     }
     
-    fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    public mutating func _uniqueStorage() -> _StorageClass {
         if !isKnownUniquelyReferenced(&_storage) {
             _storage = _StorageClass(copying: _storage)
         }
         return _storage
     }
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         _ = _uniqueStorage()
         try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
             while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3158,8 +3158,8 @@ extension Protowire_RpcBlock: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
 }
 
 extension Protowire_RpcBlockHeader: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcBlockHeader"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcBlockHeader"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "version"),
         12: .same(proto: "parents"),
         3: .same(proto: "hashMerkleRoot"),
@@ -3174,7 +3174,7 @@ extension Protowire_RpcBlockHeader: SwiftProtobuf.Message, SwiftProtobuf._Messag
         13: .same(proto: "blueScore"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3197,7 +3197,7 @@ extension Protowire_RpcBlockHeader: SwiftProtobuf.Message, SwiftProtobuf._Messag
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.version != 0 {
             try visitor.visitSingularUInt32Field(value: self.version, fieldNumber: 1)
         }
@@ -3237,7 +3237,7 @@ extension Protowire_RpcBlockHeader: SwiftProtobuf.Message, SwiftProtobuf._Messag
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcBlockHeader, rhs: Protowire_RpcBlockHeader) -> Bool {
+    public static func ==(lhs: Protowire_RpcBlockHeader, rhs: Protowire_RpcBlockHeader) -> Bool {
         if lhs.version != rhs.version {return false}
         if lhs.parents != rhs.parents {return false}
         if lhs.hashMerkleRoot != rhs.hashMerkleRoot {return false}
@@ -3256,12 +3256,12 @@ extension Protowire_RpcBlockHeader: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension Protowire_RpcBlockLevelParents: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcBlockLevelParents"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcBlockLevelParents"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "parentHashes"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3273,14 +3273,14 @@ extension Protowire_RpcBlockLevelParents: SwiftProtobuf.Message, SwiftProtobuf._
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.parentHashes.isEmpty {
             try visitor.visitRepeatedStringField(value: self.parentHashes, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcBlockLevelParents, rhs: Protowire_RpcBlockLevelParents) -> Bool {
+    static public func ==(lhs: Protowire_RpcBlockLevelParents, rhs: Protowire_RpcBlockLevelParents) -> Bool {
         if lhs.parentHashes != rhs.parentHashes {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -3288,8 +3288,8 @@ extension Protowire_RpcBlockLevelParents: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Protowire_RpcBlockVerboseData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcBlockVerboseData"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcBlockVerboseData"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "hash"),
         11: .same(proto: "difficulty"),
         13: .same(proto: "selectedParentHash"),
@@ -3302,7 +3302,7 @@ extension Protowire_RpcBlockVerboseData: SwiftProtobuf.Message, SwiftProtobuf._M
         20: .same(proto: "isChainBlock"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3323,7 +3323,7 @@ extension Protowire_RpcBlockVerboseData: SwiftProtobuf.Message, SwiftProtobuf._M
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.hash.isEmpty {
             try visitor.visitSingularStringField(value: self.hash, fieldNumber: 1)
         }
@@ -3357,7 +3357,7 @@ extension Protowire_RpcBlockVerboseData: SwiftProtobuf.Message, SwiftProtobuf._M
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcBlockVerboseData, rhs: Protowire_RpcBlockVerboseData) -> Bool {
+    static public func ==(lhs: Protowire_RpcBlockVerboseData, rhs: Protowire_RpcBlockVerboseData) -> Bool {
         if lhs.hash != rhs.hash {return false}
         if lhs.difficulty != rhs.difficulty {return false}
         if lhs.selectedParentHash != rhs.selectedParentHash {return false}
@@ -3387,7 +3387,7 @@ extension Protowire_RpcTransaction: SwiftProtobuf.Message, SwiftProtobuf._Messag
         10: .same(proto: "mass"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3467,7 +3467,7 @@ extension Protowire_RpcTransactionInput: SwiftProtobuf.Message, SwiftProtobuf._M
         4: .same(proto: "verboseData"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3524,7 +3524,7 @@ extension Protowire_RpcScriptPublicKey: SwiftProtobuf.Message, SwiftProtobuf._Me
         2: .same(proto: "scriptPublicKey"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3563,7 +3563,7 @@ extension Protowire_RpcTransactionOutput: SwiftProtobuf.Message, SwiftProtobuf._
         3: .same(proto: "verboseData"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3610,7 +3610,7 @@ extension Protowire_RpcOutpoint: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
         2: .same(proto: "index"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3650,7 +3650,7 @@ extension Protowire_RpcUtxoEntry: SwiftProtobuf.Message, SwiftProtobuf._MessageI
         4: .same(proto: "isCoinbase"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3705,7 +3705,7 @@ extension Protowire_RpcTransactionVerboseData: SwiftProtobuf.Message, SwiftProto
         14: .same(proto: "blockTime"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3752,32 +3752,32 @@ extension Protowire_RpcTransactionVerboseData: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Protowire_RpcTransactionInputVerboseData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcTransactionInputVerboseData"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".RpcTransactionInputVerboseData"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcTransactionInputVerboseData, rhs: Protowire_RpcTransactionInputVerboseData) -> Bool {
+    static public func ==(lhs: Protowire_RpcTransactionInputVerboseData, rhs: Protowire_RpcTransactionInputVerboseData) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_RpcTransactionOutputVerboseData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcTransactionOutputVerboseData"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcTransactionOutputVerboseData"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         5: .same(proto: "scriptPublicKeyType"),
         6: .same(proto: "scriptPublicKeyAddress"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3790,7 +3790,7 @@ extension Protowire_RpcTransactionOutputVerboseData: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.scriptPublicKeyType.isEmpty {
             try visitor.visitSingularStringField(value: self.scriptPublicKeyType, fieldNumber: 5)
         }
@@ -3800,7 +3800,7 @@ extension Protowire_RpcTransactionOutputVerboseData: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcTransactionOutputVerboseData, rhs: Protowire_RpcTransactionOutputVerboseData) -> Bool {
+    static public func ==(lhs: Protowire_RpcTransactionOutputVerboseData, rhs: Protowire_RpcTransactionOutputVerboseData) -> Bool {
         if lhs.scriptPublicKeyType != rhs.scriptPublicKeyType {return false}
         if lhs.scriptPublicKeyAddress != rhs.scriptPublicKeyAddress {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -3809,32 +3809,32 @@ extension Protowire_RpcTransactionOutputVerboseData: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_GetCurrentNetworkRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetCurrentNetworkRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetCurrentNetworkRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetCurrentNetworkRequestMessage, rhs: Protowire_GetCurrentNetworkRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetCurrentNetworkRequestMessage, rhs: Protowire_GetCurrentNetworkRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetCurrentNetworkResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetCurrentNetworkResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetCurrentNetworkResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "currentNetwork"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3847,7 +3847,7 @@ extension Protowire_GetCurrentNetworkResponseMessage: SwiftProtobuf.Message, Swi
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -3861,7 +3861,7 @@ extension Protowire_GetCurrentNetworkResponseMessage: SwiftProtobuf.Message, Swi
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetCurrentNetworkResponseMessage, rhs: Protowire_GetCurrentNetworkResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetCurrentNetworkResponseMessage, rhs: Protowire_GetCurrentNetworkResponseMessage) -> Bool {
         if lhs.currentNetwork != rhs.currentNetwork {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -3870,13 +3870,13 @@ extension Protowire_GetCurrentNetworkResponseMessage: SwiftProtobuf.Message, Swi
 }
 
 extension Protowire_SubmitBlockRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SubmitBlockRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SubmitBlockRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         2: .same(proto: "block"),
         3: .same(proto: "allowNonDAABlocks"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3889,7 +3889,7 @@ extension Protowire_SubmitBlockRequestMessage: SwiftProtobuf.Message, SwiftProto
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -3903,7 +3903,7 @@ extension Protowire_SubmitBlockRequestMessage: SwiftProtobuf.Message, SwiftProto
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SubmitBlockRequestMessage, rhs: Protowire_SubmitBlockRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_SubmitBlockRequestMessage, rhs: Protowire_SubmitBlockRequestMessage) -> Bool {
         if lhs._block != rhs._block {return false}
         if lhs.allowNonDaablocks != rhs.allowNonDaablocks {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -3912,13 +3912,13 @@ extension Protowire_SubmitBlockRequestMessage: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Protowire_SubmitBlockResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SubmitBlockResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SubmitBlockResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "rejectReason"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3931,7 +3931,7 @@ extension Protowire_SubmitBlockResponseMessage: SwiftProtobuf.Message, SwiftProt
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -3945,7 +3945,7 @@ extension Protowire_SubmitBlockResponseMessage: SwiftProtobuf.Message, SwiftProt
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SubmitBlockResponseMessage, rhs: Protowire_SubmitBlockResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_SubmitBlockResponseMessage, rhs: Protowire_SubmitBlockResponseMessage) -> Bool {
         if lhs.rejectReason != rhs.rejectReason {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -3954,7 +3954,7 @@ extension Protowire_SubmitBlockResponseMessage: SwiftProtobuf.Message, SwiftProt
 }
 
 extension Protowire_SubmitBlockResponseMessage.RejectReason: SwiftProtobuf._ProtoNameProviding {
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         0: .same(proto: "NONE"),
         1: .same(proto: "BLOCK_INVALID"),
         2: .same(proto: "IS_IN_IBD"),
@@ -3962,13 +3962,13 @@ extension Protowire_SubmitBlockResponseMessage.RejectReason: SwiftProtobuf._Prot
 }
 
 extension Protowire_GetBlockTemplateRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockTemplateRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockTemplateRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "payAddress"),
         2: .same(proto: "extraData"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -3981,7 +3981,7 @@ extension Protowire_GetBlockTemplateRequestMessage: SwiftProtobuf.Message, Swift
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.payAddress.isEmpty {
             try visitor.visitSingularStringField(value: self.payAddress, fieldNumber: 1)
         }
@@ -3991,7 +3991,7 @@ extension Protowire_GetBlockTemplateRequestMessage: SwiftProtobuf.Message, Swift
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockTemplateRequestMessage, rhs: Protowire_GetBlockTemplateRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlockTemplateRequestMessage, rhs: Protowire_GetBlockTemplateRequestMessage) -> Bool {
         if lhs.payAddress != rhs.payAddress {return false}
         if lhs.extraData != rhs.extraData {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4000,14 +4000,14 @@ extension Protowire_GetBlockTemplateRequestMessage: SwiftProtobuf.Message, Swift
 }
 
 extension Protowire_GetBlockTemplateResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockTemplateResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockTemplateResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         3: .same(proto: "block"),
         2: .same(proto: "isSynced"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4021,7 +4021,7 @@ extension Protowire_GetBlockTemplateResponseMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4038,7 +4038,7 @@ extension Protowire_GetBlockTemplateResponseMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockTemplateResponseMessage, rhs: Protowire_GetBlockTemplateResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlockTemplateResponseMessage, rhs: Protowire_GetBlockTemplateResponseMessage) -> Bool {
         if lhs._block != rhs._block {return false}
         if lhs.isSynced != rhs.isSynced {return false}
         if lhs._error != rhs._error {return false}
@@ -4048,12 +4048,12 @@ extension Protowire_GetBlockTemplateResponseMessage: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_NotifyBlockAddedRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyBlockAddedRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyBlockAddedRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4065,14 +4065,14 @@ extension Protowire_NotifyBlockAddedRequestMessage: SwiftProtobuf.Message, Swift
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.command != .notifyStart {
             try visitor.visitSingularEnumField(value: self.command, fieldNumber: 101)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyBlockAddedRequestMessage, rhs: Protowire_NotifyBlockAddedRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyBlockAddedRequestMessage, rhs: Protowire_NotifyBlockAddedRequestMessage) -> Bool {
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4080,12 +4080,12 @@ extension Protowire_NotifyBlockAddedRequestMessage: SwiftProtobuf.Message, Swift
 }
 
 extension Protowire_NotifyBlockAddedResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyBlockAddedResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyBlockAddedResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4097,7 +4097,7 @@ extension Protowire_NotifyBlockAddedResponseMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4108,7 +4108,7 @@ extension Protowire_NotifyBlockAddedResponseMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyBlockAddedResponseMessage, rhs: Protowire_NotifyBlockAddedResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyBlockAddedResponseMessage, rhs: Protowire_NotifyBlockAddedResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4116,12 +4116,12 @@ extension Protowire_NotifyBlockAddedResponseMessage: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_BlockAddedNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".BlockAddedNotificationMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".BlockAddedNotificationMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         3: .same(proto: "block"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4133,7 +4133,7 @@ extension Protowire_BlockAddedNotificationMessage: SwiftProtobuf.Message, SwiftP
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4144,7 +4144,7 @@ extension Protowire_BlockAddedNotificationMessage: SwiftProtobuf.Message, SwiftP
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_BlockAddedNotificationMessage, rhs: Protowire_BlockAddedNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_BlockAddedNotificationMessage, rhs: Protowire_BlockAddedNotificationMessage) -> Bool {
         if lhs._block != rhs._block {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4152,33 +4152,33 @@ extension Protowire_BlockAddedNotificationMessage: SwiftProtobuf.Message, SwiftP
 }
 
 extension Protowire_GetPeerAddressesRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetPeerAddressesRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetPeerAddressesRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetPeerAddressesRequestMessage, rhs: Protowire_GetPeerAddressesRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetPeerAddressesRequestMessage, rhs: Protowire_GetPeerAddressesRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetPeerAddressesResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetPeerAddressesResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetPeerAddressesResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "addresses"),
         2: .same(proto: "bannedAddresses"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4192,7 +4192,7 @@ extension Protowire_GetPeerAddressesResponseMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4209,7 +4209,7 @@ extension Protowire_GetPeerAddressesResponseMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetPeerAddressesResponseMessage, rhs: Protowire_GetPeerAddressesResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetPeerAddressesResponseMessage, rhs: Protowire_GetPeerAddressesResponseMessage) -> Bool {
         if lhs.addresses != rhs.addresses {return false}
         if lhs.bannedAddresses != rhs.bannedAddresses {return false}
         if lhs._error != rhs._error {return false}
@@ -4219,12 +4219,12 @@ extension Protowire_GetPeerAddressesResponseMessage: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_GetPeerAddressesKnownAddressMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetPeerAddressesKnownAddressMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetPeerAddressesKnownAddressMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "Addr"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4236,14 +4236,14 @@ extension Protowire_GetPeerAddressesKnownAddressMessage: SwiftProtobuf.Message, 
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.addr.isEmpty {
             try visitor.visitSingularStringField(value: self.addr, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetPeerAddressesKnownAddressMessage, rhs: Protowire_GetPeerAddressesKnownAddressMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetPeerAddressesKnownAddressMessage, rhs: Protowire_GetPeerAddressesKnownAddressMessage) -> Bool {
         if lhs.addr != rhs.addr {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4251,32 +4251,32 @@ extension Protowire_GetPeerAddressesKnownAddressMessage: SwiftProtobuf.Message, 
 }
 
 extension Protowire_GetSinkRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetSinkRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetSinkRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetSinkRequestMessage, rhs: Protowire_GetSinkRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetSinkRequestMessage, rhs: Protowire_GetSinkRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetSinkResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetSinkResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetSinkResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "sink"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4289,7 +4289,7 @@ extension Protowire_GetSinkResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4303,7 +4303,7 @@ extension Protowire_GetSinkResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetSinkResponseMessage, rhs: Protowire_GetSinkResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetSinkResponseMessage, rhs: Protowire_GetSinkResponseMessage) -> Bool {
         if lhs.sink != rhs.sink {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4312,14 +4312,14 @@ extension Protowire_GetSinkResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Protowire_GetMempoolEntryRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetMempoolEntryRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetMempoolEntryRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "txId"),
         2: .same(proto: "includeOrphanPool"),
         3: .same(proto: "filterTransactionPool"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4333,7 +4333,7 @@ extension Protowire_GetMempoolEntryRequestMessage: SwiftProtobuf.Message, SwiftP
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.txID.isEmpty {
             try visitor.visitSingularStringField(value: self.txID, fieldNumber: 1)
         }
@@ -4346,7 +4346,7 @@ extension Protowire_GetMempoolEntryRequestMessage: SwiftProtobuf.Message, SwiftP
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetMempoolEntryRequestMessage, rhs: Protowire_GetMempoolEntryRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetMempoolEntryRequestMessage, rhs: Protowire_GetMempoolEntryRequestMessage) -> Bool {
         if lhs.txID != rhs.txID {return false}
         if lhs.includeOrphanPool != rhs.includeOrphanPool {return false}
         if lhs.filterTransactionPool != rhs.filterTransactionPool {return false}
@@ -4356,13 +4356,13 @@ extension Protowire_GetMempoolEntryRequestMessage: SwiftProtobuf.Message, SwiftP
 }
 
 extension Protowire_GetMempoolEntryResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetMempoolEntryResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetMempoolEntryResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "entry"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4375,7 +4375,7 @@ extension Protowire_GetMempoolEntryResponseMessage: SwiftProtobuf.Message, Swift
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4389,7 +4389,7 @@ extension Protowire_GetMempoolEntryResponseMessage: SwiftProtobuf.Message, Swift
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetMempoolEntryResponseMessage, rhs: Protowire_GetMempoolEntryResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetMempoolEntryResponseMessage, rhs: Protowire_GetMempoolEntryResponseMessage) -> Bool {
         if lhs._entry != rhs._entry {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4398,13 +4398,13 @@ extension Protowire_GetMempoolEntryResponseMessage: SwiftProtobuf.Message, Swift
 }
 
 extension Protowire_GetMempoolEntriesRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetMempoolEntriesRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetMempoolEntriesRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "includeOrphanPool"),
         2: .same(proto: "filterTransactionPool"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4417,7 +4417,7 @@ extension Protowire_GetMempoolEntriesRequestMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.includeOrphanPool != false {
             try visitor.visitSingularBoolField(value: self.includeOrphanPool, fieldNumber: 1)
         }
@@ -4427,7 +4427,7 @@ extension Protowire_GetMempoolEntriesRequestMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetMempoolEntriesRequestMessage, rhs: Protowire_GetMempoolEntriesRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetMempoolEntriesRequestMessage, rhs: Protowire_GetMempoolEntriesRequestMessage) -> Bool {
         if lhs.includeOrphanPool != rhs.includeOrphanPool {return false}
         if lhs.filterTransactionPool != rhs.filterTransactionPool {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4436,13 +4436,13 @@ extension Protowire_GetMempoolEntriesRequestMessage: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_GetMempoolEntriesResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetMempoolEntriesResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetMempoolEntriesResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "entries"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4455,7 +4455,7 @@ extension Protowire_GetMempoolEntriesResponseMessage: SwiftProtobuf.Message, Swi
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4469,7 +4469,7 @@ extension Protowire_GetMempoolEntriesResponseMessage: SwiftProtobuf.Message, Swi
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetMempoolEntriesResponseMessage, rhs: Protowire_GetMempoolEntriesResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetMempoolEntriesResponseMessage, rhs: Protowire_GetMempoolEntriesResponseMessage) -> Bool {
         if lhs.entries != rhs.entries {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4485,7 +4485,7 @@ extension Protowire_RpcMempoolEntry: SwiftProtobuf.Message, SwiftProtobuf._Messa
         4: .same(proto: "isOrphan"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4526,32 +4526,32 @@ extension Protowire_RpcMempoolEntry: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension Protowire_GetConnectedPeerInfoRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetConnectedPeerInfoRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetConnectedPeerInfoRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetConnectedPeerInfoRequestMessage, rhs: Protowire_GetConnectedPeerInfoRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetConnectedPeerInfoRequestMessage, rhs: Protowire_GetConnectedPeerInfoRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetConnectedPeerInfoResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetConnectedPeerInfoResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetConnectedPeerInfoResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "infos"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4564,7 +4564,7 @@ extension Protowire_GetConnectedPeerInfoResponseMessage: SwiftProtobuf.Message, 
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4578,7 +4578,7 @@ extension Protowire_GetConnectedPeerInfoResponseMessage: SwiftProtobuf.Message, 
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetConnectedPeerInfoResponseMessage, rhs: Protowire_GetConnectedPeerInfoResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetConnectedPeerInfoResponseMessage, rhs: Protowire_GetConnectedPeerInfoResponseMessage) -> Bool {
         if lhs.infos != rhs.infos {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4587,8 +4587,8 @@ extension Protowire_GetConnectedPeerInfoResponseMessage: SwiftProtobuf.Message, 
 }
 
 extension Protowire_GetConnectedPeerInfoMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetConnectedPeerInfoMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetConnectedPeerInfoMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "id"),
         2: .same(proto: "address"),
         3: .same(proto: "lastPingDuration"),
@@ -4600,7 +4600,7 @@ extension Protowire_GetConnectedPeerInfoMessage: SwiftProtobuf.Message, SwiftPro
         11: .same(proto: "isIbdPeer"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4620,7 +4620,7 @@ extension Protowire_GetConnectedPeerInfoMessage: SwiftProtobuf.Message, SwiftPro
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.id.isEmpty {
             try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
         }
@@ -4651,7 +4651,7 @@ extension Protowire_GetConnectedPeerInfoMessage: SwiftProtobuf.Message, SwiftPro
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetConnectedPeerInfoMessage, rhs: Protowire_GetConnectedPeerInfoMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetConnectedPeerInfoMessage, rhs: Protowire_GetConnectedPeerInfoMessage) -> Bool {
         if lhs.id != rhs.id {return false}
         if lhs.address != rhs.address {return false}
         if lhs.lastPingDuration != rhs.lastPingDuration {return false}
@@ -4667,13 +4667,13 @@ extension Protowire_GetConnectedPeerInfoMessage: SwiftProtobuf.Message, SwiftPro
 }
 
 extension Protowire_AddPeerRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".AddPeerRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".AddPeerRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "address"),
         2: .same(proto: "isPermanent"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4686,7 +4686,7 @@ extension Protowire_AddPeerRequestMessage: SwiftProtobuf.Message, SwiftProtobuf.
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.address.isEmpty {
             try visitor.visitSingularStringField(value: self.address, fieldNumber: 1)
         }
@@ -4696,7 +4696,7 @@ extension Protowire_AddPeerRequestMessage: SwiftProtobuf.Message, SwiftProtobuf.
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_AddPeerRequestMessage, rhs: Protowire_AddPeerRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_AddPeerRequestMessage, rhs: Protowire_AddPeerRequestMessage) -> Bool {
         if lhs.address != rhs.address {return false}
         if lhs.isPermanent != rhs.isPermanent {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4705,12 +4705,12 @@ extension Protowire_AddPeerRequestMessage: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Protowire_AddPeerResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".AddPeerResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".AddPeerResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4722,7 +4722,7 @@ extension Protowire_AddPeerResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4733,7 +4733,7 @@ extension Protowire_AddPeerResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_AddPeerResponseMessage, rhs: Protowire_AddPeerResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_AddPeerResponseMessage, rhs: Protowire_AddPeerResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4741,13 +4741,13 @@ extension Protowire_AddPeerResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Protowire_SubmitTransactionRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SubmitTransactionRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SubmitTransactionRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "transaction"),
         2: .same(proto: "allowOrphan"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4760,7 +4760,7 @@ extension Protowire_SubmitTransactionRequestMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4774,7 +4774,7 @@ extension Protowire_SubmitTransactionRequestMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SubmitTransactionRequestMessage, rhs: Protowire_SubmitTransactionRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_SubmitTransactionRequestMessage, rhs: Protowire_SubmitTransactionRequestMessage) -> Bool {
         if lhs._transaction != rhs._transaction {return false}
         if lhs.allowOrphan != rhs.allowOrphan {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4783,13 +4783,13 @@ extension Protowire_SubmitTransactionRequestMessage: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_SubmitTransactionResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SubmitTransactionResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SubmitTransactionResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "transactionId"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4802,7 +4802,7 @@ extension Protowire_SubmitTransactionResponseMessage: SwiftProtobuf.Message, Swi
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4816,7 +4816,7 @@ extension Protowire_SubmitTransactionResponseMessage: SwiftProtobuf.Message, Swi
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SubmitTransactionResponseMessage, rhs: Protowire_SubmitTransactionResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_SubmitTransactionResponseMessage, rhs: Protowire_SubmitTransactionResponseMessage) -> Bool {
         if lhs.transactionID != rhs.transactionID {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4825,12 +4825,12 @@ extension Protowire_SubmitTransactionResponseMessage: SwiftProtobuf.Message, Swi
 }
 
 extension Protowire_SubmitTransactionReplacementRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SubmitTransactionReplacementRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SubmitTransactionReplacementRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "transaction"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4842,7 +4842,7 @@ extension Protowire_SubmitTransactionReplacementRequestMessage: SwiftProtobuf.Me
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4853,7 +4853,7 @@ extension Protowire_SubmitTransactionReplacementRequestMessage: SwiftProtobuf.Me
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SubmitTransactionReplacementRequestMessage, rhs: Protowire_SubmitTransactionReplacementRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_SubmitTransactionReplacementRequestMessage, rhs: Protowire_SubmitTransactionReplacementRequestMessage) -> Bool {
         if lhs._transaction != rhs._transaction {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4861,14 +4861,14 @@ extension Protowire_SubmitTransactionReplacementRequestMessage: SwiftProtobuf.Me
 }
 
 extension Protowire_SubmitTransactionReplacementResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SubmitTransactionReplacementResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SubmitTransactionReplacementResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "transactionId"),
         2: .same(proto: "replacedTransaction"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4882,7 +4882,7 @@ extension Protowire_SubmitTransactionReplacementResponseMessage: SwiftProtobuf.M
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4899,7 +4899,7 @@ extension Protowire_SubmitTransactionReplacementResponseMessage: SwiftProtobuf.M
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SubmitTransactionReplacementResponseMessage, rhs: Protowire_SubmitTransactionReplacementResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_SubmitTransactionReplacementResponseMessage, rhs: Protowire_SubmitTransactionReplacementResponseMessage) -> Bool {
         if lhs.transactionID != rhs.transactionID {return false}
         if lhs._replacedTransaction != rhs._replacedTransaction {return false}
         if lhs._error != rhs._error {return false}
@@ -4909,13 +4909,13 @@ extension Protowire_SubmitTransactionReplacementResponseMessage: SwiftProtobuf.M
 }
 
 extension Protowire_NotifyVirtualChainChangedRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyVirtualChainChangedRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyVirtualChainChangedRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "includeAcceptedTransactionIds"),
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4928,7 +4928,7 @@ extension Protowire_NotifyVirtualChainChangedRequestMessage: SwiftProtobuf.Messa
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.includeAcceptedTransactionIds != false {
             try visitor.visitSingularBoolField(value: self.includeAcceptedTransactionIds, fieldNumber: 1)
         }
@@ -4938,7 +4938,7 @@ extension Protowire_NotifyVirtualChainChangedRequestMessage: SwiftProtobuf.Messa
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyVirtualChainChangedRequestMessage, rhs: Protowire_NotifyVirtualChainChangedRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyVirtualChainChangedRequestMessage, rhs: Protowire_NotifyVirtualChainChangedRequestMessage) -> Bool {
         if lhs.includeAcceptedTransactionIds != rhs.includeAcceptedTransactionIds {return false}
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4947,12 +4947,12 @@ extension Protowire_NotifyVirtualChainChangedRequestMessage: SwiftProtobuf.Messa
 }
 
 extension Protowire_NotifyVirtualChainChangedResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyVirtualChainChangedResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyVirtualChainChangedResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -4964,7 +4964,7 @@ extension Protowire_NotifyVirtualChainChangedResponseMessage: SwiftProtobuf.Mess
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -4975,7 +4975,7 @@ extension Protowire_NotifyVirtualChainChangedResponseMessage: SwiftProtobuf.Mess
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyVirtualChainChangedResponseMessage, rhs: Protowire_NotifyVirtualChainChangedResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyVirtualChainChangedResponseMessage, rhs: Protowire_NotifyVirtualChainChangedResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -4990,7 +4990,7 @@ extension Protowire_VirtualChainChangedNotificationMessage: SwiftProtobuf.Messag
         2: .same(proto: "acceptedTransactionIds"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5027,13 +5027,13 @@ extension Protowire_VirtualChainChangedNotificationMessage: SwiftProtobuf.Messag
 }
 
 extension Protowire_GetBlockRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "hash"),
         3: .same(proto: "includeTransactions"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5046,7 +5046,7 @@ extension Protowire_GetBlockRequestMessage: SwiftProtobuf.Message, SwiftProtobuf
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.hash.isEmpty {
             try visitor.visitSingularStringField(value: self.hash, fieldNumber: 1)
         }
@@ -5056,7 +5056,7 @@ extension Protowire_GetBlockRequestMessage: SwiftProtobuf.Message, SwiftProtobuf
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockRequestMessage, rhs: Protowire_GetBlockRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlockRequestMessage, rhs: Protowire_GetBlockRequestMessage) -> Bool {
         if lhs.hash != rhs.hash {return false}
         if lhs.includeTransactions != rhs.includeTransactions {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5065,13 +5065,13 @@ extension Protowire_GetBlockRequestMessage: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Protowire_GetBlockResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         3: .same(proto: "block"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5084,7 +5084,7 @@ extension Protowire_GetBlockResponseMessage: SwiftProtobuf.Message, SwiftProtobu
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5098,7 +5098,7 @@ extension Protowire_GetBlockResponseMessage: SwiftProtobuf.Message, SwiftProtobu
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockResponseMessage, rhs: Protowire_GetBlockResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlockResponseMessage, rhs: Protowire_GetBlockResponseMessage) -> Bool {
         if lhs._block != rhs._block {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5107,12 +5107,12 @@ extension Protowire_GetBlockResponseMessage: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension Protowire_GetSubnetworkRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetSubnetworkRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetSubnetworkRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "subnetworkId"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5124,14 +5124,14 @@ extension Protowire_GetSubnetworkRequestMessage: SwiftProtobuf.Message, SwiftPro
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.subnetworkID.isEmpty {
             try visitor.visitSingularStringField(value: self.subnetworkID, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetSubnetworkRequestMessage, rhs: Protowire_GetSubnetworkRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetSubnetworkRequestMessage, rhs: Protowire_GetSubnetworkRequestMessage) -> Bool {
         if lhs.subnetworkID != rhs.subnetworkID {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5139,13 +5139,13 @@ extension Protowire_GetSubnetworkRequestMessage: SwiftProtobuf.Message, SwiftPro
 }
 
 extension Protowire_GetSubnetworkResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetSubnetworkResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetSubnetworkResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "gasLimit"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5158,7 +5158,7 @@ extension Protowire_GetSubnetworkResponseMessage: SwiftProtobuf.Message, SwiftPr
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5172,7 +5172,7 @@ extension Protowire_GetSubnetworkResponseMessage: SwiftProtobuf.Message, SwiftPr
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetSubnetworkResponseMessage, rhs: Protowire_GetSubnetworkResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetSubnetworkResponseMessage, rhs: Protowire_GetSubnetworkResponseMessage) -> Bool {
         if lhs.gasLimit != rhs.gasLimit {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5181,13 +5181,13 @@ extension Protowire_GetSubnetworkResponseMessage: SwiftProtobuf.Message, SwiftPr
 }
 
 extension Protowire_GetVirtualChainFromBlockRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetVirtualChainFromBlockRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetVirtualChainFromBlockRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "startHash"),
         2: .same(proto: "includeAcceptedTransactionIds"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5200,7 +5200,7 @@ extension Protowire_GetVirtualChainFromBlockRequestMessage: SwiftProtobuf.Messag
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.startHash.isEmpty {
             try visitor.visitSingularStringField(value: self.startHash, fieldNumber: 1)
         }
@@ -5210,7 +5210,7 @@ extension Protowire_GetVirtualChainFromBlockRequestMessage: SwiftProtobuf.Messag
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetVirtualChainFromBlockRequestMessage, rhs: Protowire_GetVirtualChainFromBlockRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetVirtualChainFromBlockRequestMessage, rhs: Protowire_GetVirtualChainFromBlockRequestMessage) -> Bool {
         if lhs.startHash != rhs.startHash {return false}
         if lhs.includeAcceptedTransactionIds != rhs.includeAcceptedTransactionIds {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5219,13 +5219,13 @@ extension Protowire_GetVirtualChainFromBlockRequestMessage: SwiftProtobuf.Messag
 }
 
 extension Protowire_RpcAcceptedTransactionIds: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcAcceptedTransactionIds"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcAcceptedTransactionIds"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "acceptingBlockHash"),
         2: .same(proto: "acceptedTransactionIds"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5238,7 +5238,7 @@ extension Protowire_RpcAcceptedTransactionIds: SwiftProtobuf.Message, SwiftProto
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.acceptingBlockHash.isEmpty {
             try visitor.visitSingularStringField(value: self.acceptingBlockHash, fieldNumber: 1)
         }
@@ -5248,7 +5248,7 @@ extension Protowire_RpcAcceptedTransactionIds: SwiftProtobuf.Message, SwiftProto
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcAcceptedTransactionIds, rhs: Protowire_RpcAcceptedTransactionIds) -> Bool {
+    static public func ==(lhs: Protowire_RpcAcceptedTransactionIds, rhs: Protowire_RpcAcceptedTransactionIds) -> Bool {
         if lhs.acceptingBlockHash != rhs.acceptingBlockHash {return false}
         if lhs.acceptedTransactionIds != rhs.acceptedTransactionIds {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5257,15 +5257,15 @@ extension Protowire_RpcAcceptedTransactionIds: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Protowire_GetVirtualChainFromBlockResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetVirtualChainFromBlockResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetVirtualChainFromBlockResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "removedChainBlockHashes"),
         3: .same(proto: "addedChainBlockHashes"),
         2: .same(proto: "acceptedTransactionIds"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5280,7 +5280,7 @@ extension Protowire_GetVirtualChainFromBlockResponseMessage: SwiftProtobuf.Messa
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5300,7 +5300,7 @@ extension Protowire_GetVirtualChainFromBlockResponseMessage: SwiftProtobuf.Messa
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetVirtualChainFromBlockResponseMessage, rhs: Protowire_GetVirtualChainFromBlockResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetVirtualChainFromBlockResponseMessage, rhs: Protowire_GetVirtualChainFromBlockResponseMessage) -> Bool {
         if lhs.removedChainBlockHashes != rhs.removedChainBlockHashes {return false}
         if lhs.addedChainBlockHashes != rhs.addedChainBlockHashes {return false}
         if lhs.acceptedTransactionIds != rhs.acceptedTransactionIds {return false}
@@ -5311,14 +5311,14 @@ extension Protowire_GetVirtualChainFromBlockResponseMessage: SwiftProtobuf.Messa
 }
 
 extension Protowire_GetBlocksRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlocksRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlocksRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "lowHash"),
         2: .same(proto: "includeBlocks"),
         3: .same(proto: "includeTransactions"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5332,7 +5332,7 @@ extension Protowire_GetBlocksRequestMessage: SwiftProtobuf.Message, SwiftProtobu
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.lowHash.isEmpty {
             try visitor.visitSingularStringField(value: self.lowHash, fieldNumber: 1)
         }
@@ -5345,7 +5345,7 @@ extension Protowire_GetBlocksRequestMessage: SwiftProtobuf.Message, SwiftProtobu
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlocksRequestMessage, rhs: Protowire_GetBlocksRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlocksRequestMessage, rhs: Protowire_GetBlocksRequestMessage) -> Bool {
         if lhs.lowHash != rhs.lowHash {return false}
         if lhs.includeBlocks != rhs.includeBlocks {return false}
         if lhs.includeTransactions != rhs.includeTransactions {return false}
@@ -5355,14 +5355,14 @@ extension Protowire_GetBlocksRequestMessage: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension Protowire_GetBlocksResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlocksResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBlocksResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         4: .same(proto: "blockHashes"),
         3: .same(proto: "blocks"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5376,7 +5376,7 @@ extension Protowire_GetBlocksResponseMessage: SwiftProtobuf.Message, SwiftProtob
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5393,7 +5393,7 @@ extension Protowire_GetBlocksResponseMessage: SwiftProtobuf.Message, SwiftProtob
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlocksResponseMessage, rhs: Protowire_GetBlocksResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlocksResponseMessage, rhs: Protowire_GetBlocksResponseMessage) -> Bool {
         if lhs.blockHashes != rhs.blockHashes {return false}
         if lhs.blocks != rhs.blocks {return false}
         if lhs._error != rhs._error {return false}
@@ -5403,19 +5403,19 @@ extension Protowire_GetBlocksResponseMessage: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension Protowire_GetBlockCountRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBlockCountRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetBlockCountRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBlockCountRequestMessage, rhs: Protowire_GetBlockCountRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBlockCountRequestMessage, rhs: Protowire_GetBlockCountRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
@@ -5429,7 +5429,7 @@ extension Protowire_GetBlockCountResponseMessage: SwiftProtobuf.Message, SwiftPr
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5473,7 +5473,7 @@ extension Protowire_GetBlockDagInfoRequestMessage: SwiftProtobuf.Message, SwiftP
     public static let protoMessageName: String = _protobuf_package + ".GetBlockDagInfoRequestMessage"
     public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
@@ -5504,7 +5504,7 @@ extension Protowire_GetBlockDagInfoResponseMessage: SwiftProtobuf.Message, Swift
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5585,12 +5585,12 @@ extension Protowire_GetBlockDagInfoResponseMessage: SwiftProtobuf.Message, Swift
 }
 
 extension Protowire_ResolveFinalityConflictRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".ResolveFinalityConflictRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".ResolveFinalityConflictRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "finalityBlockHash"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5602,14 +5602,14 @@ extension Protowire_ResolveFinalityConflictRequestMessage: SwiftProtobuf.Message
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.finalityBlockHash.isEmpty {
             try visitor.visitSingularStringField(value: self.finalityBlockHash, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_ResolveFinalityConflictRequestMessage, rhs: Protowire_ResolveFinalityConflictRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_ResolveFinalityConflictRequestMessage, rhs: Protowire_ResolveFinalityConflictRequestMessage) -> Bool {
         if lhs.finalityBlockHash != rhs.finalityBlockHash {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5617,12 +5617,12 @@ extension Protowire_ResolveFinalityConflictRequestMessage: SwiftProtobuf.Message
 }
 
 extension Protowire_ResolveFinalityConflictResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".ResolveFinalityConflictResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".ResolveFinalityConflictResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5634,7 +5634,7 @@ extension Protowire_ResolveFinalityConflictResponseMessage: SwiftProtobuf.Messag
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5645,7 +5645,7 @@ extension Protowire_ResolveFinalityConflictResponseMessage: SwiftProtobuf.Messag
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_ResolveFinalityConflictResponseMessage, rhs: Protowire_ResolveFinalityConflictResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_ResolveFinalityConflictResponseMessage, rhs: Protowire_ResolveFinalityConflictResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5653,12 +5653,12 @@ extension Protowire_ResolveFinalityConflictResponseMessage: SwiftProtobuf.Messag
 }
 
 extension Protowire_NotifyFinalityConflictRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyFinalityConflictRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyFinalityConflictRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5670,14 +5670,14 @@ extension Protowire_NotifyFinalityConflictRequestMessage: SwiftProtobuf.Message,
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.command != .notifyStart {
             try visitor.visitSingularEnumField(value: self.command, fieldNumber: 101)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyFinalityConflictRequestMessage, rhs: Protowire_NotifyFinalityConflictRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyFinalityConflictRequestMessage, rhs: Protowire_NotifyFinalityConflictRequestMessage) -> Bool {
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5685,12 +5685,12 @@ extension Protowire_NotifyFinalityConflictRequestMessage: SwiftProtobuf.Message,
 }
 
 extension Protowire_NotifyFinalityConflictResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyFinalityConflictResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyFinalityConflictResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5702,7 +5702,7 @@ extension Protowire_NotifyFinalityConflictResponseMessage: SwiftProtobuf.Message
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5713,7 +5713,7 @@ extension Protowire_NotifyFinalityConflictResponseMessage: SwiftProtobuf.Message
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyFinalityConflictResponseMessage, rhs: Protowire_NotifyFinalityConflictResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyFinalityConflictResponseMessage, rhs: Protowire_NotifyFinalityConflictResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5721,12 +5721,12 @@ extension Protowire_NotifyFinalityConflictResponseMessage: SwiftProtobuf.Message
 }
 
 extension Protowire_FinalityConflictNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".FinalityConflictNotificationMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".FinalityConflictNotificationMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "violatingBlockHash"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5738,14 +5738,14 @@ extension Protowire_FinalityConflictNotificationMessage: SwiftProtobuf.Message, 
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.violatingBlockHash.isEmpty {
             try visitor.visitSingularStringField(value: self.violatingBlockHash, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_FinalityConflictNotificationMessage, rhs: Protowire_FinalityConflictNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_FinalityConflictNotificationMessage, rhs: Protowire_FinalityConflictNotificationMessage) -> Bool {
         if lhs.violatingBlockHash != rhs.violatingBlockHash {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5753,12 +5753,12 @@ extension Protowire_FinalityConflictNotificationMessage: SwiftProtobuf.Message, 
 }
 
 extension Protowire_FinalityConflictResolvedNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".FinalityConflictResolvedNotificationMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".FinalityConflictResolvedNotificationMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "finalityBlockHash"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5770,14 +5770,14 @@ extension Protowire_FinalityConflictResolvedNotificationMessage: SwiftProtobuf.M
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.finalityBlockHash.isEmpty {
             try visitor.visitSingularStringField(value: self.finalityBlockHash, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_FinalityConflictResolvedNotificationMessage, rhs: Protowire_FinalityConflictResolvedNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_FinalityConflictResolvedNotificationMessage, rhs: Protowire_FinalityConflictResolvedNotificationMessage) -> Bool {
         if lhs.finalityBlockHash != rhs.finalityBlockHash {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5785,31 +5785,31 @@ extension Protowire_FinalityConflictResolvedNotificationMessage: SwiftProtobuf.M
 }
 
 extension Protowire_ShutdownRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".ShutdownRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".ShutdownRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_ShutdownRequestMessage, rhs: Protowire_ShutdownRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_ShutdownRequestMessage, rhs: Protowire_ShutdownRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_ShutdownResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".ShutdownResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".ShutdownResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5821,7 +5821,7 @@ extension Protowire_ShutdownResponseMessage: SwiftProtobuf.Message, SwiftProtobu
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5832,7 +5832,7 @@ extension Protowire_ShutdownResponseMessage: SwiftProtobuf.Message, SwiftProtobu
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_ShutdownResponseMessage, rhs: Protowire_ShutdownResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_ShutdownResponseMessage, rhs: Protowire_ShutdownResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -5840,14 +5840,14 @@ extension Protowire_ShutdownResponseMessage: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension Protowire_GetHeadersRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetHeadersRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetHeadersRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "startHash"),
         2: .same(proto: "limit"),
         3: .same(proto: "isAscending"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5861,7 +5861,7 @@ extension Protowire_GetHeadersRequestMessage: SwiftProtobuf.Message, SwiftProtob
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.startHash.isEmpty {
             try visitor.visitSingularStringField(value: self.startHash, fieldNumber: 1)
         }
@@ -5874,7 +5874,7 @@ extension Protowire_GetHeadersRequestMessage: SwiftProtobuf.Message, SwiftProtob
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetHeadersRequestMessage, rhs: Protowire_GetHeadersRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetHeadersRequestMessage, rhs: Protowire_GetHeadersRequestMessage) -> Bool {
         if lhs.startHash != rhs.startHash {return false}
         if lhs.limit != rhs.limit {return false}
         if lhs.isAscending != rhs.isAscending {return false}
@@ -5884,13 +5884,13 @@ extension Protowire_GetHeadersRequestMessage: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension Protowire_GetHeadersResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetHeadersResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetHeadersResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "headers"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5903,7 +5903,7 @@ extension Protowire_GetHeadersResponseMessage: SwiftProtobuf.Message, SwiftProto
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5917,7 +5917,7 @@ extension Protowire_GetHeadersResponseMessage: SwiftProtobuf.Message, SwiftProto
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetHeadersResponseMessage, rhs: Protowire_GetHeadersResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetHeadersResponseMessage, rhs: Protowire_GetHeadersResponseMessage) -> Bool {
         if lhs.headers != rhs.headers {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5926,13 +5926,13 @@ extension Protowire_GetHeadersResponseMessage: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Protowire_NotifyUtxosChangedRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyUtxosChangedRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyUtxosChangedRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "addresses"),
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5945,7 +5945,7 @@ extension Protowire_NotifyUtxosChangedRequestMessage: SwiftProtobuf.Message, Swi
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.addresses.isEmpty {
             try visitor.visitRepeatedStringField(value: self.addresses, fieldNumber: 1)
         }
@@ -5955,7 +5955,7 @@ extension Protowire_NotifyUtxosChangedRequestMessage: SwiftProtobuf.Message, Swi
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyUtxosChangedRequestMessage, rhs: Protowire_NotifyUtxosChangedRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyUtxosChangedRequestMessage, rhs: Protowire_NotifyUtxosChangedRequestMessage) -> Bool {
         if lhs.addresses != rhs.addresses {return false}
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -5964,12 +5964,12 @@ extension Protowire_NotifyUtxosChangedRequestMessage: SwiftProtobuf.Message, Swi
 }
 
 extension Protowire_NotifyUtxosChangedResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyUtxosChangedResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyUtxosChangedResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -5981,7 +5981,7 @@ extension Protowire_NotifyUtxosChangedResponseMessage: SwiftProtobuf.Message, Sw
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -5992,7 +5992,7 @@ extension Protowire_NotifyUtxosChangedResponseMessage: SwiftProtobuf.Message, Sw
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyUtxosChangedResponseMessage, rhs: Protowire_NotifyUtxosChangedResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyUtxosChangedResponseMessage, rhs: Protowire_NotifyUtxosChangedResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6000,13 +6000,13 @@ extension Protowire_NotifyUtxosChangedResponseMessage: SwiftProtobuf.Message, Sw
 }
 
 extension Protowire_UtxosChangedNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".UtxosChangedNotificationMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".UtxosChangedNotificationMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "added"),
         2: .same(proto: "removed"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6019,7 +6019,7 @@ extension Protowire_UtxosChangedNotificationMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.added.isEmpty {
             try visitor.visitRepeatedMessageField(value: self.added, fieldNumber: 1)
         }
@@ -6029,7 +6029,7 @@ extension Protowire_UtxosChangedNotificationMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_UtxosChangedNotificationMessage, rhs: Protowire_UtxosChangedNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_UtxosChangedNotificationMessage, rhs: Protowire_UtxosChangedNotificationMessage) -> Bool {
         if lhs.added != rhs.added {return false}
         if lhs.removed != rhs.removed {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6045,7 +6045,7 @@ extension Protowire_RpcUtxosByAddressesEntry: SwiftProtobuf.Message, SwiftProtob
         3: .same(proto: "utxoEntry"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6086,12 +6086,12 @@ extension Protowire_RpcUtxosByAddressesEntry: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension Protowire_StopNotifyingUtxosChangedRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".StopNotifyingUtxosChangedRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".StopNotifyingUtxosChangedRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "addresses"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6103,14 +6103,14 @@ extension Protowire_StopNotifyingUtxosChangedRequestMessage: SwiftProtobuf.Messa
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.addresses.isEmpty {
             try visitor.visitRepeatedStringField(value: self.addresses, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_StopNotifyingUtxosChangedRequestMessage, rhs: Protowire_StopNotifyingUtxosChangedRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_StopNotifyingUtxosChangedRequestMessage, rhs: Protowire_StopNotifyingUtxosChangedRequestMessage) -> Bool {
         if lhs.addresses != rhs.addresses {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6118,12 +6118,12 @@ extension Protowire_StopNotifyingUtxosChangedRequestMessage: SwiftProtobuf.Messa
 }
 
 extension Protowire_StopNotifyingUtxosChangedResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".StopNotifyingUtxosChangedResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".StopNotifyingUtxosChangedResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6135,7 +6135,7 @@ extension Protowire_StopNotifyingUtxosChangedResponseMessage: SwiftProtobuf.Mess
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6146,7 +6146,7 @@ extension Protowire_StopNotifyingUtxosChangedResponseMessage: SwiftProtobuf.Mess
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_StopNotifyingUtxosChangedResponseMessage, rhs: Protowire_StopNotifyingUtxosChangedResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_StopNotifyingUtxosChangedResponseMessage, rhs: Protowire_StopNotifyingUtxosChangedResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6154,12 +6154,12 @@ extension Protowire_StopNotifyingUtxosChangedResponseMessage: SwiftProtobuf.Mess
 }
 
 extension Protowire_GetUtxosByAddressesRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetUtxosByAddressesRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetUtxosByAddressesRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "addresses"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6171,14 +6171,14 @@ extension Protowire_GetUtxosByAddressesRequestMessage: SwiftProtobuf.Message, Sw
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.addresses.isEmpty {
             try visitor.visitRepeatedStringField(value: self.addresses, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetUtxosByAddressesRequestMessage, rhs: Protowire_GetUtxosByAddressesRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetUtxosByAddressesRequestMessage, rhs: Protowire_GetUtxosByAddressesRequestMessage) -> Bool {
         if lhs.addresses != rhs.addresses {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6186,13 +6186,13 @@ extension Protowire_GetUtxosByAddressesRequestMessage: SwiftProtobuf.Message, Sw
 }
 
 extension Protowire_GetUtxosByAddressesResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetUtxosByAddressesResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetUtxosByAddressesResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "entries"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6205,7 +6205,7 @@ extension Protowire_GetUtxosByAddressesResponseMessage: SwiftProtobuf.Message, S
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6219,7 +6219,7 @@ extension Protowire_GetUtxosByAddressesResponseMessage: SwiftProtobuf.Message, S
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetUtxosByAddressesResponseMessage, rhs: Protowire_GetUtxosByAddressesResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetUtxosByAddressesResponseMessage, rhs: Protowire_GetUtxosByAddressesResponseMessage) -> Bool {
         if lhs.entries != rhs.entries {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6228,12 +6228,12 @@ extension Protowire_GetUtxosByAddressesResponseMessage: SwiftProtobuf.Message, S
 }
 
 extension Protowire_GetBalanceByAddressRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBalanceByAddressRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBalanceByAddressRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "address"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6245,14 +6245,14 @@ extension Protowire_GetBalanceByAddressRequestMessage: SwiftProtobuf.Message, Sw
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.address.isEmpty {
             try visitor.visitSingularStringField(value: self.address, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBalanceByAddressRequestMessage, rhs: Protowire_GetBalanceByAddressRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBalanceByAddressRequestMessage, rhs: Protowire_GetBalanceByAddressRequestMessage) -> Bool {
         if lhs.address != rhs.address {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6260,13 +6260,13 @@ extension Protowire_GetBalanceByAddressRequestMessage: SwiftProtobuf.Message, Sw
 }
 
 extension Protowire_GetBalanceByAddressResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBalanceByAddressResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBalanceByAddressResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "balance"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6279,7 +6279,7 @@ extension Protowire_GetBalanceByAddressResponseMessage: SwiftProtobuf.Message, S
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6293,7 +6293,7 @@ extension Protowire_GetBalanceByAddressResponseMessage: SwiftProtobuf.Message, S
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBalanceByAddressResponseMessage, rhs: Protowire_GetBalanceByAddressResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBalanceByAddressResponseMessage, rhs: Protowire_GetBalanceByAddressResponseMessage) -> Bool {
         if lhs.balance != rhs.balance {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6302,12 +6302,12 @@ extension Protowire_GetBalanceByAddressResponseMessage: SwiftProtobuf.Message, S
 }
 
 extension Protowire_GetBalancesByAddressesRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBalancesByAddressesRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBalancesByAddressesRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "addresses"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6319,14 +6319,14 @@ extension Protowire_GetBalancesByAddressesRequestMessage: SwiftProtobuf.Message,
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.addresses.isEmpty {
             try visitor.visitRepeatedStringField(value: self.addresses, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBalancesByAddressesRequestMessage, rhs: Protowire_GetBalancesByAddressesRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBalancesByAddressesRequestMessage, rhs: Protowire_GetBalancesByAddressesRequestMessage) -> Bool {
         if lhs.addresses != rhs.addresses {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6341,7 +6341,7 @@ extension Protowire_RpcBalancesByAddressesEntry: SwiftProtobuf.Message, SwiftPro
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6382,13 +6382,13 @@ extension Protowire_RpcBalancesByAddressesEntry: SwiftProtobuf.Message, SwiftPro
 }
 
 extension Protowire_GetBalancesByAddressesResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetBalancesByAddressesResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetBalancesByAddressesResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "entries"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6401,7 +6401,7 @@ extension Protowire_GetBalancesByAddressesResponseMessage: SwiftProtobuf.Message
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6415,7 +6415,7 @@ extension Protowire_GetBalancesByAddressesResponseMessage: SwiftProtobuf.Message
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetBalancesByAddressesResponseMessage, rhs: Protowire_GetBalancesByAddressesResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetBalancesByAddressesResponseMessage, rhs: Protowire_GetBalancesByAddressesResponseMessage) -> Bool {
         if lhs.entries != rhs.entries {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6424,32 +6424,32 @@ extension Protowire_GetBalancesByAddressesResponseMessage: SwiftProtobuf.Message
 }
 
 extension Protowire_GetSinkBlueScoreRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetSinkBlueScoreRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetSinkBlueScoreRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetSinkBlueScoreRequestMessage, rhs: Protowire_GetSinkBlueScoreRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetSinkBlueScoreRequestMessage, rhs: Protowire_GetSinkBlueScoreRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetSinkBlueScoreResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetSinkBlueScoreResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetSinkBlueScoreResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "blueScore"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6462,7 +6462,7 @@ extension Protowire_GetSinkBlueScoreResponseMessage: SwiftProtobuf.Message, Swif
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6476,7 +6476,7 @@ extension Protowire_GetSinkBlueScoreResponseMessage: SwiftProtobuf.Message, Swif
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetSinkBlueScoreResponseMessage, rhs: Protowire_GetSinkBlueScoreResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetSinkBlueScoreResponseMessage, rhs: Protowire_GetSinkBlueScoreResponseMessage) -> Bool {
         if lhs.blueScore != rhs.blueScore {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6485,12 +6485,12 @@ extension Protowire_GetSinkBlueScoreResponseMessage: SwiftProtobuf.Message, Swif
 }
 
 extension Protowire_NotifySinkBlueScoreChangedRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifySinkBlueScoreChangedRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifySinkBlueScoreChangedRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6502,14 +6502,14 @@ extension Protowire_NotifySinkBlueScoreChangedRequestMessage: SwiftProtobuf.Mess
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.command != .notifyStart {
             try visitor.visitSingularEnumField(value: self.command, fieldNumber: 101)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifySinkBlueScoreChangedRequestMessage, rhs: Protowire_NotifySinkBlueScoreChangedRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifySinkBlueScoreChangedRequestMessage, rhs: Protowire_NotifySinkBlueScoreChangedRequestMessage) -> Bool {
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6517,12 +6517,12 @@ extension Protowire_NotifySinkBlueScoreChangedRequestMessage: SwiftProtobuf.Mess
 }
 
 extension Protowire_NotifySinkBlueScoreChangedResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifySinkBlueScoreChangedResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifySinkBlueScoreChangedResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6534,7 +6534,7 @@ extension Protowire_NotifySinkBlueScoreChangedResponseMessage: SwiftProtobuf.Mes
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6545,7 +6545,7 @@ extension Protowire_NotifySinkBlueScoreChangedResponseMessage: SwiftProtobuf.Mes
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifySinkBlueScoreChangedResponseMessage, rhs: Protowire_NotifySinkBlueScoreChangedResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifySinkBlueScoreChangedResponseMessage, rhs: Protowire_NotifySinkBlueScoreChangedResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6553,12 +6553,12 @@ extension Protowire_NotifySinkBlueScoreChangedResponseMessage: SwiftProtobuf.Mes
 }
 
 extension Protowire_SinkBlueScoreChangedNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".SinkBlueScoreChangedNotificationMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".SinkBlueScoreChangedNotificationMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "sinkBlueScore"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6570,14 +6570,14 @@ extension Protowire_SinkBlueScoreChangedNotificationMessage: SwiftProtobuf.Messa
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.sinkBlueScore != 0 {
             try visitor.visitSingularUInt64Field(value: self.sinkBlueScore, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_SinkBlueScoreChangedNotificationMessage, rhs: Protowire_SinkBlueScoreChangedNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_SinkBlueScoreChangedNotificationMessage, rhs: Protowire_SinkBlueScoreChangedNotificationMessage) -> Bool {
         if lhs.sinkBlueScore != rhs.sinkBlueScore {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6585,12 +6585,12 @@ extension Protowire_SinkBlueScoreChangedNotificationMessage: SwiftProtobuf.Messa
 }
 
 extension Protowire_NotifyVirtualDaaScoreChangedRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyVirtualDaaScoreChangedRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyVirtualDaaScoreChangedRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6602,14 +6602,14 @@ extension Protowire_NotifyVirtualDaaScoreChangedRequestMessage: SwiftProtobuf.Me
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.command != .notifyStart {
             try visitor.visitSingularEnumField(value: self.command, fieldNumber: 101)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyVirtualDaaScoreChangedRequestMessage, rhs: Protowire_NotifyVirtualDaaScoreChangedRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyVirtualDaaScoreChangedRequestMessage, rhs: Protowire_NotifyVirtualDaaScoreChangedRequestMessage) -> Bool {
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6617,12 +6617,12 @@ extension Protowire_NotifyVirtualDaaScoreChangedRequestMessage: SwiftProtobuf.Me
 }
 
 extension Protowire_NotifyVirtualDaaScoreChangedResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyVirtualDaaScoreChangedResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyVirtualDaaScoreChangedResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6634,7 +6634,7 @@ extension Protowire_NotifyVirtualDaaScoreChangedResponseMessage: SwiftProtobuf.M
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6645,7 +6645,7 @@ extension Protowire_NotifyVirtualDaaScoreChangedResponseMessage: SwiftProtobuf.M
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyVirtualDaaScoreChangedResponseMessage, rhs: Protowire_NotifyVirtualDaaScoreChangedResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyVirtualDaaScoreChangedResponseMessage, rhs: Protowire_NotifyVirtualDaaScoreChangedResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6653,12 +6653,12 @@ extension Protowire_NotifyVirtualDaaScoreChangedResponseMessage: SwiftProtobuf.M
 }
 
 extension Protowire_VirtualDaaScoreChangedNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".VirtualDaaScoreChangedNotificationMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".VirtualDaaScoreChangedNotificationMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "virtualDaaScore"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6670,14 +6670,14 @@ extension Protowire_VirtualDaaScoreChangedNotificationMessage: SwiftProtobuf.Mes
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.virtualDaaScore != 0 {
             try visitor.visitSingularUInt64Field(value: self.virtualDaaScore, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_VirtualDaaScoreChangedNotificationMessage, rhs: Protowire_VirtualDaaScoreChangedNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_VirtualDaaScoreChangedNotificationMessage, rhs: Protowire_VirtualDaaScoreChangedNotificationMessage) -> Bool {
         if lhs.virtualDaaScore != rhs.virtualDaaScore {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6685,12 +6685,12 @@ extension Protowire_VirtualDaaScoreChangedNotificationMessage: SwiftProtobuf.Mes
 }
 
 extension Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyPruningPointUtxoSetOverrideRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyPruningPointUtxoSetOverrideRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6702,14 +6702,14 @@ extension Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage: SwiftProtob
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.command != .notifyStart {
             try visitor.visitSingularEnumField(value: self.command, fieldNumber: 101)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage, rhs: Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage, rhs: Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage) -> Bool {
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6717,12 +6717,12 @@ extension Protowire_NotifyPruningPointUtxoSetOverrideRequestMessage: SwiftProtob
 }
 
 extension Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyPruningPointUtxoSetOverrideResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyPruningPointUtxoSetOverrideResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6734,7 +6734,7 @@ extension Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: SwiftProto
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6745,7 +6745,7 @@ extension Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: SwiftProto
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage, rhs: Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage, rhs: Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6753,50 +6753,50 @@ extension Protowire_NotifyPruningPointUtxoSetOverrideResponseMessage: SwiftProto
 }
 
 extension Protowire_PruningPointUtxoSetOverrideNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".PruningPointUtxoSetOverrideNotificationMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".PruningPointUtxoSetOverrideNotificationMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_PruningPointUtxoSetOverrideNotificationMessage, rhs: Protowire_PruningPointUtxoSetOverrideNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_PruningPointUtxoSetOverrideNotificationMessage, rhs: Protowire_PruningPointUtxoSetOverrideNotificationMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".StopNotifyingPruningPointUtxoSetOverrideRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".StopNotifyingPruningPointUtxoSetOverrideRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage, rhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage, rhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".StopNotifyingPruningPointUtxoSetOverrideResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".StopNotifyingPruningPointUtxoSetOverrideResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6808,7 +6808,7 @@ extension Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage: Swi
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6819,7 +6819,7 @@ extension Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage: Swi
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage, rhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage, rhs: Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6827,12 +6827,12 @@ extension Protowire_StopNotifyingPruningPointUtxoSetOverrideResponseMessage: Swi
 }
 
 extension Protowire_BanRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".BanRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".BanRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "ip"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6844,14 +6844,14 @@ extension Protowire_BanRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._Mes
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.ip.isEmpty {
             try visitor.visitSingularStringField(value: self.ip, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_BanRequestMessage, rhs: Protowire_BanRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_BanRequestMessage, rhs: Protowire_BanRequestMessage) -> Bool {
         if lhs.ip != rhs.ip {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6859,12 +6859,12 @@ extension Protowire_BanRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension Protowire_BanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".BanResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".BanResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6876,7 +6876,7 @@ extension Protowire_BanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._Me
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6887,7 +6887,7 @@ extension Protowire_BanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._Me
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_BanResponseMessage, rhs: Protowire_BanResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_BanResponseMessage, rhs: Protowire_BanResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6895,12 +6895,12 @@ extension Protowire_BanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension Protowire_UnbanRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".UnbanRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".UnbanRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "ip"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6912,14 +6912,14 @@ extension Protowire_UnbanRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._M
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.ip.isEmpty {
             try visitor.visitSingularStringField(value: self.ip, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_UnbanRequestMessage, rhs: Protowire_UnbanRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_UnbanRequestMessage, rhs: Protowire_UnbanRequestMessage) -> Bool {
         if lhs.ip != rhs.ip {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6927,12 +6927,12 @@ extension Protowire_UnbanRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension Protowire_UnbanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".UnbanResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".UnbanResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -6944,7 +6944,7 @@ extension Protowire_UnbanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -6955,7 +6955,7 @@ extension Protowire_UnbanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_UnbanResponseMessage, rhs: Protowire_UnbanResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_UnbanResponseMessage, rhs: Protowire_UnbanResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -6963,19 +6963,19 @@ extension Protowire_UnbanResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Protowire_GetInfoRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetInfoRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetInfoRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetInfoRequestMessage, rhs: Protowire_GetInfoRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetInfoRequestMessage, rhs: Protowire_GetInfoRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
@@ -6994,7 +6994,7 @@ extension Protowire_GetInfoResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7060,13 +7060,13 @@ extension Protowire_GetInfoResponseMessage: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Protowire_EstimateNetworkHashesPerSecondRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".EstimateNetworkHashesPerSecondRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".EstimateNetworkHashesPerSecondRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "windowSize"),
         2: .same(proto: "startHash"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7079,7 +7079,7 @@ extension Protowire_EstimateNetworkHashesPerSecondRequestMessage: SwiftProtobuf.
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.windowSize != 0 {
             try visitor.visitSingularUInt32Field(value: self.windowSize, fieldNumber: 1)
         }
@@ -7089,7 +7089,7 @@ extension Protowire_EstimateNetworkHashesPerSecondRequestMessage: SwiftProtobuf.
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_EstimateNetworkHashesPerSecondRequestMessage, rhs: Protowire_EstimateNetworkHashesPerSecondRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_EstimateNetworkHashesPerSecondRequestMessage, rhs: Protowire_EstimateNetworkHashesPerSecondRequestMessage) -> Bool {
         if lhs.windowSize != rhs.windowSize {return false}
         if lhs.startHash != rhs.startHash {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7098,13 +7098,13 @@ extension Protowire_EstimateNetworkHashesPerSecondRequestMessage: SwiftProtobuf.
 }
 
 extension Protowire_EstimateNetworkHashesPerSecondResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".EstimateNetworkHashesPerSecondResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".EstimateNetworkHashesPerSecondResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "networkHashesPerSecond"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7117,7 +7117,7 @@ extension Protowire_EstimateNetworkHashesPerSecondResponseMessage: SwiftProtobuf
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -7131,7 +7131,7 @@ extension Protowire_EstimateNetworkHashesPerSecondResponseMessage: SwiftProtobuf
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_EstimateNetworkHashesPerSecondResponseMessage, rhs: Protowire_EstimateNetworkHashesPerSecondResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_EstimateNetworkHashesPerSecondResponseMessage, rhs: Protowire_EstimateNetworkHashesPerSecondResponseMessage) -> Bool {
         if lhs.networkHashesPerSecond != rhs.networkHashesPerSecond {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7140,12 +7140,12 @@ extension Protowire_EstimateNetworkHashesPerSecondResponseMessage: SwiftProtobuf
 }
 
 extension Protowire_NotifyNewBlockTemplateRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyNewBlockTemplateRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyNewBlockTemplateRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         101: .same(proto: "command"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7157,14 +7157,14 @@ extension Protowire_NotifyNewBlockTemplateRequestMessage: SwiftProtobuf.Message,
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.command != .notifyStart {
             try visitor.visitSingularEnumField(value: self.command, fieldNumber: 101)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyNewBlockTemplateRequestMessage, rhs: Protowire_NotifyNewBlockTemplateRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyNewBlockTemplateRequestMessage, rhs: Protowire_NotifyNewBlockTemplateRequestMessage) -> Bool {
         if lhs.command != rhs.command {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -7172,12 +7172,12 @@ extension Protowire_NotifyNewBlockTemplateRequestMessage: SwiftProtobuf.Message,
 }
 
 extension Protowire_NotifyNewBlockTemplateResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NotifyNewBlockTemplateResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".NotifyNewBlockTemplateResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7189,7 +7189,7 @@ extension Protowire_NotifyNewBlockTemplateResponseMessage: SwiftProtobuf.Message
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -7200,7 +7200,7 @@ extension Protowire_NotifyNewBlockTemplateResponseMessage: SwiftProtobuf.Message
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NotifyNewBlockTemplateResponseMessage, rhs: Protowire_NotifyNewBlockTemplateResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_NotifyNewBlockTemplateResponseMessage, rhs: Protowire_NotifyNewBlockTemplateResponseMessage) -> Bool {
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -7208,19 +7208,19 @@ extension Protowire_NotifyNewBlockTemplateResponseMessage: SwiftProtobuf.Message
 }
 
 extension Protowire_NewBlockTemplateNotificationMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".NewBlockTemplateNotificationMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".NewBlockTemplateNotificationMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_NewBlockTemplateNotificationMessage, rhs: Protowire_NewBlockTemplateNotificationMessage) -> Bool {
+    static public func ==(lhs: Protowire_NewBlockTemplateNotificationMessage, rhs: Protowire_NewBlockTemplateNotificationMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
@@ -7234,7 +7234,7 @@ extension Protowire_RpcMempoolEntryByAddress: SwiftProtobuf.Message, SwiftProtob
         3: .same(proto: "receiving"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7278,7 +7278,7 @@ extension Protowire_GetMempoolEntriesByAddressesRequestMessage: SwiftProtobuf.Me
         3: .same(proto: "filterTransactionPool"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7321,7 +7321,7 @@ extension Protowire_GetMempoolEntriesByAddressesResponseMessage: SwiftProtobuf.M
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7360,7 +7360,7 @@ extension Protowire_GetCoinSupplyRequestMessage: SwiftProtobuf.Message, SwiftPro
     public static let protoMessageName: String = _protobuf_package + ".GetCoinSupplyRequestMessage"
     public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
@@ -7383,7 +7383,7 @@ extension Protowire_GetCoinSupplyResponseMessage: SwiftProtobuf.Message, SwiftPr
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7427,7 +7427,7 @@ extension Protowire_PingRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._Me
     public static let protoMessageName: String = _protobuf_package + ".PingRequestMessage"
     public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
@@ -7448,7 +7448,7 @@ extension Protowire_PingResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._M
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7492,7 +7492,7 @@ extension Protowire_ProcessMetrics: SwiftProtobuf.Message, SwiftProtobuf._Messag
         9: .same(proto: "diskIoWritePerSec"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7570,7 +7570,7 @@ extension Protowire_ConnectionMetrics: SwiftProtobuf.Message, SwiftProtobuf._Mes
         51: .same(proto: "activePeers"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7639,7 +7639,7 @@ extension Protowire_BandwidthMetrics: SwiftProtobuf.Message, SwiftProtobuf._Mess
         68: .same(proto: "grpcUserBytesRx"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7720,7 +7720,7 @@ extension Protowire_ConsensusMetrics: SwiftProtobuf.Message, SwiftProtobuf._Mess
         18: .same(proto: "virtualDaaScore"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7822,7 +7822,7 @@ extension Protowire_StorageMetrics: SwiftProtobuf.Message, SwiftProtobuf._Messag
         1: .same(proto: "storageSizeBytes"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7854,7 +7854,7 @@ extension Protowire_GetConnectionsRequestMessage: SwiftProtobuf.Message, SwiftPr
         1: .same(proto: "includeProfileData"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7887,7 +7887,7 @@ extension Protowire_ConnectionsProfileData: SwiftProtobuf.Message, SwiftProtobuf
         2: .same(proto: "memoryUsage"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7927,7 +7927,7 @@ extension Protowire_GetConnectionsResponseMessage: SwiftProtobuf.Message, SwiftP
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -7976,7 +7976,7 @@ extension Protowire_GetSystemInfoRequestMessage: SwiftProtobuf.Message, SwiftPro
     public static let protoMessageName: String = _protobuf_package + ".GetSystemInfoRequestMessage"
     public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
@@ -8003,7 +8003,7 @@ extension Protowire_GetSystemInfoResponseMessage: SwiftProtobuf.Message, SwiftPr
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8074,7 +8074,7 @@ extension Protowire_GetMetricsRequestMessage: SwiftProtobuf.Message, SwiftProtob
         6: .same(proto: "customMetrics"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8137,14 +8137,14 @@ extension Protowire_GetMetricsResponseMessage: SwiftProtobuf.Message, SwiftProto
         1000: .same(proto: "error"),
     ]
     
-    fileprivate class _StorageClass {
-        var _serverTime: UInt64 = 0
-        var _processMetrics: Protowire_ProcessMetrics? = nil
-        var _connectionMetrics: Protowire_ConnectionMetrics? = nil
-        var _bandwidthMetrics: Protowire_BandwidthMetrics? = nil
-        var _consensusMetrics: Protowire_ConsensusMetrics? = nil
-        var _storageMetrics: Protowire_StorageMetrics? = nil
-        var _error: Protowire_RPCError? = nil
+    public class _StorageClass {
+        public var _serverTime: UInt64 = 0
+        public var _processMetrics: Protowire_ProcessMetrics? = nil
+        public var _connectionMetrics: Protowire_ConnectionMetrics? = nil
+        public var _bandwidthMetrics: Protowire_BandwidthMetrics? = nil
+        public var _consensusMetrics: Protowire_ConsensusMetrics? = nil
+        public var _storageMetrics: Protowire_StorageMetrics? = nil
+        public var _error: Protowire_RPCError? = nil
         
 #if swift(>=5.10)
         // This property is used as the initial default value for new instances of the type.
@@ -8153,10 +8153,10 @@ extension Protowire_GetMetricsResponseMessage: SwiftProtobuf.Message, SwiftProto
         // hence, it is safe to mark this as `nonisolated(unsafe)`.
         static nonisolated(unsafe) let defaultInstance = _StorageClass()
 #else
-        static let defaultInstance = _StorageClass()
+        public static let defaultInstance = _StorageClass()
 #endif
         
-        private init() {}
+        public init() {}
         
         init(copying source: _StorageClass) {
             _serverTime = source._serverTime
@@ -8169,14 +8169,14 @@ extension Protowire_GetMetricsResponseMessage: SwiftProtobuf.Message, SwiftProto
         }
     }
     
-    fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    public mutating func _uniqueStorage() -> _StorageClass {
         if !isKnownUniquelyReferenced(&_storage) {
             _storage = _StorageClass(copying: _storage)
         }
         return _storage
     }
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         _ = _uniqueStorage()
         try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
             while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8253,7 +8253,7 @@ extension Protowire_GetServerInfoRequestMessage: SwiftProtobuf.Message, SwiftPro
     public static let protoMessageName: String = _protobuf_package + ".GetServerInfoRequestMessage"
     public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
@@ -8281,7 +8281,7 @@ extension Protowire_GetServerInfoResponseMessage: SwiftProtobuf.Message, SwiftPr
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8350,7 +8350,7 @@ extension Protowire_GetSyncStatusRequestMessage: SwiftProtobuf.Message, SwiftPro
     public static let protoMessageName: String = _protobuf_package + ".GetSyncStatusRequestMessage"
     public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
@@ -8372,7 +8372,7 @@ extension Protowire_GetSyncStatusResponseMessage: SwiftProtobuf.Message, SwiftPr
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8413,7 +8413,7 @@ extension Protowire_GetDaaScoreTimestampEstimateRequestMessage: SwiftProtobuf.Me
         1: .standard(proto: "daa_scores"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8446,7 +8446,7 @@ extension Protowire_GetDaaScoreTimestampEstimateResponseMessage: SwiftProtobuf.M
         1000: .same(proto: "error"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8488,7 +8488,7 @@ extension Protowire_RpcFeerateBucket: SwiftProtobuf.Message, SwiftProtobuf._Mess
         2: .standard(proto: "estimated_seconds"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8527,7 +8527,7 @@ extension Protowire_RpcFeeEstimate: SwiftProtobuf.Message, SwiftProtobuf._Messag
         3: .standard(proto: "low_buckets"),
     ]
     
-    mutating public func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8568,8 +8568,8 @@ extension Protowire_RpcFeeEstimate: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension Protowire_RpcFeeEstimateVerboseExperimentalData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".RpcFeeEstimateVerboseExperimentalData"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".RpcFeeEstimateVerboseExperimentalData"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .standard(proto: "mempool_ready_transactions_count"),
         2: .standard(proto: "mempool_ready_transactions_total_mass"),
         3: .standard(proto: "network_mass_per_second"),
@@ -8578,7 +8578,7 @@ extension Protowire_RpcFeeEstimateVerboseExperimentalData: SwiftProtobuf.Message
         13: .standard(proto: "next_block_template_feerate_max"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8595,7 +8595,7 @@ extension Protowire_RpcFeeEstimateVerboseExperimentalData: SwiftProtobuf.Message
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.mempoolReadyTransactionsCount != 0 {
             try visitor.visitSingularUInt64Field(value: self.mempoolReadyTransactionsCount, fieldNumber: 1)
         }
@@ -8617,7 +8617,7 @@ extension Protowire_RpcFeeEstimateVerboseExperimentalData: SwiftProtobuf.Message
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_RpcFeeEstimateVerboseExperimentalData, rhs: Protowire_RpcFeeEstimateVerboseExperimentalData) -> Bool {
+    static public func ==(lhs: Protowire_RpcFeeEstimateVerboseExperimentalData, rhs: Protowire_RpcFeeEstimateVerboseExperimentalData) -> Bool {
         if lhs.mempoolReadyTransactionsCount != rhs.mempoolReadyTransactionsCount {return false}
         if lhs.mempoolReadyTransactionsTotalMass != rhs.mempoolReadyTransactionsTotalMass {return false}
         if lhs.networkMassPerSecond != rhs.networkMassPerSecond {return false}
@@ -8630,32 +8630,32 @@ extension Protowire_RpcFeeEstimateVerboseExperimentalData: SwiftProtobuf.Message
 }
 
 extension Protowire_GetFeeEstimateRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateRequestMessage"
-    static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+    public static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateRequestMessage"
+    public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         // Load everything into unknown fields
         while try decoder.nextFieldNumber() != nil {}
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetFeeEstimateRequestMessage, rhs: Protowire_GetFeeEstimateRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetFeeEstimateRequestMessage, rhs: Protowire_GetFeeEstimateRequestMessage) -> Bool {
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
     }
 }
 
 extension Protowire_GetFeeEstimateResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "estimate"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8668,7 +8668,7 @@ extension Protowire_GetFeeEstimateResponseMessage: SwiftProtobuf.Message, SwiftP
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -8682,7 +8682,7 @@ extension Protowire_GetFeeEstimateResponseMessage: SwiftProtobuf.Message, SwiftP
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetFeeEstimateResponseMessage, rhs: Protowire_GetFeeEstimateResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetFeeEstimateResponseMessage, rhs: Protowire_GetFeeEstimateResponseMessage) -> Bool {
         if lhs._estimate != rhs._estimate {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
@@ -8691,12 +8691,12 @@ extension Protowire_GetFeeEstimateResponseMessage: SwiftProtobuf.Message, SwiftP
 }
 
 extension Protowire_GetFeeEstimateExperimentalRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateExperimentalRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateExperimentalRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "verbose"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8708,14 +8708,14 @@ extension Protowire_GetFeeEstimateExperimentalRequestMessage: SwiftProtobuf.Mess
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if self.verbose != false {
             try visitor.visitSingularBoolField(value: self.verbose, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetFeeEstimateExperimentalRequestMessage, rhs: Protowire_GetFeeEstimateExperimentalRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetFeeEstimateExperimentalRequestMessage, rhs: Protowire_GetFeeEstimateExperimentalRequestMessage) -> Bool {
         if lhs.verbose != rhs.verbose {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -8723,14 +8723,14 @@ extension Protowire_GetFeeEstimateExperimentalRequestMessage: SwiftProtobuf.Mess
 }
 
 extension Protowire_GetFeeEstimateExperimentalResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateExperimentalResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetFeeEstimateExperimentalResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "estimate"),
         2: .same(proto: "verbose"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8744,7 +8744,7 @@ extension Protowire_GetFeeEstimateExperimentalResponseMessage: SwiftProtobuf.Mes
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -8761,7 +8761,7 @@ extension Protowire_GetFeeEstimateExperimentalResponseMessage: SwiftProtobuf.Mes
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetFeeEstimateExperimentalResponseMessage, rhs: Protowire_GetFeeEstimateExperimentalResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetFeeEstimateExperimentalResponseMessage, rhs: Protowire_GetFeeEstimateExperimentalResponseMessage) -> Bool {
         if lhs._estimate != rhs._estimate {return false}
         if lhs._verbose != rhs._verbose {return false}
         if lhs._error != rhs._error {return false}
@@ -8771,12 +8771,12 @@ extension Protowire_GetFeeEstimateExperimentalResponseMessage: SwiftProtobuf.Mes
 }
 
 extension Protowire_GetCurrentBlockColorRequestMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetCurrentBlockColorRequestMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetCurrentBlockColorRequestMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "hash"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8788,14 +8788,14 @@ extension Protowire_GetCurrentBlockColorRequestMessage: SwiftProtobuf.Message, S
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         if !self.hash.isEmpty {
             try visitor.visitSingularStringField(value: self.hash, fieldNumber: 1)
         }
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetCurrentBlockColorRequestMessage, rhs: Protowire_GetCurrentBlockColorRequestMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetCurrentBlockColorRequestMessage, rhs: Protowire_GetCurrentBlockColorRequestMessage) -> Bool {
         if lhs.hash != rhs.hash {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
         return true
@@ -8803,13 +8803,13 @@ extension Protowire_GetCurrentBlockColorRequestMessage: SwiftProtobuf.Message, S
 }
 
 extension Protowire_GetCurrentBlockColorResponseMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-    static let protoMessageName: String = _protobuf_package + ".GetCurrentBlockColorResponseMessage"
-    static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    public static let protoMessageName: String = _protobuf_package + ".GetCurrentBlockColorResponseMessage"
+    public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
         1: .same(proto: "blue"),
         1000: .same(proto: "error"),
     ]
     
-    mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
         while let fieldNumber = try decoder.nextFieldNumber() {
             // The use of inline closures is to circumvent an issue where the compiler
             // allocates stack space for every case branch when no optimizations are
@@ -8822,7 +8822,7 @@ extension Protowire_GetCurrentBlockColorResponseMessage: SwiftProtobuf.Message, 
         }
     }
     
-    func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
         // The use of inline closures is to circumvent an issue where the compiler
         // allocates stack space for every if/case branch local when no optimizations
         // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
@@ -8836,7 +8836,7 @@ extension Protowire_GetCurrentBlockColorResponseMessage: SwiftProtobuf.Message, 
         try unknownFields.traverse(visitor: &visitor)
     }
     
-    static func ==(lhs: Protowire_GetCurrentBlockColorResponseMessage, rhs: Protowire_GetCurrentBlockColorResponseMessage) -> Bool {
+    static public func ==(lhs: Protowire_GetCurrentBlockColorResponseMessage, rhs: Protowire_GetCurrentBlockColorResponseMessage) -> Bool {
         if lhs.blue != rhs.blue {return false}
         if lhs._error != rhs._error {return false}
         if lhs.unknownFields != rhs.unknownFields {return false}
