@@ -13,12 +13,14 @@ import Logging
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public struct KaspaClient {
-    public let host: String
-    public let port: Int
+    private let host: String
+    private let port: Int
+    private let group: MultiThreadedEventLoopGroup
     
     public init(host: String = "kaspa.maiziqianbao.net", port: Int = 80) {
         self.host = host
         self.port = port
+        self.group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
     }
     
     public init(url: String) throws{
@@ -31,8 +33,7 @@ public struct KaspaClient {
     }
     
     public func sendRequest(request: Protowire_KaspadRequest) async throws -> Protowire_KaspadResponse {
-        // 创建事件循环组
-        let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+        
         // 建立通道连接
         let channel = ClientConnection.insecure(group: group).connect(host: host, port: port)
         // 创建拦截器工厂
@@ -47,18 +48,17 @@ public struct KaspaClient {
             // 接收响应
             for try await _response in call.responseStream {
                 response = _response
-                Task {
-                    try? await group.shutdownGracefully()
-                }
+               
             }
             guard let _response = response else {
-                Task {
-                    try? await group.shutdownGracefully()
-                }
                 throw KaspaError.unknow
             }
             return _response
         }
+    }
+
+    public func shutdown() async throws {
+        try await group.shutdownGracefully()
     }
 }
 
