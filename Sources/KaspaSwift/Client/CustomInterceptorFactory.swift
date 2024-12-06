@@ -2,7 +2,7 @@
 //  CustomInterceptorFactory.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/12/5.
+//  Created by xgblin on 2024/12/5.
 //
 
 import GRPC
@@ -22,14 +22,14 @@ class LoggingInterceptor: ClientInterceptor<Protowire_KaspadRequest, Protowire_K
         context: ClientInterceptorContext<Protowire_KaspadRequest, Protowire_KaspadResponse>
     ) {
         // 记录日志或进行其他操作
-        switch part {
-        case .metadata(let hPACKHeaders):
-            debugPrint("Sending request: \(hPACKHeaders)")
-        case .message(let request, let messageMetadata):
-            debugPrint("Sending message: \(request),\(messageMetadata)")
-        case .end:
-            debugPrint("Sending request: end")
-        }
+//        switch part {
+//        case .metadata(let hPACKHeaders):
+//            debugPrint("Sending request: \(hPACKHeaders)")
+//        case .message(let request, let messageMetadata):
+//            debugPrint("Sending message: \(request),\(messageMetadata)")
+//        case .end:
+//            debugPrint("Sending request: end")
+//        }
         // 传递请求到下一个拦截器或实际的 gRPC 服务
         context.send(part, promise: promise)
     }
