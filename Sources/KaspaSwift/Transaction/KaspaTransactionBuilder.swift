@@ -14,7 +14,7 @@ public struct KaspaTransactionBuilder {
     public static func createTransaction(toAddress: KaspaAddress, amount: BigInt, changeAddress: KaspaAddress, selectUtxos: [KaspaUtxo], priorityFee: BigInt) throws -> KaspaTransaction {
         let inputs = try selectUtxos.map { utxo in
             return TxInput(
-                address: try KaspaAddress.decodeAddress(address: utxo.address),
+                address: try KaspaAddress.decodeAddress(address: utxo.address, expectedPrefix: KaspaAddressPrefix.kaspa),
                 previousOutpoint: utxo.outpoint,
                 signatureScript: Data(count: 64 + 2),
                 sequence: Int64(0),

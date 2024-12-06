@@ -38,7 +38,8 @@ class LoggingInterceptor: ClientInterceptor<Protowire_KaspadRequest, Protowire_K
         _ part: GRPCClientResponsePart<Protowire_KaspadResponse>,
         context: ClientInterceptorContext<Protowire_KaspadRequest, Protowire_KaspadResponse>
     ) {
-        debugPrint("Receiving response: \(part)")
+//        debugPrint("Receiving response: \(part)")
         context.receive(part) // 将响应传递到调用者
     }
 }
+
