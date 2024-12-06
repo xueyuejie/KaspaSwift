@@ -59,8 +59,8 @@ public struct KaspaAddress: Hashable {
         guard let (prefixStr, data) = CashAddrBech32.decode(address) else {
             throw KaspaError.message("address decode error")
         }
-        guard let _prefix = KaspaAddressPrefix(rawValue: prefixStr),
-           expectedPrefix == KaspaAddressPrefix.unknown && expectedPrefix == _prefix else {
+        let _prefix = KaspaAddressPrefix(rawValue: prefixStr)!
+           guard expectedPrefix != KaspaAddressPrefix.unknown && expectedPrefix == _prefix else {
             throw KaspaError.message("Invalid address prefix")
         }
         
