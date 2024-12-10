@@ -11,7 +11,7 @@ import BigInt
 public let feePerInputRaw = 10000
 
 public struct KaspaTransactionBuilder {
-    public static func createTransaction(toAddress: KaspaAddress, amount: BigInt, changeAddress: KaspaAddress, selectUtxos: [KaspaUtxo], priorityFee: BigInt) throws -> KaspaTransaction {
+    public static func createTransaction(toAddress: KaspaAddress, amount: BigUInt, changeAddress: KaspaAddress, selectUtxos: [KaspaUtxo], priorityFee: BigUInt) throws -> KaspaTransaction {
         let inputs = try selectUtxos.map { utxo in
             return TxInput(
                 address: try KaspaAddress.decodeAddress(address: utxo.address, expectedPrefix: KaspaAddressPrefix.kaspa),
@@ -39,19 +39,19 @@ public struct KaspaTransactionBuilder {
         )
     }
     
-    public static func getChangeAmountRaw(selectedUtxos: [KaspaUtxo], spendAmount: BigInt, priorityFee: BigInt) -> BigInt {
+    public static func getChangeAmountRaw(selectedUtxos: [KaspaUtxo], spendAmount: BigUInt, priorityFee: BigUInt) -> BigUInt {
         let (totalValue, fee) = getFee(selectedUtxos: selectedUtxos, spendAmount: spendAmount, priorityFee: priorityFee)
         let totalSpend = spendAmount + fee
         return totalValue - totalSpend
     }
     
-    public static func getFee(selectedUtxos: [KaspaUtxo], spendAmount: BigInt, priorityFee: BigInt) -> (totalValue: BigInt, fee: BigInt) {
-        var totalValue = BigInt(0)
+    public static func getFee(selectedUtxos: [KaspaUtxo], spendAmount: BigUInt, priorityFee: BigUInt) -> (totalValue: BigUInt, fee: BigUInt) {
+        var totalValue = BigUInt(0)
         for utxo in selectedUtxos {
-            totalValue += utxo.utxoEntry.amount
+            totalValue += BigUInt(utxo.utxoEntry.amount)
         }
         let baseFeeRaw = feePerInputRaw * selectedUtxos.count
-        let fee = BigInt(baseFeeRaw) + priorityFee
+        let fee = BigUInt(baseFeeRaw) + priorityFee
         return (totalValue: totalValue, fee: fee)
     }
 }
