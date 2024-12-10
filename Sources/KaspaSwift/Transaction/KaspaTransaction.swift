@@ -17,9 +17,6 @@ public class KaspaTransaction {
     public let subnetworkId: Data
     public let gas: Int64
     public let payload: Data?
-    public let fee: Int64?
-    public let mass: Int64?
-    public let id: Data?
 
     public init(version: Int = 0,
                 inputs: [TxInput] = [TxInput](),
@@ -27,10 +24,7 @@ public class KaspaTransaction {
                 lockTime: Int64,
                 subnetworkId: Data = Data(count: 20),
                 gas: Int64 = 0,
-                payload: Data? = nil,
-                fee: Int64? = nil,
-                mass: Int64? = nil,
-                id: Data? = nil) {
+                payload: Data? = nil) {
         self.version = version
         self.inputs = inputs
         self.outputs = outputs
@@ -38,9 +32,6 @@ public class KaspaTransaction {
         self.subnetworkId = subnetworkId
         self.gas = gas
         self.payload = payload
-        self.fee = fee
-        self.mass = mass
-        self.id = id
     }
     
     @MainActor
