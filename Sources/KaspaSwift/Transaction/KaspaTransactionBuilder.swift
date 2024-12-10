@@ -40,14 +40,18 @@ public struct KaspaTransactionBuilder {
     }
     
     public static func getChangeAmountRaw(selectedUtxos: [KaspaUtxo], spendAmount: BigInt, priorityFee: BigInt) -> BigInt {
+        let (totalValue, fee) = getFee(selectedUtxos: selectedUtxos, spendAmount: spendAmount, priorityFee: priorityFee)
+        let totalSpend = spendAmount + fee
+        return totalValue - totalSpend
+    }
+    
+    public static func getFee(selectedUtxos: [KaspaUtxo], spendAmount: BigInt, priorityFee: BigInt) -> (totalValue: BigInt, fee: BigInt) {
         var totalValue = BigInt(0)
         for utxo in selectedUtxos {
             totalValue += utxo.utxoEntry.amount
         }
         let baseFeeRaw = feePerInputRaw * selectedUtxos.count
         let fee = BigInt(baseFeeRaw) + priorityFee
-        let totalSpend = spendAmount + fee
-        
-        return totalValue - totalSpend
+        return (totalValue: totalValue, fee: fee)
     }
 }
