@@ -45,7 +45,7 @@ public struct KaspaTransactionBuilder {
             totalValue += utxo.utxoEntry.amount
         }
         let baseFeeRaw = feePerInputRaw * selectedUtxos.count
-        let fee = BigInt(baseFeeRaw) + priorityFee - BigInt(feePerInputRaw)
+        let fee = BigInt(baseFeeRaw) + priorityFee
         let totalSpend = spendAmount + fee
         
         return totalValue - totalSpend
