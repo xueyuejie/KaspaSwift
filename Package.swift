@@ -8,8 +8,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "kaspaswift",
-            targets: ["kaspaswift"]),
+            name: "KaspaSwift",
+            targets: ["KaspaSwift"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,7 +25,7 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "kaspaswift",
+            name: "KaspaSwift",
             dependencies: [
                 "CryptoSwift",
                 "Secp256k1Swift",
@@ -36,11 +36,11 @@ let package = Package(
                 "Bech32",
                 .product(name: "Blake2", package: "blake2.swift")
             ],
-            path: "Sources/kaspaswift"
+            path: "Sources/KaspaSwift"
         ),
         .testTarget(
-            name: "kaspaswiftTests",
-            dependencies: ["kaspaswift"]
+            name: "KaspaSwiftTests",
+            dependencies: ["KaspaSwift"]
         ),
     ]
 )
