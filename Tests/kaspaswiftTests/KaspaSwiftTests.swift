@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import KaspaSwift
+@testable import kaspaswift
 
 final class KaspaSwiftTests: XCTestCase {
     func testExample() throws {
