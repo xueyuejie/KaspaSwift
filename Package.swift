@@ -1,4 +1,4 @@
-// swift-tools-version: 5.5
+// swift-tools-version: 5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -17,7 +17,7 @@ let package = Package(
         .package(url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.0"),
         .package(url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
-        .package(url: "https://github.com/grpc/grpc-swift", from: "1.0.0"),
+        .package(url: "https://github.com/grpc/grpc-swift", exact: "1.24.2"),
         .package(url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
     ],
     targets: [
