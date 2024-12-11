@@ -18,7 +18,6 @@ let package = Package(
         .package(url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
         .package(url: "https://github.com/grpc/grpc-swift", from: "1.0.0"),
-        .package(url: "https://github.com/lishuailibertine/Bech32", from: "1.0.5"),
         .package(url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
     ],
     targets: [
@@ -33,7 +32,6 @@ let package = Package(
                 "BIP39swift",
                 .product(name: "SwiftProtobuf", package: "swift-protobuf"),
                 .product(name: "GRPC", package: "grpc-swift"),
-                "Bech32",
                 .product(name: "Blake2", package: "blake2.swift")
             ],
             path: "Sources/KaspaSwift"

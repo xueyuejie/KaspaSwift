@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "Bech32",
-        "repositoryURL": "https://github.com/lishuailibertine/Bech32",
-        "state": {
-          "branch": null,
-          "revision": "82e758ddf9cbf546c807d3913933972b59b4947b",
-          "version": "1.0.5"
-        }
-      },
-      {
         "package": "BigInt",
         "repositoryURL": "https://github.com/attaswift/BigInt.git",
         "state": {

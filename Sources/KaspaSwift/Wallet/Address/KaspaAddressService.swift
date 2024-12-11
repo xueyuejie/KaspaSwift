@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Bech32
 
 public struct KaspaAddressService {
     private let isTestnet: Bool
