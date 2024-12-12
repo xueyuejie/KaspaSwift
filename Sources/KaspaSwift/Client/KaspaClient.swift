@@ -16,11 +16,17 @@ public struct KaspaClient {
     private let host: String
     private let port: Int
     private let group: MultiThreadedEventLoopGroup
+//    private let channel: ClientConnection
+    private let asyncClient: Protowire_RPCAsyncClient
     
     public init(host: String = "kaspa.maiziqianbao.net", port: Int = 80) {
         self.host = host
         self.port = port
         self.group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+        let channel = ClientConnection.insecure(group: group).connect(host: host, port: port)
+        // 创建拦截器工厂
+        let interceptorFactory = CustomInterceptorFactory()
+        self.asyncClient = Protowire_RPCAsyncClient(channel: channel, interceptors: interceptorFactory)
     }
     
     public init(url: String) throws{
@@ -33,12 +39,6 @@ public struct KaspaClient {
     }
     
     public func sendRequest(request: Protowire_KaspadRequest) async throws -> Protowire_KaspadResponse {
-        
-        // 建立通道连接
-        let channel = ClientConnection.insecure(group: group).connect(host: host, port: port)
-        // 创建拦截器工厂
-        let interceptorFactory = CustomInterceptorFactory()
-        let asyncClient = Protowire_RPCAsyncClient(channel: channel, interceptors: interceptorFactory)
         // 调用 gRPC 服务
         do {
             let call = asyncClient.makeMessageStreamCall()
