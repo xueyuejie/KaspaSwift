@@ -15,7 +15,7 @@ public enum ScriptBuilderError: Error {
     case integerRejected(Int64)
 }
 
-class ScriptBuilder {
+public class ScriptBuilder {
     private var script: [UInt8]
     private static let defaultScriptAlloc = 512
     private static let maxScriptsSize = 10000 // 假设的值
