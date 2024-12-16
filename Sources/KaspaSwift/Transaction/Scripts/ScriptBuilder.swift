@@ -16,12 +16,12 @@ public enum ScriptBuilderError: Error {
 }
 
 public class ScriptBuilder {
-    private var script: [UInt8]
+    public var script: [UInt8]
     private static let defaultScriptAlloc = 512
     private static let maxScriptsSize = 10000 // 假设的值
     private static let maxScriptElementSize = 520 // 假设的值
 
-    init() {
+    public init() {
         self.script = [UInt8]()
         self.script.reserveCapacity(ScriptBuilder.defaultScriptAlloc)
     }
@@ -69,7 +69,7 @@ public class ScriptBuilder {
         }
     }
 
-    private public func addRawData(_ data: [UInt8]) -> ScriptBuilder {
+    private func addRawData(_ data: [UInt8]) -> ScriptBuilder {
         let dataLen = data.count
         if dataLen == 0 || (dataLen == 1 && data[0] == 0) {
             script.append(0x00)

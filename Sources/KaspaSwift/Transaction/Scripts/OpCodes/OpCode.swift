@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OpcCode: UInt8 {
+public enum OpcCode: UInt8 {
     case OpFalse = 0
     case OpData1 = 1
     case OpData2 = 2
