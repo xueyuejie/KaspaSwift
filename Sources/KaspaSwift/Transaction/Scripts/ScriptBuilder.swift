@@ -7,9 +7,7 @@
 
 import Foundation
 
-import Foundation
-
-enum ScriptBuilderError: Error {
+public enum ScriptBuilderError: Error {
     case opCodeRejected(UInt8)
     case opCodesRejected(Int)
     case dataRejected(Int)
