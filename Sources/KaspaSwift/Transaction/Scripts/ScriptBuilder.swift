@@ -26,17 +26,17 @@ public class ScriptBuilder {
         self.script.reserveCapacity(ScriptBuilder.defaultScriptAlloc)
     }
 
-    func scriptData() -> [UInt8] {
+    public func scriptData() -> [UInt8] {
         return script
     }
 
-    func drain() -> [UInt8] {
+    public func drain() -> [UInt8] {
         let drainedScript = script
         script = []
         return drainedScript
     }
 
-    func addOp(_ opcode: OpcCode) throws -> ScriptBuilder {
+    public func addOp(_ opcode: OpcCode) throws -> ScriptBuilder {
         guard script.count < ScriptBuilder.maxScriptsSize else {
             throw ScriptBuilderError.opCodeRejected(opcode.rawValue)
         }
@@ -44,7 +44,7 @@ public class ScriptBuilder {
         return self
     }
 
-    func addOps(_ opcodes: [OpcCode]) throws -> ScriptBuilder {
+    public func addOps(_ opcodes: [OpcCode]) throws -> ScriptBuilder {
         guard script.count + opcodes.count <= ScriptBuilder.maxScriptsSize else {
             throw ScriptBuilderError.opCodesRejected(opcodes.count)
         }
@@ -53,7 +53,7 @@ public class ScriptBuilder {
         return self
     }
 
-    static func canonicalDataSize(_ data: [UInt8]) -> Int {
+    static public func canonicalDataSize(_ data: [UInt8]) -> Int {
         let dataLen = data.count
         if dataLen == 0 || (dataLen == 1 && (data[0] <= 16 || data[0] == 0x81)) {
             return 1
@@ -69,7 +69,7 @@ public class ScriptBuilder {
         }
     }
 
-    private func addRawData(_ data: [UInt8]) -> ScriptBuilder {
+    private public func addRawData(_ data: [UInt8]) -> ScriptBuilder {
         let dataLen = data.count
         if dataLen == 0 || (dataLen == 1 && data[0] == 0) {
             script.append(0x00)
@@ -93,7 +93,7 @@ public class ScriptBuilder {
         return self
     }
 
-    func addData(_ data: [UInt8]) throws -> ScriptBuilder {
+    public func addData(_ data: [UInt8]) throws -> ScriptBuilder {
         let dataSize = ScriptBuilder.canonicalDataSize(data)
         guard script.count + dataSize <= ScriptBuilder.maxScriptsSize else {
             throw ScriptBuilderError.dataRejected(dataSize)
@@ -104,7 +104,7 @@ public class ScriptBuilder {
         return addRawData(data)
     }
 
-    func addI64(_ val: Int64) throws -> ScriptBuilder {
+    public func addI64(_ val: Int64) throws -> ScriptBuilder {
         guard script.count + 1 <= ScriptBuilder.maxScriptsSize else {
             throw ScriptBuilderError.integerRejected(val)
         }
@@ -119,11 +119,11 @@ public class ScriptBuilder {
         return self
     }
 
-    func addLockTime(_ lockTime: UInt64) throws -> ScriptBuilder {
+    public func addLockTime(_ lockTime: UInt64) throws -> ScriptBuilder {
         return try addU64(lockTime)
     }
 
-    func addSequence(_ sequence: UInt64) throws -> ScriptBuilder {
+    public func addSequence(_ sequence: UInt64) throws -> ScriptBuilder {
         return try addU64(sequence)
     }
 
