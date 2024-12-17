@@ -1,5 +1,5 @@
 //
-//  KaspaTransaction.swift
+//  Transaction.swift
 //  KaspaSwift
 //
 //  Created by xgblin on 2024/11/13.
@@ -9,7 +9,7 @@ import Foundation
 
 public let kSubnetworkIdNativeHex  = "0000000000000000000000000000000000000000"
 public let kSubnetworkIdCoinbaseHex = "0100000000000000000000000000000000000000"
-public class KaspaTransaction {
+public class Transaction {
     public let version: Int
     public var inputs: [TxInput]
     public var outputs: [TxOutput]

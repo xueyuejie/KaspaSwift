@@ -1,5 +1,5 @@
 //
-//  KaspaTransactionBuilder.swift
+//  TransactionBuilder.swift
 //  KaspaSwift
 //
 //  Created by xgblin on 2024/11/13.
@@ -11,8 +11,8 @@ import BigInt
 public let feePerInputRaw = 10000
 public let kMinChangeTarget = BigUInt(20000000)
 
-public struct KaspaTransactionBuilder {
-    public static func createTransaction(toAddress: KaspaAddress, amount: BigUInt, changeAddress: KaspaAddress, utxos: [KaspaUtxo], priorityFee: BigUInt) throws -> KaspaTransaction {
+public struct TransactionBuilder {
+    public static func createTransaction(toAddress: KaspaAddress, amount: BigUInt, changeAddress: KaspaAddress, utxos: [KaspaUtxo], priorityFee: BigUInt) throws -> Transaction {
         guard let (selectUtxos, changeAmount, fee) = getChangeAmountAndFee(utxoArray: utxos, amount: amount, priorityFee: priorityFee) else {
             throw KaspaError.message("Insufficient balance")
         }
@@ -32,7 +32,7 @@ public struct KaspaTransactionBuilder {
         let toPublicKey = KaspaTxScript.payToAddressScript(address: toAddress)
         outputs.append(TxOutput(value: Int64(changeAmount), scriptPublicKey: changePublicKey))
         outputs.append(TxOutput(value: Int64(amount), scriptPublicKey: toPublicKey))
-        return KaspaTransaction(
+        return Transaction(
             version: 0,
             inputs: inputs,
             outputs: outputs,

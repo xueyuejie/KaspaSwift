@@ -25,12 +25,12 @@ public class TxInput {
     }
     
     @MainActor
-    public func signedInput(transaction: KaspaTransaction, inputIndex: Int, key: KaspaKey) -> TxInput? {
+    public func signedInput(transaction: Transaction, inputIndex: Int, key: KaspaKey) -> TxInput? {
         var sighashReusedValues = SighashReusedValues()
-        guard let serializedTransaction = KaspaTransactionUtil.calculateSignatureHashSchnorr(tx: transaction, inputIndex: inputIndex, hashType: SigHashType.sigHashAll, sighashReusedValues: &sighashReusedValues), let privateKey = key.privateKey else {
+        guard let serializedTransaction = TransactionUtil.calculateSignatureHashSchnorr(tx: transaction, inputIndex: inputIndex, hashType: SigHashType.sigHashAll, sighashReusedValues: &sighashReusedValues), let privateKey = key.privateKey else {
             return nil
         }
-        guard let signature = try? KaspaTransactionUtil.signSchnorr(hash: serializedTransaction, privateKey: privateKey) else {
+        guard let signature = try? TransactionUtil.signSchnorr(hash: serializedTransaction, privateKey: privateKey) else {
             return nil
         }
         var signatureScript = [UInt8]()
