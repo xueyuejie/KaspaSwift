@@ -35,20 +35,6 @@ public class ScriptBuilder {
         script = []
         return drainedScript
     }
-    
-    public func createPayToScriptHashScript() -> KaspaScriptPublicKey {
-        // 使用 CryptoKit 进行 Blake2b 哈希计算
-        let hash = Data(self.script).blake2bDigest(size: 32)!
-        let script = payToScriptHash(scriptHash: hash.bytes)
-        return KaspaScriptPublicKey(scriptPublicKey: Data(script), version: UInt32(kAddressScriptHashScriptPublicKeyVersion))
-    }
-    
-    func payToScriptHash(scriptHash: [UInt8]) -> [UInt8] {
-        var script = [OpCode.OpBlake2b.rawValue, OpCode.OpData32.rawValue]
-        script.append(contentsOf: scriptHash) // Assuming each byte maps to an OpCode
-        script.append(OpCode.OpEqual.rawValue)
-        return script
-    }
 }
 
 extension ScriptBuilder {
