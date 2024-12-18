@@ -6,9 +6,9 @@
 //
 
 import Foundation
-let kAddressPublicKeyScriptPublicKeyVersion = 0
-let kAddressPublicKeyECDSAScriptPublicKeyVersion = 0
-let kAddressScriptHashScriptPublicKeyVersion = 0
+public let kAddressPublicKeyScriptPublicKeyVersion = 0
+public let kAddressPublicKeyECDSAScriptPublicKeyVersion = 0
+public let kAddressScriptHashScriptPublicKeyVersion = 0
 
 public struct KaspaAddress: Hashable {
     static let kAddressIdPubKey: UInt8 = 0x00;
