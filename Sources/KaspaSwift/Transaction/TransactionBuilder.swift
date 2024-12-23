@@ -21,7 +21,7 @@ public struct TransactionBuilder {
                 address: try KaspaAddress.decodeAddress(address: utxo.address, expectedPrefix: KaspaAddressPrefix.kaspa),
                 previousOutpoint: utxo.outpoint,
                 signatureScript: Data(count: 64 + 2),
-                sequence: Int64(0),
+                sequence: UInt64(0),
                 sigOpCount: 1,
                 utxoEntry: utxo.utxoEntry.copyWith(blockDaaScore: BigInt(-1), isCoinbase: false)
             )
@@ -30,15 +30,15 @@ public struct TransactionBuilder {
         var outputs = [TxOutput]()
         let changePublicKey = KaspaTxScript.payToAddressScript(address: changeAddress)
         let toPublicKey = KaspaTxScript.payToAddressScript(address: toAddress)
-        outputs.append(TxOutput(value: Int64(changeAmount), scriptPublicKey: changePublicKey))
-        outputs.append(TxOutput(value: Int64(amount), scriptPublicKey: toPublicKey))
+        outputs.append(TxOutput(value: UInt64(changeAmount), scriptPublicKey: changePublicKey))
+        outputs.append(TxOutput(value: UInt64(amount), scriptPublicKey: toPublicKey))
         return Transaction(
             version: 0,
             inputs: inputs,
             outputs: outputs,
-            lockTime: Int64(0),
+            lockTime: UInt64(0),
             subnetworkId: Data(count: 20),
-            gas: Int64(0),
+            gas: UInt64(0),
             fee: UInt64(fee.description) ?? UInt64(0),
             payload: nil
         )
@@ -68,12 +68,6 @@ public struct TransactionBuilder {
         }
         return (selectUtxos, totalAmount - needAmount, fee)
     }
-    
-//    public static func getChangeAmountRaw(selectedUtxos: [KaspaUtxo], spendAmount: BigUInt, priorityFee: BigUInt) -> BigUInt {
-//        let (totalValue, fee) = getFee(selectedUtxos: selectedUtxos, spendAmount: spendAmount, priorityFee: priorityFee)
-//        let totalSpend = spendAmount + fee
-//        return totalValue - totalSpend
-//    }
     
     public static func getFee(selectedUtxos: [KaspaUtxo], priorityFee: BigUInt) -> BigUInt {
         let baseFeeRaw = feePerInputRaw * selectedUtxos.count

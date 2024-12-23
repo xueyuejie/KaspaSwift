@@ -11,11 +11,11 @@ public class TxInput {
     public let address: KaspaAddress
     public let previousOutpoint: KaspaOutpoint
     public var signatureScript: Data
-    public let sequence: Int64
+    public let sequence: UInt64
     public let sigOpCount: Int
     public let utxoEntry: KaspaUtxoEntry
 
-    public init(address: KaspaAddress, previousOutpoint: KaspaOutpoint, signatureScript: Data = Data() , sequence: Int64, sigOpCount: Int, utxoEntry: KaspaUtxoEntry) {
+    public init(address: KaspaAddress, previousOutpoint: KaspaOutpoint, signatureScript: Data = Data() , sequence: UInt64, sigOpCount: Int, utxoEntry: KaspaUtxoEntry) {
         self.address = address
         self.previousOutpoint = previousOutpoint
         self.signatureScript = signatureScript
@@ -45,7 +45,7 @@ public class TxInput {
         var input = Protowire_RpcTransactionInput()
         input.previousOutpoint = previousOutpoint.toRpc()
         input.signatureScript = signatureScript.hexEncodedString()
-        input.sequence = UInt64(sequence)
+        input.sequence = sequence
         input.sigOpCount = UInt32(sigOpCount)
         return input
     }

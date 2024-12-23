@@ -13,18 +13,18 @@ public class Transaction {
     public let version: Int
     public var inputs: [TxInput]
     public var outputs: [TxOutput]
-    public let lockTime: Int64
+    public let lockTime: UInt64
     public let subnetworkId: Data
-    public let gas: Int64
+    public let gas: UInt64
     public let fee: UInt64
     public let payload: Data?
 
     public init(version: Int = 0,
                 inputs: [TxInput] = [TxInput](),
                 outputs: [TxOutput] = [TxOutput](),
-                lockTime: Int64,
+                lockTime: UInt64,
                 subnetworkId: Data = Data(count: 20),
-                gas: Int64 = 0,
+                gas: UInt64 = 0,
                 fee: UInt64 = 0,
                 payload: Data? = nil) {
         self.version = version
@@ -53,9 +53,9 @@ public class Transaction {
         rpctransaction.version = UInt32(version)
         rpctransaction.inputs = inputs.map { $0.toRpc() }
         rpctransaction.outputs = outputs.map { $0.toRpc() }
-        rpctransaction.lockTime = UInt64(lockTime)
+        rpctransaction.lockTime = lockTime
         rpctransaction.subnetworkID = subnetworkId.hexEncodedString()
-        rpctransaction.gas = UInt64(gas)
+        rpctransaction.gas = gas
         rpctransaction.payload = payload?.hexEncodedString() ?? ""
         return rpctransaction
     }
