@@ -2,7 +2,7 @@
 //  ScriptBuilder.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/12/16.
+//  Created by xgblin on 2024/12/16.
 //
 
 import Foundation
@@ -26,8 +26,8 @@ public class ScriptBuilder {
         self.script.reserveCapacity(ScriptBuilder.defaultScriptAlloc)
     }
 
-    public func scriptData() -> [UInt8] {
-        return script
+    public func scriptData() -> Data {
+        return Data(script)
     }
 
     public func drain() -> [UInt8] {

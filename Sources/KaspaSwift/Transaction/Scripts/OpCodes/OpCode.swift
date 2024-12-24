@@ -2,7 +2,7 @@
 //  OpCode.swift
 //  KaspaSwift
 //
-//  Created by 薛跃杰 on 2024/12/16.
+//  Created by xgblin on 2024/12/16.
 //
 
 import Foundation
