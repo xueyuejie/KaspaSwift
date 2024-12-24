@@ -41,7 +41,7 @@ public class Transaction {
     public func sign(with keys:[KaspaKey]) throws {
         for (i,input) in inputs.enumerated() {
             let key = keys[i]
-            guard let signedInput = input.signedInput(transaction: self, inputIndex: i, key: key) else {
+            guard let signedInput = try? input.signedInput(transaction: self, inputIndex: i, key: key) else {
                 throw KaspaError.signError
             }
             self.inputs[i] = signedInput

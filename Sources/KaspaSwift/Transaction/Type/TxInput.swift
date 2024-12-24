@@ -27,25 +27,25 @@ public class TxInput {
     }
     
     @MainActor
-    public func signedInput(transaction: Transaction, inputIndex: Int, key: KaspaKey) -> TxInput? {
-        var sighashReusedValues = SighashReusedValues()
-        guard let serializedTransaction = TransactionUtil.calculateSignatureHashSchnorr(tx: transaction, inputIndex: inputIndex, hashType: SigHashType.sigHashAll, sighashReusedValues: &sighashReusedValues), let privateKey = key.privateKey else {
-            return nil
+    public func signedInput(transaction: Transaction, inputIndex: Int, key: KaspaKey) throws -> TxInput {
+        do {
+            var sighashReusedValues = SighashReusedValues()
+            guard let serializedTransaction = TransactionUtil.calculateSignatureHashSchnorr(tx: transaction, inputIndex: inputIndex, hashType: SigHashType.sigHashAll, sighashReusedValues: &sighashReusedValues), let privateKey = key.privateKey else {
+                throw KaspaError.signError
+            }
+            let signature = try TransactionUtil.signSchnorr(hash: serializedTransaction, privateKey: privateKey)
+            var signatureData = [UInt8]()
+            signatureData.append(contentsOf: signature)
+            signatureData.append(UInt8(SigHashType.sigHashAll.rawValue))
+            var scriptBuilder = try ScriptBuilder().addData(signatureData)
+            if let _redeemScript = self.redeemScript {
+                scriptBuilder = try scriptBuilder.addData(_redeemScript.bytes)
+            }
+            self.signatureScript = scriptBuilder.scriptData()
+            return self
+        } catch let error {
+            throw error
         }
-        guard let signature = try? TransactionUtil.signSchnorr(hash: serializedTransaction, privateKey: privateKey) else {
-            return nil
-        }
-        var signatureData = [UInt8]()
-        signatureData.append(contentsOf: signature)
-        signatureData.append(UInt8(SigHashType.sigHashAll.rawValue))
-        if let _redeemScript = self.redeemScript {
-            signatureData.append(contentsOf: _redeemScript)
-        }
-        var signatureScript = Data()
-        signatureScript.appendVarInt(UInt64(signatureData.count))
-        signatureScript.append(contentsOf: signatureData)
-        self.signatureScript = signatureScript
-        return self
     }
 
     public func toRpc() -> Protowire_RpcTransactionInput {
