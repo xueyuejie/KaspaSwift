@@ -41,10 +41,10 @@ public class TxInput {
         if let _redeemScript = self.redeemScript {
             signatureData.append(contentsOf: _redeemScript)
         }
-        var signatureScript = [UInt8]()
-        signatureScript.append(UInt8(signatureData.count))
+        var signatureScript = Data()
+        signatureScript.appendVarInt(UInt64(signatureData.count))
         signatureScript.append(contentsOf: signatureData)
-        self.signatureScript.replaceSubrange(0..<signatureScript.count, with: signatureScript)
+        self.signatureScript = signatureScript
         return self
     }
 
