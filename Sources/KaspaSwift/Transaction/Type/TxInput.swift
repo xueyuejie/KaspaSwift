@@ -43,7 +43,7 @@ public class TxInput {
         }
         var signatureScript = [UInt8]()
         signatureScript.append(UInt8(signatureData.count))
-        signatureScript.append(contentsOf: signature)
+        signatureScript.append(contentsOf: signatureData)
         self.signatureScript.replaceSubrange(0..<signatureScript.count, with: signatureScript)
         return self
     }
