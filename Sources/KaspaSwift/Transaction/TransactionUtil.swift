@@ -1,5 +1,5 @@
 //
-//  KaspaTransactionUtil.swift
+//  TransactionUtil.swift
 //  KaspaSwift
 //
 //  Created by xgblin on 2024/11/14.
@@ -8,7 +8,7 @@
 import Foundation
 import Blake2
 
-public struct KaspaTransactionUtil {
+public struct TransactionUtil {
     public static let kTransactionHashDomain = "TransactionHash"
     public static let kTransactionIdDomain = "TransactionID"
     public static let blake2bDigestKey = "TransactionSigningHash".data(using: .utf8)?.bytes ?? []
@@ -25,7 +25,7 @@ public struct KaspaTransactionUtil {
         builder.appendUInt32(UInt32(outpoint.index))
     }
 
-    public static func getPreviousOutputsHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getPreviousOutputsHash(tx: Transaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         if reusedValues.previousOutputsHash == nil {
             var data = Data()
             for txInput in tx.inputs {
@@ -39,7 +39,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.previousOutputsHash!
     }
 
-    public static func getSequencesHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getSequencesHash(tx: Transaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         var data = Data()
         if reusedValues.sequencesHash == nil {
             for _ in tx.inputs {
@@ -51,7 +51,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.sequencesHash!
     }
 
-    public static func getSigOpCountsHash(tx: KaspaTransaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getSigOpCountsHash(tx: Transaction, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         if reusedValues.sigOpCountsHash == nil {
             let data = Data(repeating: UInt8(1), count: tx.inputs.count)
             let hash = data.blake2bDigest(size: 32, key: blake2bDigestKey)
@@ -60,7 +60,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.sigOpCountsHash!
     }
 
-    public static func getOutputsHash(tx: KaspaTransaction, inputIndex: Int, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
+    public static func getOutputsHash(tx: Transaction, inputIndex: Int, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data {
         assert(hashType == .sigHashAll)
 
         if reusedValues.outputsHash == nil {
@@ -79,7 +79,7 @@ public struct KaspaTransactionUtil {
         return reusedValues.outputsHash!
     }
 
-    public static func calculateSignatureHash(tx: KaspaTransaction, inputIndex: Int, txInput: TxInput, prevScriptPublicKey: KaspaScriptPublicKey, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data? {
+    public static func calculateSignatureHash(tx: Transaction, inputIndex: Int, txInput: TxInput, prevScriptPublicKey: KaspaScriptPublicKey, hashType: SigHashType, reusedValues: inout SighashReusedValues) -> Data? {
         var builder = Data()
 
         // version
@@ -139,7 +139,7 @@ public struct KaspaTransactionUtil {
         return hash
     }
 
-    public static func calculateSignatureHashSchnorr(tx: KaspaTransaction, inputIndex: Int, hashType: SigHashType, sighashReusedValues: inout SighashReusedValues) -> Data? {
+    public static func calculateSignatureHashSchnorr(tx: Transaction, inputIndex: Int, hashType: SigHashType, sighashReusedValues: inout SighashReusedValues) -> Data? {
 
         let input = tx.inputs[inputIndex]
         let prevScriptPublicKey = input.utxoEntry.scriptPublicKey

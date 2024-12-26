@@ -8,17 +8,17 @@
 import Foundation
 
 public struct TxOutput {
-    public let value: Int64
+    public let value: UInt64
     public let scriptPublicKey: KaspaScriptPublicKey
 
-    public init(value: Int64, scriptPublicKey: KaspaScriptPublicKey) {
+    public init(value: UInt64, scriptPublicKey: KaspaScriptPublicKey) {
         self.value = value
         self.scriptPublicKey = scriptPublicKey
     }
 
     public func toRpc() -> Protowire_RpcTransactionOutput {
         var output = Protowire_RpcTransactionOutput()
-        output.amount = UInt64(value)
+        output.amount = value
         output.scriptPublicKey = scriptPublicKey.toRpc()
         return output
     }
