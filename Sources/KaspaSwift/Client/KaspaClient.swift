@@ -16,7 +16,6 @@ public struct KaspaClient {
     private let host: String
     private let port: Int
     private let group: MultiThreadedEventLoopGroup
-//    private let channel: ClientConnection
     private let asyncClient: Protowire_RPCAsyncClient
     
     public init(host: String = "kaspa.maiziqianbao.net", port: Int = 80) {
@@ -149,7 +148,6 @@ extension KaspaClient{
         let result = response.notifyBlockAddedResponse
         if result.hasError {
             return false
-            //                throw KaspaError.message(result.error.message)
         } else {
             return true
         }

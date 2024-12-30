@@ -8,11 +8,6 @@
 import Foundation
 
 public struct KaspaTxScript {
-    static let kOpEqual: UInt8 = 135
-    static let kOpBlake2b: UInt8 = 170
-    static let kOpCheckSigECDSA: UInt8 = 171
-    static let kOpCheckSig: UInt8 = 172
-
     public static func payToPubKeyScript(_ publicKey: Data) -> Data {
         return Data([UInt8(publicKey.count)] + publicKey + [kOpCheckSig])
     }

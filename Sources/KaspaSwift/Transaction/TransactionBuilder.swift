@@ -8,9 +8,6 @@
 import Foundation
 import BigInt
 
-public let feePerInputRaw = 10000
-public let kMinChangeTarget = BigUInt(20000000)
-
 public struct TransactionBuilder {
     public static func createTransaction(toAddress: KaspaAddress, amount: BigUInt, changeAddress: KaspaAddress, utxos: [KaspaUtxo], priorityFee: BigUInt) throws -> Transaction {
         guard let (selectUtxos, changeAmount, fee) = getChangeAmountAndFee(utxoArray: utxos, amount: amount, priorityFee: priorityFee) else {
@@ -59,7 +56,7 @@ public struct TransactionBuilder {
             let feeValue = getFee(selectedUtxos: selectUtxos, priorityFee: priorityFee)
             needAmount = amount + feeValue
             fee = feeValue
-            if totalAmount == needAmount ||  (totalAmount >= needAmount + kMinChangeTarget && selectUtxos.count > 1) {
+            if totalAmount == needAmount ||  (totalAmount >= needAmount + BigUInt(kMinChangeTarget) && selectUtxos.count > 1) {
                 break
             }
         }

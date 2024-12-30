@@ -9,9 +9,6 @@ import Foundation
 import Blake2
 
 public struct TransactionUtil {
-    public static let kTransactionHashDomain = "TransactionHash"
-    public static let kTransactionIdDomain = "TransactionID"
-    public static let blake2bDigestKey = "TransactionSigningHash".data(using: .utf8)?.bytes ?? []
 
     public static func hashPrevouts(_ outpoint: KaspaOutpoint) -> Data {
         var data = Data()

@@ -21,7 +21,7 @@ class LoggingInterceptor: ClientInterceptor<Protowire_KaspadRequest, Protowire_K
         promise: EventLoopPromise<Void>?,
         context: ClientInterceptorContext<Protowire_KaspadRequest, Protowire_KaspadResponse>
     ) {
-        // 记录日志或进行其他操作
+        
 //        switch part {
 //        case .metadata(let hPACKHeaders):
 //            debugPrint("Sending request: \(hPACKHeaders)")
@@ -38,7 +38,6 @@ class LoggingInterceptor: ClientInterceptor<Protowire_KaspadRequest, Protowire_K
         _ part: GRPCClientResponsePart<Protowire_KaspadResponse>,
         context: ClientInterceptorContext<Protowire_KaspadRequest, Protowire_KaspadResponse>
     ) {
-//        debugPrint("Receiving response: \(part)")
         context.receive(part) // 将响应传递到调用者
     }
 }

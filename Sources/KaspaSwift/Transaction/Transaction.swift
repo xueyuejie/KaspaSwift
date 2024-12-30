@@ -7,8 +7,6 @@
 
 import Foundation
 
-public let kSubnetworkIdNativeHex  = "0000000000000000000000000000000000000000"
-public let kSubnetworkIdCoinbaseHex = "0100000000000000000000000000000000000000"
 public class Transaction {
     public let version: Int
     public var inputs: [TxInput]
