@@ -26,7 +26,6 @@ public class TxInput {
         self.redeemScript = redeemScript
     }
     
-    @MainActor
     public func signedInput(transaction: Transaction, inputIndex: Int, key: KaspaKey) throws -> TxInput {
         do {
             var sighashReusedValues = SighashReusedValues()

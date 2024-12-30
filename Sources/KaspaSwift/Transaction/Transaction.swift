@@ -37,7 +37,6 @@ public class Transaction {
         self.payload = payload
     }
     
-    @MainActor
     public func sign(with keys:[KaspaKey]) throws {
         for (i,input) in inputs.enumerated() {
             let key = keys[i]

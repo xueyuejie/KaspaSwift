@@ -3,7 +3,7 @@ import BigInt
 import CSecp256k1
 import CryptoSwift
 
-@MainActor
+
 public struct SignHelper{
     public static var magic: (UInt8, UInt8, UInt8, UInt8) { (218, 111, 179, 140) }
     public static let context: OpaquePointer! = secp256k1_context_create(
