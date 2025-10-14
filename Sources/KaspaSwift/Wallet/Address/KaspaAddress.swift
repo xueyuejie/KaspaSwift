@@ -64,7 +64,7 @@ public struct KaspaAddress: Hashable {
             throw KaspaError.message("Invalid address prefix")
         }
         
-        let version = data.bytes.first
+        let version = data.byteArray.first
         let payload = data[1 ..< data.count]
         switch version {
         case kAddressIdPubKey:

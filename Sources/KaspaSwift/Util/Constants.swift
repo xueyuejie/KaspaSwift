@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoSwift
 
 public let kOpEqual: UInt8 = 135
 public let kOpBlake2b: UInt8 = 170
@@ -14,7 +15,7 @@ public let kOpCheckSig: UInt8 = 172
 
 public let kTransactionHashDomain = "TransactionHash"
 public let kTransactionIdDomain = "TransactionID"
-public let blake2bDigestKey = "TransactionSigningHash".data(using: .utf8)?.bytes ?? []
+public let blake2bDigestKey = "TransactionSigningHash".data(using: .utf8)?.byteArray ?? []
 
 public let feePerInputRaw = 10000
 public let kMinChangeTarget = 20000000

@@ -75,7 +75,7 @@ extension Data {
 
 extension Data {
     func readUInt8(at offset: Int) -> UInt8 {
-        return self.bytes[offset]
+        return self.byteArray[offset]
     }
     
     func readUInt16(at offset: Int) -> UInt16 {
@@ -123,7 +123,7 @@ extension Data {
     }
     
     func readBytes(at offset: Int, len: Int) -> [UInt8] {
-        return self.subdata(in: offset..<(offset + len)).bytes
+        return self.subdata(in: offset..<(offset + len)).byteArray
     }
     
     func readData(at offset: Int, len: Int) -> Data {

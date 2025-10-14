@@ -13,9 +13,8 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.4.1"),
-        .package(url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.0"),
-        .package(url: "https://github.com/mathwallet/BIP39swift", from: "1.0.1"),
+        .package(url: "https://github.com/mathwallet/Secp256k1Swift", from: "2.0.1"),
+        .package(url: "https://github.com/mathwallet/BIP39swift", from: "2.0.1"),
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.0.0"),
         .package(url: "https://github.com/grpc/grpc-swift", exact: "1.24.2"),
         .package(url: "https://github.com/lishuailibertine/Blake2.swift", from: "0.1.3")
@@ -26,7 +25,6 @@ let package = Package(
         .target(
             name: "KaspaSwift",
             dependencies: [
-                "CryptoSwift",
                 "Secp256k1Swift",
                 .product(name: "BIP32Swift", package: "Secp256k1Swift"),
                 "BIP39swift",

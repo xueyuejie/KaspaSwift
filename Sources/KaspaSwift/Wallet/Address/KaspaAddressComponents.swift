@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CryptoSwift
+
 public struct KaspaAddressComponents {
     public let prefix: String
     public let type: KaspaAddressType
@@ -21,11 +23,11 @@ extension KaspaAddressComponents {
         public static func fromScript(scriptPublickey: KaspaScriptPublicKey) -> KaspaAddressType {
             let script = scriptPublickey.scriptPublicKey
             if scriptPublickey.version == 0 {
-                if isPayToPubKey(scriptPublicKey: script.bytes) {
+                if isPayToPubKey(scriptPublicKey: script.byteArray) {
                     return KaspaAddressType.P2PK_Schnorr
-                } else if isPayToPubKeyECDSA(scriptPublicKey: script.bytes) {
+                } else if isPayToPubKeyECDSA(scriptPublicKey: script.byteArray) {
                     return KaspaAddressType.P2PK_ECDSA
-                } else if isPayToScriptHash(scriptPublicKey: script.bytes) {
+                } else if isPayToScriptHash(scriptPublicKey: script.byteArray) {
                     return KaspaAddressType.P2SH
                 }
             }

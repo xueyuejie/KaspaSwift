@@ -38,7 +38,7 @@ public class TxInput {
             signatureData.append(UInt8(SigHashType.sigHashAll.rawValue))
             var scriptBuilder = try ScriptBuilder().addData(signatureData)
             if let _redeemScript = self.redeemScript {
-                scriptBuilder = try scriptBuilder.addData(_redeemScript.bytes)
+                scriptBuilder = try scriptBuilder.addData(_redeemScript.byteArray)
             }
             self.signatureScript = scriptBuilder.scriptData()
             return self

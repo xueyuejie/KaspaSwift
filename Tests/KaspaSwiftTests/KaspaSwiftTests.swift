@@ -12,7 +12,7 @@ final class KaspaSwiftTests: XCTestCase {
     }
     
     func testAccountExample() throws {
-        guard let (prefixStr, data) = CashAddrBech32.decode("kaspa:qpfe3ds9hpcvcerwagtut8mxqvjaexcudh4m7e6ldt06hcugsj5yu0dynflex") else {
+        guard let (_, _) = CashAddrBech32.decode("kaspa:qpfe3ds9hpcvcerwagtut8mxqvjaexcudh4m7e6ldt06hcugsj5yu0dynflex") else {
             throw KaspaError.message("address decode error")
         }
         let aa = try KaspaAddressService(isTestnet: false).makeAddress(for: Data(hex: "0293cf3586cf565be84ff6eb6f36d283b448f561e66b9921cbab4cdd95dcde43b4"))

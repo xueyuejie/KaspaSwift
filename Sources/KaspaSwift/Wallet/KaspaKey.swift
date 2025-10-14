@@ -29,7 +29,7 @@ public struct KaspaKey {
     }
     
     public static func fromMnemonics(_ mnemonics: String) -> Self? {
-        guard let seed = BIP39.seedFromMmemonics(mnemonics) else {
+        guard let seed = BIP39.seedFromMnemonics(mnemonics) else {
             return nil
         }
         guard let rootNode = HDNode(seed: seed) else {

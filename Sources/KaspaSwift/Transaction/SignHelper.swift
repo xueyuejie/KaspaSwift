@@ -11,7 +11,7 @@ public struct SignHelper{
     )
     
     public static func sign(data: Data, privateKey: Data) throws -> Data {
-        var message = data.bytes
+        var message = data.byteArray
 
         let auxRandPointer = UnsafeMutableRawPointer.allocate(byteCount: 32, alignment: MemoryLayout<UInt8>.alignment)
         for i in 0..<32 {
@@ -22,7 +22,7 @@ public struct SignHelper{
         var signature = [UInt8](repeating: 0, count: 64)
         var extraParams = secp256k1_schnorrsig_extraparams(magic: magic, noncefp: nil, ndata: auxRandPointer)
 
-        guard secp256k1_keypair_create(context, &keypair, privateKey.bytes) == 1,
+        guard secp256k1_keypair_create(context, &keypair, privateKey.byteArray) == 1,
               secp256k1_schnorrsig_sign_custom(context, &signature, &message, message.count, &keypair, &extraParams) == 1
         else {
             throw KaspaError.signError
